@@ -1,7 +1,7 @@
-# Cosmos 七视角国内风格基模：Iteration 2000
+# Cosmos 七视角国内风格基模：Iteration 3000
 
-这是一个私有的静态展示站点，包含
-`boshi_1000clips_sevenview_neighbor_i2v_v2` 在第 2,000 步生成的五条固定推理结果。
+这是一个公开的静态展示站点，包含
+`boshi_1000clips_sevenview_neighbor_i2v_v2` 在第 3,000 步生成的五条固定验证推理结果。
 
 ## 内容
 
@@ -29,4 +29,4 @@ python3 -m http.server 8000
 
 浏览器访问 <http://127.0.0.1:8000/>。
 
-> 本仓库包含内部实验结果，请保持仓库为 Private。
+> 本仓库用于公开展示阶段性实验结果。
