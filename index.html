@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Cosmos 七视角国内风格基模 · Iteration 2000</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: rgba(17, 31, 52, 0.86);
+      --line: rgba(139, 175, 220, 0.18);
+      --text: #edf5ff;
+      --muted: #9eb2cb;
+      --accent: #69d7c5;
+      --accent-2: #7ca7ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% -10%, rgba(61, 114, 210, .28), transparent 36rem),
+        radial-gradient(circle at 100% 0, rgba(50, 190, 165, .16), transparent 30rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    main { width: min(1380px, calc(100% - 32px)); margin: 0 auto; padding: 56px 0 72px; }
+    header { display: grid; gap: 22px; padding: 26px 0 42px; }
+    .eyebrow {
+      width: fit-content;
+      padding: 7px 11px;
+      border: 1px solid rgba(105, 215, 197, .35);
+      border-radius: 999px;
+      color: var(--accent);
+      background: rgba(105, 215, 197, .08);
+      font-size: 12px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0; max-width: 980px; font-size: clamp(36px, 6vw, 74px); line-height: 1.02; letter-spacing: -.04em; }
+    .lead { margin: 0; max-width: 820px; color: var(--muted); font-size: 17px; line-height: 1.75; }
+    .facts { display: flex; flex-wrap: wrap; gap: 10px; }
+    .fact {
+      padding: 10px 13px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: #c9d7e8;
+      background: rgba(17, 31, 52, .55);
+      font-size: 13px;
+    }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+    article {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 19px;
+      background: var(--panel);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, .2);
+    }
+    article:first-child { grid-column: 1 / -1; }
+    .video-wrap { background: #01050a; }
+    video { display: block; width: 100%; height: auto; background: #01050a; }
+    .meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px 18px; }
+    .sample { font-size: 16px; font-weight: 650; }
+    .tag { color: var(--muted); font-size: 12px; }
+    footer { padding-top: 34px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    code { color: #cbe6ff; }
+    @media (max-width: 820px) {
+      main { width: min(100% - 20px, 1380px); padding-top: 28px; }
+      header { padding-bottom: 28px; }
+      .grid { grid-template-columns: 1fr; }
+      article:first-child { grid-column: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">Private Research Preview</div>
+      <h1>Cosmos 七视角<br>国内风格基模</h1>
+      <p class="lead">
+        Boshi 1000 Clips 七视角 I2V 邻接注意力版本的固定推理样例。
+        本页面收录 Iteration 2000 的五条结果，用于内部对比与阶段性验收。
+      </p>
+      <div class="facts" aria-label="实验摘要">
+        <span class="fact">7 Views</span>
+        <span class="fact">Neighbor-view Attention</span>
+        <span class="fact">Image-to-Video</span>
+        <span class="fact">No Text Conditioning</span>
+        <span class="fact">Iteration 2,000</span>
+        <span class="fact">训练输入：单视角 1280 × 720</span>
+      </div>
+    </header>
+
+    <section class="grid" aria-label="推理视频">
+      <article>
+        <div class="video-wrap"><video controls playsinline preload="metadata" src="videos/sample-01.mp4"></video></div>
+        <div class="meta"><span class="sample">Sample 01</span><span class="tag">7-view composite</span></div>
+      </article>
+      <article>
+        <div class="video-wrap"><video controls playsinline preload="metadata" src="videos/sample-02.mp4"></video></div>
+        <div class="meta"><span class="sample">Sample 02</span><span class="tag">7-view composite</span></div>
+      </article>
+      <article>
+        <div class="video-wrap"><video controls playsinline preload="metadata" src="videos/sample-03.mp4"></video></div>
+        <div class="meta"><span class="sample">Sample 03</span><span class="tag">7-view composite</span></div>
+      </article>
+      <article>
+        <div class="video-wrap"><video controls playsinline preload="metadata" src="videos/sample-04.mp4"></video></div>
+        <div class="meta"><span class="sample">Sample 04</span><span class="tag">7-view composite</span></div>
+      </article>
+      <article>
+        <div class="video-wrap"><video controls playsinline preload="metadata" src="videos/sample-05.mp4"></video></div>
+        <div class="meta"><span class="sample">Sample 05</span><span class="tag">7-view composite</span></div>
+      </article>
+    </section>
+
+    <footer>
+      Internal research artifact ·
+      <code>boshi_1000clips_sevenview_neighbor_i2v_v2 / iter_000002000</code>
+    </footer>
+  </main>
+</body>
+</html>
