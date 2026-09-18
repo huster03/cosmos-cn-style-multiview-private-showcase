@@ -117,6 +117,35 @@
       </div>
     </section>
 
+    <section id="control-t2w-iter7000" aria-labelledby="control-t2w-title">
+      <div class="section-head">
+        <h2 id="control-t2w-title">文本 + 控制条件 · 无首帧 · Iteration 7,000</h2>
+        <span class="section-note">Per-view Control V3 · 同一批固定五条 · 原尺寸三行拼接</span>
+      </div>
+      <p class="lead">
+        本组推理仅使用文本 + HDMap / 3D BBox 控制条件，不输入任何 RGB 首帧。
+        第一行：生成结果；第二行：GT（仅供对照，不作为首帧输入）；第三行：彩色 HDMap + 3D BBox。
+        每行视角顺序为 F0 → R0 → R2 → B0 → L2 → L0。
+      </p>
+      <p class="lead">
+        本组来源模型训练时首帧丢弃率为 20%；最新 A/B 控制训练首帧丢弃率为 40%（不是本组视频的训练配置）。
+        对照说明：未润训练时丢弃 80% 首帧（由项目负责人提供）。上述比例均指训练阶段；本组五条推理全部无首帧。
+      </p>
+      <div class="facts" style="margin: 18px 0">
+        <span class="fact">Text + HDMap / 3D BBox</span>
+        <span class="fact">0 RGB Conditional Frames</span>
+        <span class="fact">4992 × 1440 · 29 frames · 10 FPS</span>
+        <span class="fact">50 denoising steps · CFG 3 · Seed 0</span>
+      </div>
+      <div class="grid">
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-control-v3-iter7000-t2w-full-01.mp4"></video></div><div class="meta"><span class="sample">Sample 01 · 无首帧</span><span class="clip">2021.05.12.19.36.12_veh-35_00416_00557</span></div></article>
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-control-v3-iter7000-t2w-full-02.mp4"></video></div><div class="meta"><span class="sample">Sample 02 · 无首帧</span><span class="clip">2021.05.12.19.36.12_veh-35_01305_01389</span></div></article>
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-control-v3-iter7000-t2w-full-03.mp4"></video></div><div class="meta"><span class="sample">Sample 03 · 无首帧</span><span class="clip">2021.05.12.23.36.44_veh-35_00785_01041</span></div></article>
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-control-v3-iter7000-t2w-full-04.mp4"></video></div><div class="meta"><span class="sample">Sample 04 · 无首帧</span><span class="clip">2021.05.12.23.36.44_veh-35_01585_01724</span></div></article>
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-control-v3-iter7000-t2w-full-05.mp4"></video></div><div class="meta"><span class="sample">Sample 05 · 无首帧</span><span class="clip">2021.06.09.11.54.15_veh-12_00270_00339</span></div></article>
+      </div>
+    </section>
+
     <footer>
       Research artifact · <code>nuplan_sixview_rgb_text_neighbor_v2 / iter_000010000</code><br>
       Research artifact · <code>nuplan_sixview_rgb_text_neighbor_v2_480p / iter_000004000</code><br>
