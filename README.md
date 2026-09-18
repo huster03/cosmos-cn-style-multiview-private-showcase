@@ -2,6 +2,8 @@
 
 这是一个公开的静态展示站点，包含
 `boshi_1000clips_sevenview_neighbor_i2v_v2` 在第 3,000 步生成的五条固定验证推理结果。
+站点另设 `nuplan.html`，并列展示 nuPlan 六视角 Neighbor-v2 的
+720p Iteration 10,000 与 480p Iteration 4,000 固定验证结果。
 
 ## 内容
 
@@ -10,6 +12,7 @@
 - 文本条件：不使用
 - 展示样例：5 条七视角拼接视频
 - 页面入口：`index.html`
+- nuPlan 六视角对比页：`nuplan.html`
 
 ## 视频映射
 

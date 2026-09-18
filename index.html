@@ -51,6 +51,19 @@
       background: rgba(17, 31, 52, .55);
       font-size: 13px;
     }
+    .project-link {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 16px;
+      border: 1px solid rgba(124, 167, 255, .45);
+      border-radius: 12px;
+      color: #eaf1ff;
+      background: rgba(124, 167, 255, .13);
+      text-decoration: none;
+      font-weight: 650;
+    }
+    .project-link:hover { background: rgba(124, 167, 255, .22); }
     .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
     article {
       overflow: hidden;
@@ -92,6 +105,7 @@
         <span class="fact">Iteration 3,000</span>
         <span class="fact">训练输入：单视角 1280 × 720</span>
       </div>
+      <a class="project-link" href="nuplan.html">查看 nuPlan 六视角 720p / 480p 对比 →</a>
     </header>
 
     <section class="grid" aria-label="推理视频">

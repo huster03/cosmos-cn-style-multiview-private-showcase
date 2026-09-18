@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>nuPlan 六视角 Neighbor-v2 · 720p / 480p</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: rgba(17, 31, 52, .9);
+      --line: rgba(139, 175, 220, .2);
+      --text: #edf5ff;
+      --muted: #9eb2cb;
+      --accent: #69d7c5;
+      --accent2: #7ca7ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% -10%, rgba(61, 114, 210, .3), transparent 38rem),
+        radial-gradient(circle at 100% 8%, rgba(50, 190, 165, .16), transparent 32rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    main { width: min(1500px, calc(100% - 32px)); margin: 0 auto; padding: 36px 0 72px; }
+    nav { margin-bottom: 38px; }
+    nav a { color: var(--accent); text-decoration: none; }
+    header { display: grid; gap: 18px; margin-bottom: 48px; }
+    .eyebrow { color: var(--accent); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { margin: 0; max-width: 1100px; font-size: clamp(36px, 6vw, 72px); line-height: 1.02; letter-spacing: -.04em; }
+    .lead { margin: 0; max-width: 960px; color: var(--muted); font-size: 17px; line-height: 1.75; }
+    .facts { display: flex; flex-wrap: wrap; gap: 10px; }
+    .fact { padding: 9px 12px; border: 1px solid var(--line); border-radius: 11px; color: #c9d7e8; background: rgba(17, 31, 52, .55); font-size: 13px; }
+    section { margin-top: 48px; }
+    .section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+    h2 { margin: 0; font-size: clamp(25px, 3vw, 38px); }
+    .section-note { color: var(--muted); font-size: 13px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    article { overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); box-shadow: 0 18px 55px rgba(0, 0, 0, .2); }
+    article:first-child { grid-column: 1 / -1; }
+    .video-wrap { background: #01050a; }
+    video { display: block; width: 100%; height: auto; background: #01050a; }
+    .meta { display: grid; gap: 5px; padding: 14px 17px 17px; }
+    .sample { font-size: 15px; font-weight: 650; }
+    .clip { overflow: hidden; color: var(--muted); font: 11px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-overflow: ellipsis; white-space: nowrap; }
+    footer { padding-top: 42px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    code { color: #cbe6ff; }
+    @media (max-width: 820px) {
+      main { width: min(100% - 20px, 1500px); padding-top: 24px; }
+      .grid { grid-template-columns: 1fr; }
+      article:first-child { grid-column: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav><a href="index.html">← 返回七视角国内风格展示</a></nav>
+    <header>
+      <div class="eyebrow">Fixed Validation Comparison</div>
+      <h1>nuPlan 六视角<br>720p / 480p 适配结果</h1>
+      <p class="lead">
+        两组结果使用同一批五条固定、clip-disjoint 验证样本，便于直接比较 Neighbor-v2 六视角文本适配在原 720p 阶段与 480p 短程全主干适配后的表现。
+      </p>
+      <div class="facts" aria-label="实验摘要">
+        <span class="fact">6 Views</span>
+        <span class="fact">Neighbor-view Attention</span>
+        <span class="fact">Text + 0/1 Conditional Frame</span>
+        <span class="fact">Fixed Validation Clips</span>
+        <span class="fact">H.264 / Browser Ready</span>
+      </div>
+    </header>
+
+    <section aria-labelledby="fullres-title">
+      <div class="section-head">
+        <h2 id="fullres-title">720p · Iteration 10,000</h2>
+        <span class="section-note">六视角 Neighbor-v2 主线完成检查点</span>
+      </div>
+      <div class="grid">
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-720p-iter10000-01.mp4"></video></div><div class="meta"><span class="sample">Sample 01</span><span class="clip">2021.05.12.19.36.12_veh-35_00416_00557</span></div></article>
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-720p-iter10000-02.mp4"></video></div><div class="meta"><span class="sample">Sample 02</span><span class="clip">2021.05.12.19.36.12_veh-35_01305_01389</span></div></article>
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-720p-iter10000-03.mp4"></video></div><div class="meta"><span class="sample">Sample 03</span><span class="clip">2021.05.12.23.36.44_veh-35_00785_01041</span></div></article>
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-720p-iter10000-04.mp4"></video></div><div class="meta"><span class="sample">Sample 04</span><span class="clip">2021.05.12.23.36.44_veh-35_01585_01724</span></div></article>
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-720p-iter10000-05.mp4"></video></div><div class="meta"><span class="sample">Sample 05</span><span class="clip">2021.06.09.11.54.15_veh-12_00270_00339</span></div></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="lowres-title">
+      <div class="section-head">
+        <h2 id="lowres-title">480p · Iteration 4,000</h2>
+        <span class="section-note">由 720p Iteration 10,000 初始化的 480p 全主干适配</span>
+      </div>
+      <div class="grid">
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-480p-iter4000-01.mp4"></video></div><div class="meta"><span class="sample">Sample 01</span><span class="clip">2021.05.12.19.36.12_veh-35_00416_00557</span></div></article>
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-480p-iter4000-02.mp4"></video></div><div class="meta"><span class="sample">Sample 02</span><span class="clip">2021.05.12.19.36.12_veh-35_01305_01389</span></div></article>
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-480p-iter4000-03.mp4"></video></div><div class="meta"><span class="sample">Sample 03</span><span class="clip">2021.05.12.23.36.44_veh-35_00785_01041</span></div></article>
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-480p-iter4000-04.mp4"></video></div><div class="meta"><span class="sample">Sample 04</span><span class="clip">2021.05.12.23.36.44_veh-35_01585_01724</span></div></article>
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-480p-iter4000-05.mp4"></video></div><div class="meta"><span class="sample">Sample 05</span><span class="clip">2021.06.09.11.54.15_veh-12_00270_00339</span></div></article>
+      </div>
+    </section>
+
+    <footer>
+      Research artifact · <code>nuplan_sixview_rgb_text_neighbor_v2 / iter_000010000</code><br>
+      Research artifact · <code>nuplan_sixview_rgb_text_neighbor_v2_480p / iter_000004000</code>
+    </footer>
+  </main>
+</body>
+</html>
