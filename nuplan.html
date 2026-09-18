@@ -64,6 +64,7 @@
       <h1>nuPlan 六视角<br>720p / 480p 适配结果</h1>
       <p class="lead">
         两组结果使用同一批五条固定、clip-disjoint 验证样本，便于直接比较 Neighbor-v2 六视角文本适配在原 720p 阶段与 480p 短程全主干适配后的表现。
+        页面下方另附冻结主干的 HDMap + 3D BBox 逐视角控制分支在 Iteration 7,000 的五条固定推理结果。
       </p>
       <div class="facts" aria-label="实验摘要">
         <span class="fact">6 Views</span>
@@ -102,9 +103,24 @@
       </div>
     </section>
 
+    <section aria-labelledby="control-title">
+      <div class="section-head">
+        <h2 id="control-title">HDMap + 3D BBox 控制 · Iteration 7,000</h2>
+        <span class="section-note">480p · 冻结 Neighbor-v2 RGB 主干 · Per-view Control V3</span>
+      </div>
+      <div class="grid">
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-control-v3-iter7000-01.mp4"></video></div><div class="meta"><span class="sample">Sample 01</span><span class="clip">2021.05.12.19.36.12_veh-35_00416_00557</span></div></article>
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-control-v3-iter7000-02.mp4"></video></div><div class="meta"><span class="sample">Sample 02</span><span class="clip">2021.05.12.19.36.12_veh-35_01305_01389</span></div></article>
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-control-v3-iter7000-03.mp4"></video></div><div class="meta"><span class="sample">Sample 03</span><span class="clip">2021.05.12.23.36.44_veh-35_00785_01041</span></div></article>
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-control-v3-iter7000-04.mp4"></video></div><div class="meta"><span class="sample">Sample 04</span><span class="clip">2021.05.12.23.36.44_veh-35_01585_01724</span></div></article>
+        <article><div class="video-wrap"><video controls playsinline preload="metadata" src="videos/nuplan-control-v3-iter7000-05.mp4"></video></div><div class="meta"><span class="sample">Sample 05</span><span class="clip">2021.06.09.11.54.15_veh-12_00270_00339</span></div></article>
+      </div>
+    </section>
+
     <footer>
       Research artifact · <code>nuplan_sixview_rgb_text_neighbor_v2 / iter_000010000</code><br>
-      Research artifact · <code>nuplan_sixview_rgb_text_neighbor_v2_480p / iter_000004000</code>
+      Research artifact · <code>nuplan_sixview_rgb_text_neighbor_v2_480p / iter_000004000</code><br>
+      Research artifact · <code>nuplan_sixview_hdmap_bbox_per_view_twr_control_v3_480p_frozen / iter_000007000</code>
     </footer>
   </main>
 </body>
