@@ -80,6 +80,12 @@
     .tag { color: var(--muted); font-size: 12px; }
     footer { padding-top: 34px; color: var(--muted); font-size: 13px; line-height: 1.7; }
     code { color: #cbe6ff; }
+    .training { margin: 0 0 30px; padding: 24px; border: 1px solid var(--line); border-radius: 19px; background: var(--panel); }
+    .training h2 { margin-top: 0; }
+    .training table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.65; }
+    .training th, .training td { text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); padding: 11px 8px; }
+    .training th { width: 28%; color: var(--accent); }
+    .training p { color: var(--muted); line-height: 1.75; }
     @media (max-width: 820px) {
       main { width: min(100% - 20px, 1380px); padding-top: 28px; }
       header { padding-bottom: 28px; }
@@ -108,25 +114,42 @@
       <a class="project-link" href="nuplan.html">查看 nuPlan 六视角 720p / 480p 对比 →</a>
     </header>
 
+    <section class="training" aria-labelledby="training-title">
+      <h2 id="training-title">训练资源与耗时 · 3,000 步检查点</h2>
+      <table>
+        <tr><th scope="row">计算资源</th><td>2 节点 × 16 张 PPU-ZW810E，共 32 张 PPU。</td></tr>
+        <tr><th scope="row">CPU / 内存</th><td>每节点 176 核 / 1,758 GiB 内存；合计 352 核 / 3,516 GiB。</td></tr>
+        <tr><th scope="row">并行与 batch</th><td>CP 8 × DP 4，全局 batch size = 4；不是每卡独立一条的 batch 32。</td></tr>
+        <tr><th scope="row">模型与训练</th><td>官方 2B 多视角权重初始化；约 20.59 亿参数全量微调；七视角 Neighbor-v2；单首帧 I2V、无场景文本。每视角 29 帧、1280 × 720，学习率 1e-5。</td></tr>
+        <tr><th scope="row">到 3,000 步的耗时</th><td>累计训练阶段墙钟约 <strong>33 小时 14 分钟</strong>：0→1,000 约 10 小时 57 分钟，1,000→3,000 约 22 小时 17 分钟。</td></tr>
+        <tr><th scope="row">常规迭代速度</th><td>约 <strong>39.4 秒/步</strong>；按两段日志连续步间隔统计，排除 ≥120 秒间隔，不含里程碑保存/推理停顿。</td></tr>
+        <tr><th scope="row">结果版本</th><td>五条固定验证视频均来自 <code>iter_000003000</code>。2026-09-20 复核，五个文件 SHA-256 与源推理目录完全一致。</td></tr>
+      </table>
+      <p>耗时口径：分别从两次日志的 Starting training 到对应第 1,000 / 3,000 次更新完成时间求和；包含续训阶段中间第 2,000 步的保存与推理，
+        不含排队、训练前初始化、两次运行间的中断，以及第 3,000 步之后的保存/推理。首段第 1,000 步推理故障发生在检查点保存后，随后从该检查点完整续训。
+        从首段开始到第 3,000 次更新完成的跨中断自然历时约 37 小时，不能全部视为纯训练时间。</p>
+      <p>这里的“3,000 步”指展示检查点，不是任务恰好在此结束：本地后续日志至少记录到 iteration 3510，最新保存指针仍为 3,000；配置上限为 10,000，未称为已完成 10,000 步。</p>
+    </section>
+
     <section class="grid" aria-label="推理视频">
       <article>
-        <div class="video-wrap"><video controls playsinline preload="metadata" src="videos/sample-01.mp4"></video></div>
+        <div class="video-wrap"><video controls playsinline preload="metadata" src="videos/sample-01.mp4?v=iter3000-20260920"></video></div>
         <div class="meta"><span class="sample">Sample 01</span><span class="tag">7-view composite</span></div>
       </article>
       <article>
-        <div class="video-wrap"><video controls playsinline preload="metadata" src="videos/sample-02.mp4"></video></div>
+        <div class="video-wrap"><video controls playsinline preload="metadata" src="videos/sample-02.mp4?v=iter3000-20260920"></video></div>
         <div class="meta"><span class="sample">Sample 02</span><span class="tag">7-view composite</span></div>
       </article>
       <article>
-        <div class="video-wrap"><video controls playsinline preload="metadata" src="videos/sample-03.mp4"></video></div>
+        <div class="video-wrap"><video controls playsinline preload="metadata" src="videos/sample-03.mp4?v=iter3000-20260920"></video></div>
         <div class="meta"><span class="sample">Sample 03</span><span class="tag">7-view composite</span></div>
       </article>
       <article>
-        <div class="video-wrap"><video controls playsinline preload="metadata" src="videos/sample-04.mp4"></video></div>
+        <div class="video-wrap"><video controls playsinline preload="metadata" src="videos/sample-04.mp4?v=iter3000-20260920"></video></div>
         <div class="meta"><span class="sample">Sample 04</span><span class="tag">7-view composite</span></div>
       </article>
       <article>
-        <div class="video-wrap"><video controls playsinline preload="metadata" src="videos/sample-05.mp4"></video></div>
+        <div class="video-wrap"><video controls playsinline preload="metadata" src="videos/sample-05.mp4?v=iter3000-20260920"></video></div>
         <div class="meta"><span class="sample">Sample 05</span><span class="tag">7-view composite</span></div>
       </article>
     </section>
