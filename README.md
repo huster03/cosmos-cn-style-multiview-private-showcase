@@ -14,6 +14,11 @@ HDMap + 3D BBox 逐视角控制分支的 Iteration 7,000 固定推理结果。
 - 展示样例：5 条七视角拼接视频
 - 页面入口：`index.html`
 - nuPlan 六视角对比页：`nuplan.html`
+- 28 场景长尾六视角控制推理独立页：`longtail28.html`
+
+长尾页按 8 类整理 28 个场景，展示中文／英文条件文本及两行六视角视频：
+上排为生成结果，下排为实际输入的 HDMap＋投影 3D BBox 控制。推理条件为文本＋控制视频，
+`num_conditional_frames=0`，不使用 RGB 首帧。
 
 ## 视频映射
 
