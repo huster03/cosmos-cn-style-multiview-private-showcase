@@ -1,0 +1,16 @@
+.example-toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin:20px 0; padding:14px; background:#172a41; border:1px solid #41536b; border-radius:10px; }
+.example-toolbar[hidden] { display:none; }
+.example-toolbar small { flex-basis:100%; }
+.example-toolbar button { font:inherit; cursor:pointer; color:#e5edf6; background:#243b55; border:1px solid #69859f; border-radius:7px; padding:5px 13px; }
+.example-toolbar button:hover { background:#345571; }
+article > .example-toggle { margin:0; }
+.example-summary { display:flex; justify-content:space-between; align-items:center; gap:16px; cursor:pointer; list-style:none; }
+.example-summary::-webkit-details-marker { display:none; }
+.example-summary h3 { margin:0; min-width:0; }
+.example-toggle-label { flex-shrink:0; font-size:14px; color:#83ded2; border:1px solid #52736f; padding:4px 10px; border-radius:7px; }
+.example-toggle > .example-summary .when-open { display:none; }
+.example-toggle[open] > .example-summary .when-open { display:inline; }
+.example-toggle[open] > .example-summary .when-closed { display:none; }
+.example-content { padding-top:12px; }
+.example-summary:focus-visible, .example-toolbar button:focus-visible { outline:3px solid #83ded2; outline-offset:5px; }
+@media(max-width:600px) { .example-summary { gap:10px; } .example-summary h3 { font-size:19px; } .example-toggle-label { padding:4px 7px; } }
