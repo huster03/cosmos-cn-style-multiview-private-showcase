@@ -1,0 +1,537 @@
+{
+  "date": "2026-09-24",
+  "counts": {
+    "sixview": 25,
+    "predict_official": 23,
+    "transfer_official": 25,
+    "transfer_l3_iter3000": 15
+  },
+  "transfer_inputs_identical_for_all_15": true,
+  "frames": 29,
+  "display_fps": 10,
+  "predict_original_fps": 30,
+  "transfer_official_sha256": "bdf483deeca8e03c5a3c6b4c0bdefdec6600224572037da45b473e6a8bcb0129",
+  "transfer_l3_iter3000_sha256": "5eadd25a01189c6550138f67fc63e2901955836b6581020316350b903dcce297",
+  "new_media": [
+    {
+      "kind": "control",
+      "scene": "dense_pedestrian_crosswalk_001",
+      "url": "videos/four-model-20260924/control/dense_pedestrian_crosswalk_001.mp4",
+      "sha256": "bf6317ad39c320a872337e970cbc5e3e1eb648d2951fea6a41ee24e331517237",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "dense_pedestrian_crosswalk_001",
+      "url": "videos/four-model-20260924/transfer-official/dense_pedestrian_crosswalk_001.mp4",
+      "sha256": "9a6ed9719b575dcf7b9b770cc86865c693afc2961435a29da4da97cee0064933",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-l3-3000",
+      "scene": "dense_pedestrian_crosswalk_001",
+      "url": "videos/four-model-20260924/transfer-l3-3000/dense_pedestrian_crosswalk_001.mp4",
+      "sha256": "267ec74ee6fcd07b7567d6050e0de250ec65dcd95b8f62dc051d03acb5f7f550",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "dense_pedestrian_crosswalk_003",
+      "url": "videos/four-model-20260924/control/dense_pedestrian_crosswalk_003.mp4",
+      "sha256": "02efe8aa7e0b3e116104084f30f5c62f5bb2cbb14d30629d1e897bcdf4a814e3",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "dense_pedestrian_crosswalk_003",
+      "url": "videos/four-model-20260924/transfer-official/dense_pedestrian_crosswalk_003.mp4",
+      "sha256": "add81891ff584166427c1ee1a95366228ecdf92b6fd274c089e4135b6653fe66",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "construction_vehicle_excavator_001",
+      "url": "videos/four-model-20260924/control/construction_vehicle_excavator_001.mp4",
+      "sha256": "e2311a6f7bfe46002f43cc540f2b1058f82be056715d0f24a7b3303981150d47",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "construction_vehicle_excavator_001",
+      "url": "videos/four-model-20260924/transfer-official/construction_vehicle_excavator_001.mp4",
+      "sha256": "112e0558097768e336b40fd3b8b604fe1da398e4412dc870297036891eb53fbd",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-l3-3000",
+      "scene": "construction_vehicle_excavator_001",
+      "url": "videos/four-model-20260924/transfer-l3-3000/construction_vehicle_excavator_001.mp4",
+      "sha256": "a3848ab58684dfa76db57941f8cc6a256d3bf4c40e35e4e5aacf73407c081a97",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "construction_vehicle_dump_truck_001",
+      "url": "videos/four-model-20260924/control/construction_vehicle_dump_truck_001.mp4",
+      "sha256": "df6f4ac39672aed7620404da47c5e603c6596a34366c58f46929225685969a47",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "construction_vehicle_dump_truck_001",
+      "url": "videos/four-model-20260924/transfer-official/construction_vehicle_dump_truck_001.mp4",
+      "sha256": "6ec36171ad8f89dc1cb3339720686dd0c550d1c10faeaa3451079e15fd666d64",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "ghost_probe_turn_pedestrian_retreat_001",
+      "url": "videos/four-model-20260924/control/ghost_probe_turn_pedestrian_retreat_001.mp4",
+      "sha256": "a2335927460d613d8a3460908bb8977ec70c8ee69bbd3bfded573f4062a302f3",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "ghost_probe_turn_pedestrian_retreat_001",
+      "url": "videos/four-model-20260924/transfer-official/ghost_probe_turn_pedestrian_retreat_001.mp4",
+      "sha256": "350b5b71c01b804522309e07e318d5ef83b702b229450fbb213a796c3b4b4c82",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-l3-3000",
+      "scene": "ghost_probe_turn_pedestrian_retreat_001",
+      "url": "videos/four-model-20260924/transfer-l3-3000/ghost_probe_turn_pedestrian_retreat_001.mp4",
+      "sha256": "b9663736e2cfa30b5daa01009562579682cc9c7fe95fd9e125954be04bf45302",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "ghost_probe_static_001",
+      "url": "videos/four-model-20260924/control/ghost_probe_static_001.mp4",
+      "sha256": "a64afbed5dfcca3dab6d47e666fbab38c0206ab3338bdbab63ae604c717f5e10",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "ghost_probe_static_001",
+      "url": "videos/four-model-20260924/transfer-official/ghost_probe_static_001.mp4",
+      "sha256": "a8bb0ce950aaa0d341fb43e1378407f2b88fae4589d41e34f24ba7dc0ffbc7e1",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-l3-3000",
+      "scene": "ghost_probe_static_001",
+      "url": "videos/four-model-20260924/transfer-l3-3000/ghost_probe_static_001.mp4",
+      "sha256": "005d65677c120a6891e61f2ba4d6655533006035cb7e6545a3b2416851d0434e",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "animal_elephant_crossing_001",
+      "url": "videos/four-model-20260924/control/animal_elephant_crossing_001.mp4",
+      "sha256": "d0ec36444deefbdadeeb93aeffd657472848d36a62f73e198148783bb705be57",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "animal_elephant_crossing_001",
+      "url": "videos/four-model-20260924/transfer-official/animal_elephant_crossing_001.mp4",
+      "sha256": "4a39737a77bbe968541ee6f212aa76214f05702d114dae96c8634f550fd56297",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-l3-3000",
+      "scene": "animal_elephant_crossing_001",
+      "url": "videos/four-model-20260924/transfer-l3-3000/animal_elephant_crossing_001.mp4",
+      "sha256": "ed08a177b8e1e71f1a292bbc6895520802dd5353bea49a5d125516e9e39af61f",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "animal_dinosaur_crossing_001",
+      "url": "videos/four-model-20260924/control/animal_dinosaur_crossing_001.mp4",
+      "sha256": "d6357e47ac736e8a0992b75c4ed082098be6a238cc3ca745922fbaa3f2d6ed73",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "animal_dinosaur_crossing_001",
+      "url": "videos/four-model-20260924/transfer-official/animal_dinosaur_crossing_001.mp4",
+      "sha256": "aaf84afa7ac837b5a6954f7031de57653383c4c7efbb8759397af7848be806fb",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "foreign_object_drop_mattress_001",
+      "url": "videos/four-model-20260924/control/foreign_object_drop_mattress_001.mp4",
+      "sha256": "ced560c62350c8ca2a1c24c721a9c43f083b4d100c91a88c0b3400f7fd6d4f67",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "foreign_object_drop_mattress_001",
+      "url": "videos/four-model-20260924/transfer-official/foreign_object_drop_mattress_001.mp4",
+      "sha256": "afb83aac0c1b0bb1be2bbfe8ed9931cde2a6e1ef5ea48ec9fe0be1fa3d33dd63",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-l3-3000",
+      "scene": "foreign_object_drop_mattress_001",
+      "url": "videos/four-model-20260924/transfer-l3-3000/foreign_object_drop_mattress_001.mp4",
+      "sha256": "83e3fb37782c2fce008c13fbadc119279eb0aec7692f406b546be2d92f262d8c",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "temporary_lane_control_001",
+      "url": "videos/four-model-20260924/control/temporary_lane_control_001.mp4",
+      "sha256": "08db56ccb723606aeee877fbecc2564be4f89cee6d10cc6ec337599eb5ed35ea",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "temporary_lane_control_001",
+      "url": "videos/four-model-20260924/transfer-official/temporary_lane_control_001.mp4",
+      "sha256": "53b9595665367dfc003eb72040a104b65615326155654998b36534ab752d23ce",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-l3-3000",
+      "scene": "temporary_lane_control_001",
+      "url": "videos/four-model-20260924/transfer-l3-3000/temporary_lane_control_001.mp4",
+      "sha256": "23dc632d9a33b9004920d57d08dd23696d964144b4ffafb07f1da1582bdbd969",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "temporary_left_lane_closure_001",
+      "url": "videos/four-model-20260924/control/temporary_left_lane_closure_001.mp4",
+      "sha256": "4a4b0f5a66384c399c270feb3983911718fc2b954bcd0f0b45d4dd35be69f034",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "temporary_left_lane_closure_001",
+      "url": "videos/four-model-20260924/transfer-official/temporary_left_lane_closure_001.mp4",
+      "sha256": "a4ae739ba590d13b5c5b53e3e22f6b406c59c5ac8fd7437e63c9af21907ef3a8",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "traffic_police_roadside_wave_001",
+      "url": "videos/four-model-20260924/control/traffic_police_roadside_wave_001.mp4",
+      "sha256": "3c9ade259f8532e4fd43c01256aa1756bc2f2cb66368a8c97cddbe85b7959591",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "traffic_police_roadside_wave_001",
+      "url": "videos/four-model-20260924/transfer-official/traffic_police_roadside_wave_001.mp4",
+      "sha256": "85368580b1dd5ba44a70e245d2b6a6d22d5e8a84ff917d9464745cf824b98c84",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-l3-3000",
+      "scene": "traffic_police_roadside_wave_001",
+      "url": "videos/four-model-20260924/transfer-l3-3000/traffic_police_roadside_wave_001.mp4",
+      "sha256": "841f43c64b879ef40356d3638ff1add2621ad60129b56ae010209a7a361ef04c",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "foreign_object_drop_ladder_close_visible",
+      "url": "videos/four-model-20260924/control/foreign_object_drop_ladder_close_visible.mp4",
+      "sha256": "8c53e1296bb43e24bf329658b258c579602bbbf86c50fd098dcc0870c853259f",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "foreign_object_drop_ladder_close_visible",
+      "url": "videos/four-model-20260924/transfer-official/foreign_object_drop_ladder_close_visible.mp4",
+      "sha256": "424b33769a3c5e2df7263d0036b808683b75759c5976e75af334aa5288f56b15",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "dense_pedestrian_crosswalk_002",
+      "url": "videos/four-model-20260924/control/dense_pedestrian_crosswalk_002.mp4",
+      "sha256": "24c600302a5661cb944d7bb42c54b812d3ebe29613a976d5f6bdbb0f92d30692",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "dense_pedestrian_crosswalk_002",
+      "url": "videos/four-model-20260924/transfer-official/dense_pedestrian_crosswalk_002.mp4",
+      "sha256": "0f830cdb7a3ce435ff568e28691915bf9efc2a8618d0b5ce03ce5714b30b737b",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-l3-3000",
+      "scene": "dense_pedestrian_crosswalk_002",
+      "url": "videos/four-model-20260924/transfer-l3-3000/dense_pedestrian_crosswalk_002.mp4",
+      "sha256": "b8c85699d7f9edd1960f542526e8d0e7f04ec7ebc1ce64b78d052c278027dbbb",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "construction_vehicle_loader_001",
+      "url": "videos/four-model-20260924/control/construction_vehicle_loader_001.mp4",
+      "sha256": "7ce7c0d64f8a4a34d39aa0b682238c8d772a106dcf2e57a3cbd6fe81bb23c807",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "construction_vehicle_loader_001",
+      "url": "videos/four-model-20260924/transfer-official/construction_vehicle_loader_001.mp4",
+      "sha256": "15944c21aaa9b27b38685ecff0a1309a6c634089ba39a583e330c4ca6e5319bc",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-l3-3000",
+      "scene": "construction_vehicle_loader_001",
+      "url": "videos/four-model-20260924/transfer-l3-3000/construction_vehicle_loader_001.mp4",
+      "sha256": "4c448389c2aaed837c587b92ac713588841c503f909d45c19f3c1939be91597a",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "construction_vehicle_crane_001",
+      "url": "videos/four-model-20260924/control/construction_vehicle_crane_001.mp4",
+      "sha256": "a861b57c8d304262dc23e1d1d84740215748520c1cfa691d69de9748cd79aeb6",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "construction_vehicle_crane_001",
+      "url": "videos/four-model-20260924/transfer-official/construction_vehicle_crane_001.mp4",
+      "sha256": "73ad2f5a0f7cbc0836c3cca10d05bff863f95589465239d54e600d64055f7562",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "ghost_probe_turn_ego_stop_001",
+      "url": "videos/four-model-20260924/control/ghost_probe_turn_ego_stop_001.mp4",
+      "sha256": "70ce4235e93632d67378427be371a97000db998605942a20ce6857c563934582",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "ghost_probe_turn_ego_stop_001",
+      "url": "videos/four-model-20260924/transfer-official/ghost_probe_turn_ego_stop_001.mp4",
+      "sha256": "1485bad6c3a1c033e3baed448841af57c91b2c262a9a9a9e3d914e94c5757c46",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-l3-3000",
+      "scene": "ghost_probe_turn_ego_stop_001",
+      "url": "videos/four-model-20260924/transfer-l3-3000/ghost_probe_turn_ego_stop_001.mp4",
+      "sha256": "6896ce5f0dc9348a271c5efc59d4f5666bbebbce254944455ddbfc61f4e1e35a",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "ghost_probe_moving_001",
+      "url": "videos/four-model-20260924/control/ghost_probe_moving_001.mp4",
+      "sha256": "c80f21f8d2e10955d0e4dc496714ce7ef1a17951ce3df294302b30fd918cf614",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "ghost_probe_moving_001",
+      "url": "videos/four-model-20260924/transfer-official/ghost_probe_moving_001.mp4",
+      "sha256": "6bf383289e3ef76289cf6e1b3a0528520387ad8b7751635f81914526a78d1957",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-l3-3000",
+      "scene": "ghost_probe_moving_001",
+      "url": "videos/four-model-20260924/transfer-l3-3000/ghost_probe_moving_001.mp4",
+      "sha256": "7fa70b8e3a47d11b93ed72818910c2a015602ed383d5385ae731d6c456476fad",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "animal_dog_crossing_001",
+      "url": "videos/four-model-20260924/control/animal_dog_crossing_001.mp4",
+      "sha256": "48fc09219fa6aa4df5604a626e3be22805744e6ded0e0edda42248b75f9260af",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "animal_dog_crossing_001",
+      "url": "videos/four-model-20260924/transfer-official/animal_dog_crossing_001.mp4",
+      "sha256": "4924a9fcbfefa564016a0e674a6872b4037a063579abb699ccf61734e9a2f286",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-l3-3000",
+      "scene": "animal_dog_crossing_001",
+      "url": "videos/four-model-20260924/transfer-l3-3000/animal_dog_crossing_001.mp4",
+      "sha256": "2664bb13eacabf28a105c3b5027cfcb26e1829b9413808af9f056db9cae2818c",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "animal_giraffe_crossing_001",
+      "url": "videos/four-model-20260924/control/animal_giraffe_crossing_001.mp4",
+      "sha256": "1ee871e6162ba9186ced5d9592f5d94397afeb993f0459a8f3944de4d68bb989",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "animal_giraffe_crossing_001",
+      "url": "videos/four-model-20260924/transfer-official/animal_giraffe_crossing_001.mp4",
+      "sha256": "f4ec62b10010f42f39cb51be422ad14d62ef91f5a7284058cb841c5345f560c2",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "animal_dog_crossing_002",
+      "url": "videos/four-model-20260924/control/animal_dog_crossing_002.mp4",
+      "sha256": "765159a65ff72076f2ab01a54b5c0c7a2ebbb7fe67e2ee293ea30b647bda944d",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "animal_dog_crossing_002",
+      "url": "videos/four-model-20260924/transfer-official/animal_dog_crossing_002.mp4",
+      "sha256": "b15ebd4eff8f21661b26bc3e04935749dfbf214840367617b7b2ae10c3fea376",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "foreign_object_drop_ladder_001",
+      "url": "videos/four-model-20260924/control/foreign_object_drop_ladder_001.mp4",
+      "sha256": "b70fb0b1b33b77ab5d244e9799329fc10a5fc556c19f022f369da88f1c1344d4",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "foreign_object_drop_ladder_001",
+      "url": "videos/four-model-20260924/transfer-official/foreign_object_drop_ladder_001.mp4",
+      "sha256": "11c4d3e1c42afb3f15bcb7003c76eb0df8f8f442ec4f2922c0248c61a256dc8c",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-l3-3000",
+      "scene": "foreign_object_drop_ladder_001",
+      "url": "videos/four-model-20260924/transfer-l3-3000/foreign_object_drop_ladder_001.mp4",
+      "sha256": "69c579e2f78a8b2ab9ea25513bf44ef4ddadc39bee08583927e67ad568725abc",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "temporary_right_lane_closure_001",
+      "url": "videos/four-model-20260924/control/temporary_right_lane_closure_001.mp4",
+      "sha256": "1ca636ae291b7e4d98418ad502cb8f82b027731e66c1eccd5d37e996c4d8ec64",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "temporary_right_lane_closure_001",
+      "url": "videos/four-model-20260924/transfer-official/temporary_right_lane_closure_001.mp4",
+      "sha256": "a6241e9c839e64fc92b61052dc591bc9921dce996e2ad3a7bd699b2e7b3166cd",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-l3-3000",
+      "scene": "temporary_right_lane_closure_001",
+      "url": "videos/four-model-20260924/transfer-l3-3000/temporary_right_lane_closure_001.mp4",
+      "sha256": "6a762faf4937a5db3b1ac907fbde482fdec966abb536962eb1a99fc9797fd289",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "temporary_overhead_lane_control_001",
+      "url": "videos/four-model-20260924/control/temporary_overhead_lane_control_001.mp4",
+      "sha256": "56bde03c49d8fd3e54e61869204c345dc85d2045c7033c904eafa0481a6034ce",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "temporary_overhead_lane_control_001",
+      "url": "videos/four-model-20260924/transfer-official/temporary_overhead_lane_control_001.mp4",
+      "sha256": "fd7cd5ba3fcb10a9f5746d49e08923d486834cfe2e66647d841297d40836b9c6",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "control",
+      "scene": "foreign_object_drop_mattress_close_visible",
+      "url": "videos/four-model-20260924/control/foreign_object_drop_mattress_close_visible.mp4",
+      "sha256": "0c1e7dc305755b8891d5dca13650b235831440d372b8fb22ee6be626699e6d8b",
+      "frames": 29,
+      "fps": 10
+    },
+    {
+      "kind": "transfer-official",
+      "scene": "foreign_object_drop_mattress_close_visible",
+      "url": "videos/four-model-20260924/transfer-official/foreign_object_drop_mattress_close_visible.mp4",
+      "sha256": "d8e09a81facd2f6769e1f29f5e3bd78003bd8bc3e062ae4939ac7ba7ca4a5fe5",
+      "frames": 29,
+      "fps": 10
+    }
+  ]
+}
