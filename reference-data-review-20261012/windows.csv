@@ -1,0 +1,33 @@
+index,window_id,domain,class,split,sam2_status,sam3_status,sam2_reference,sam3_reference
+1,akfull_action_recognition_AAOYRUDX_00029000,animal,elephant,train,ready,ready,窗口内同轨迹回退,窗口外同轨迹
+2,akfull_action_recognition_AEQVOUDX_00029000,animal,elephant,train,pending,pending,窗口内同轨迹回退,窗口外同轨迹
+3,akfull_action_recognition_BFGQKGCS_00029000,animal,elephant,val,ready,ready,窗口外同轨迹,窗口外同轨迹
+4,akfull_action_recognition_FJCHTKRF_00029000,animal,giraffe,train,pending,pending,窗口内同轨迹回退,窗口外同轨迹
+5,akfull_action_recognition_UYFARXDO_00029000,animal,giraffe,train,pending,pending,窗口外同轨迹,窗口外同轨迹
+6,akfull_action_recognition_GKQMGUXS_00029000,animal,giraffe,val,pending,pending,窗口外同轨迹,窗口外同轨迹
+7,akfull_action_recognition_KSDNNLVZ_00029000,animal,cat,train,pending,pending,窗口内同轨迹回退,窗口外同轨迹
+8,akfull_action_recognition_IPXPHSBA_00000000,animal,cat,val,pending,failed,窗口内同轨迹回退,
+9,akfull_video_grounding_JKZLLXGD_00522000,animal,dog,train,pending,pending,窗口外同轨迹,窗口外同轨迹
+10,akfull_video_grounding_JTZTDBME_00029000,animal,dog,train,pending,pending,窗口内同轨迹回退,窗口外同轨迹
+11,akfull_action_recognition_TVAUKXGD_00029000,animal,dog,val,failed,failed,,
+12,akfull_action_recognition_BAAOFDFC_00029000,animal,cattle,train,pending,pending,窗口内同轨迹回退,窗口外同轨迹
+13,akfull_action_recognition_LLCDYDUS_00029000,animal,cattle,train,pending,failed,窗口外同轨迹,
+14,akfull_video_grounding_NRAKRKEW_00246000,animal,sheep_goat,train,pending,pending,窗口内同轨迹回退,窗口外同轨迹
+15,akfull_video_grounding_WTPIPUPH_00240000,animal,sheep_goat,train,pending,pending,窗口内同轨迹回退,窗口外同轨迹
+16,akfull_video_grounding_MHFAFKEW_00007000,animal,sheep_goat,val,pending,pending,窗口外同轨迹,窗口外同轨迹
+17,akfull_action_recognition_ABNMGXGD_00029000,animal,horse,train,pending,pending,窗口内同轨迹回退,窗口外同轨迹
+18,akfull_action_recognition_AQCYDXGD_00058000,animal,horse,train,pending,pending,窗口外同轨迹,窗口外同轨迹
+19,akfull_action_recognition_LXAXBXGD_00029000,animal,horse,val,pending,pending,窗口内同轨迹回退,窗口外同轨迹
+20,akfull_action_recognition_EOWKTFJG_00029000,animal,deer,train,pending,pending,窗口外同轨迹,窗口外同轨迹
+21,akfull_action_recognition_HQSWSVMP_00029000,animal,deer,train,pending,pending,窗口内同轨迹回退,窗口外同轨迹
+22,akfull_video_grounding_TVAWJLQI_00145000,animal,deer,val,pending,pending,窗口外同轨迹,窗口外同轨迹
+23,nuplan_2021.05.12.19.36.12_veh-35_00005_00204_f000000__s000000_n000029,driving,driving,train,ready,ready,窗口内跨相机原生 ID,窗口内跨相机原生 ID
+24,nuplan_2021.05.12.19.36.12_veh-35_00215_00405_f000000__s000000_n000029,driving,driving,train,pending,pending,窗口内跨相机原生 ID,窗口内跨相机原生 ID
+25,nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029,driving,driving,val,ready,ready,窗口内跨相机原生 ID,窗口内跨相机原生 ID
+26,nuplan_2021.05.12.19.36.12_veh-35_00568_01168_f000000__s000000_n000029,driving,driving,train,pending,pending,窗口内跨相机原生 ID,窗口内跨相机原生 ID
+27,nuplan_2021.05.12.19.36.12_veh-35_01179_01278_f000000__s000000_n000029,driving,driving,train,pending,pending,窗口内跨相机原生 ID,窗口内跨相机原生 ID
+28,nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029,driving,driving,val,pending,pending,窗口内跨相机原生 ID,窗口内跨相机原生 ID
+29,nuplan_2021.05.12.19.36.12_veh-35_01400_01643_f000000__s000000_n000029,driving,driving,train,pending,pending,窗口内跨相机原生 ID,窗口内跨相机原生 ID
+30,nuplan_2021.05.12.19.36.12_veh-35_01654_01733_f000000__s000000_n000029,driving,driving,train,pending,pending,窗口内跨相机原生 ID,窗口内跨相机原生 ID
+31,nuplan_2021.05.12.19.36.12_veh-35_01744_01934_f000000__s000000_n000029,driving,driving,train,pending,pending,窗口内跨相机原生 ID,窗口内跨相机原生 ID
+32,nuplan_2021.05.12.19.36.12_veh-35_01945_02065_f000000__s000000_n000029,driving,driving,train,pending,pending,窗口内跨相机原生 ID,窗口内跨相机原生 ID

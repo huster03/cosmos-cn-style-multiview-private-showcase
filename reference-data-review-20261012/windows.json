@@ -1,0 +1,1122 @@
+[
+  {
+    "index": 1,
+    "candidate_id": "akfull_action_recognition_AAOYRUDX_00029000",
+    "domain": "animal",
+    "category": "elephant",
+    "split": "train",
+    "source_group_id": "ak_source_f8144862c78ea6e55d1b",
+    "caption": "Five elephants are walking together under a tree in a dusty savannah environment. Dust rises around their feet as they move forward. The elephants appear calm and united, with their trunks occasionally twitching slightly. Sparse vegetation and rocky terrain surround them, emphasizing the arid habitat. The scene captures a serene moment of wildlife in motion.",
+    "target_video": "media/target-00.mp4",
+    "backends": {
+      "sam2": {
+        "status": "ready",
+        "reason": "29-frame sheet shows the same rightmost elephant throughout; reference crop matches its frontal appearance. Coarse silhouette accepted for pilot.",
+        "pair_type": "窗口内同轨迹回退",
+        "reference_timestamp": 4.166666666666667,
+        "tracked_cameras": [],
+        "video": "media/00-sam2.mp4",
+        "reference_image": "media/00-sam2-reference.png",
+        "reference_mask": "media/00-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "ready",
+        "reason": "29-frame sheet shows the same rightmost elephant throughout; reference crop matches its frontal appearance. Coarse silhouette accepted for pilot.",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 5.958333333333333,
+        "tracked_cameras": [],
+        "video": "media/00-sam3.mp4",
+        "reference_image": "media/00-sam3-reference.png",
+        "reference_mask": "media/00-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 2,
+    "candidate_id": "akfull_action_recognition_AEQVOUDX_00029000",
+    "domain": "animal",
+    "category": "elephant",
+    "split": "train",
+    "source_group_id": "ak_source_0e611cb3bbf73b620df3",
+    "caption": "An elephant is seen struggling to climb a sandy hillside, its trunk curled and legs kicking up dust as it attempts to ascend. Sparse vegetation dots the sandy terrain, contrasting with the elephant’s massive form. The scene captures the animal’s effort against the challenging environment.",
+    "target_video": "media/target-01.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内同轨迹回退",
+        "reference_timestamp": 5.041666666666667,
+        "tracked_cameras": [],
+        "video": "media/01-sam2.mp4",
+        "reference_image": "media/01-sam2-reference.png",
+        "reference_mask": "media/01-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 2.8333333333333335,
+        "tracked_cameras": [],
+        "video": "media/01-sam3.mp4",
+        "reference_image": "media/01-sam3-reference.png",
+        "reference_mask": "media/01-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 3,
+    "candidate_id": "akfull_action_recognition_BFGQKGCS_00029000",
+    "domain": "animal",
+    "category": "elephant",
+    "split": "val",
+    "source_group_id": "ak_source_fb038945f47da393e506",
+    "caption": "Facing the camera, an elephant stands majestically on a paved road, its massive tusks and expansive ears clearly visible. Surrounded by lush greenery under a bright blue sky dotted with fluffy clouds, the elephant appears calm and stationary, embodying the serene beauty of wildlife in its natural habitat.",
+    "target_video": "media/target-02.mp4",
+    "backends": {
+      "sam2": {
+        "status": "ready",
+        "reason": "Single road elephant remains the target throughout29 frames; reference crop matches that animal. Mask is predicted, fine boundaries are not certified.",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 6.708333333333333,
+        "tracked_cameras": [],
+        "video": "media/02-sam2.mp4",
+        "reference_image": "media/02-sam2-reference.png",
+        "reference_mask": "media/02-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "ready",
+        "reason": "Single road elephant remains the target throughout29 frames; reference crop matches that animal. Mask is predicted, fine boundaries are not certified.",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 6.708333333333333,
+        "tracked_cameras": [],
+        "video": "media/02-sam3.mp4",
+        "reference_image": "media/02-sam3-reference.png",
+        "reference_mask": "media/02-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 4,
+    "candidate_id": "akfull_action_recognition_FJCHTKRF_00029000",
+    "domain": "animal",
+    "category": "giraffe",
+    "split": "train",
+    "source_group_id": "ak_source_8d1fd4272ab750fb4975",
+    "caption": "Three giraffes stand together in a lush green savanna, surrounded by tall grass and scattered trees. One giraffe bends its neck down toward the ground, possibly grazing or investigating something on the ground. The other two giraffes remain relatively still, observing their surroundings. The scene captures a peaceful moment in the natural habitat of these majestic animals.",
+    "target_video": "media/target-03.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内同轨迹回退",
+        "reference_timestamp": 3.375,
+        "tracked_cameras": [],
+        "video": "media/03-sam2.mp4",
+        "reference_image": "media/03-sam2-reference.png",
+        "reference_mask": "media/03-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 1.9583333333333333,
+        "tracked_cameras": [],
+        "video": "media/03-sam3.mp4",
+        "reference_image": "media/03-sam3-reference.png",
+        "reference_mask": "media/03-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 5,
+    "candidate_id": "akfull_action_recognition_UYFARXDO_00029000",
+    "domain": "animal",
+    "category": "giraffe",
+    "split": "train",
+    "source_group_id": "ak_source_f05ccfa8263b2c3c47e6",
+    "caption": "Eight giraffes are seen galloping across a dusty savannah, kicking up dust as they move swiftly from left to right. Their long necks and distinctive spotted coats are clearly visible, and they maintain a cohesive formation while trotting through the open landscape dotted with sparse shrubbery.",
+    "target_video": "media/target-04.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 6.625,
+        "tracked_cameras": [],
+        "video": "media/04-sam2.mp4",
+        "reference_image": "media/04-sam2-reference.png",
+        "reference_mask": "media/04-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 6.458333333333333,
+        "tracked_cameras": [],
+        "video": "media/04-sam3.mp4",
+        "reference_image": "media/04-sam3-reference.png",
+        "reference_mask": "media/04-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 6,
+    "candidate_id": "akfull_action_recognition_GKQMGUXS_00029000",
+    "domain": "animal",
+    "category": "giraffe",
+    "split": "val",
+    "source_group_id": "ak_source_64a798074a7b1bf76ab9",
+    "caption": "Three giraffes are visible in the frame, standing amidst lush green vegetation. Two giraffes are positioned prominently in the foreground, facing slightly toward the camera, while a third giraffe is partially obscured behind them. The giraffes exhibit their characteristic long necks and distinctive spotted patterns. The surrounding environment consists of dense foliage and trees, creating a natural habitat setting.",
+    "target_video": "media/target-05.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 1.9166666666666667,
+        "tracked_cameras": [],
+        "video": "media/05-sam2.mp4",
+        "reference_image": "media/05-sam2-reference.png",
+        "reference_mask": "media/05-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 1.9166666666666667,
+        "tracked_cameras": [],
+        "video": "media/05-sam3.mp4",
+        "reference_image": "media/05-sam3-reference.png",
+        "reference_mask": "media/05-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 7,
+    "candidate_id": "akfull_action_recognition_KSDNNLVZ_00029000",
+    "domain": "animal",
+    "category": "cat",
+    "split": "train",
+    "source_group_id": "ak_source_57dabd3b3ff004817a7a",
+    "caption": "A puff adder snake is coiled on the ground amidst dry grass and soil, its reddish-brown scales blending with the earthy surroundings. Nearby, a cat cautiously approaches, sniffing and investigating the snake’s position before stepping back slightly. The scene captures a tense standoff between predator and prey in a natural habitat.",
+    "target_video": "media/target-06.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内同轨迹回退",
+        "reference_timestamp": 5.666666666666667,
+        "tracked_cameras": [],
+        "video": "media/06-sam2.mp4",
+        "reference_image": "media/06-sam2-reference.png",
+        "reference_mask": "media/06-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 5.75,
+        "tracked_cameras": [],
+        "video": "media/06-sam3.mp4",
+        "reference_image": "media/06-sam3-reference.png",
+        "reference_mask": "media/06-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 8,
+    "candidate_id": "akfull_action_recognition_IPXPHSBA_00000000",
+    "domain": "animal",
+    "category": "cat",
+    "split": "val",
+    "source_group_id": "ak_source_27eb31ad1ca1977fe1de",
+    "caption": "A brown tabby cat sits calmly on a patch of earth near a pond, observing its surroundings. In the foreground, a duck swims peacefully across the murky water, occasionally dipping its head underwater. Sparse vegetation borders the pond, adding to the tranquil natural setting.",
+    "target_video": "media/target-07.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内同轨迹回退",
+        "reference_timestamp": 2.375,
+        "tracked_cameras": [],
+        "video": "media/07-sam2.mp4",
+        "reference_image": "media/07-sam2-reference.png",
+        "reference_mask": "media/07-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "failed",
+        "reason": "No target detection"
+      }
+    }
+  },
+  {
+    "index": 9,
+    "candidate_id": "akfull_video_grounding_JKZLLXGD_00522000",
+    "domain": "animal",
+    "category": "dog",
+    "split": "train",
+    "source_group_id": "ak_source_b693f071b87ae54f1cd4",
+    "caption": "Two tan dogs are seen in a grassy outdoor setting with greenery in the background. One dog stands upright while the other sits down. The standing dog turns its head to the left, then lowers its head toward the ground. The sitting dog remains mostly still, occasionally shifting its gaze. The standing dog then walks away from the seated dog, exiting the frame.",
+    "target_video": "media/target-08.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 55.2,
+        "tracked_cameras": [],
+        "video": "media/08-sam2.mp4",
+        "reference_image": "media/08-sam2-reference.png",
+        "reference_mask": "media/08-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 55.2,
+        "tracked_cameras": [],
+        "video": "media/08-sam3.mp4",
+        "reference_image": "media/08-sam3-reference.png",
+        "reference_mask": "media/08-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 10,
+    "candidate_id": "akfull_video_grounding_JTZTDBME_00029000",
+    "domain": "animal",
+    "category": "dog",
+    "split": "train",
+    "source_group_id": "ak_source_44e8831c0614fea1bc02",
+    "caption": "Two horses—a black horse and a white-and-black horse—are standing in a lush forest, surrounded by ferns and trees. A brown dog approaches them from the foreground, wagging its tail as it observes the horses. The horses remain relatively still, with the black horse occasionally shifting its stance. The dog appears curious and attentive to the horses’ presence.",
+    "target_video": "media/target-09.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内同轨迹回退",
+        "reference_timestamp": 4.633333333333334,
+        "tracked_cameras": [],
+        "video": "media/09-sam2.mp4",
+        "reference_image": "media/09-sam2-reference.png",
+        "reference_mask": "media/09-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 6.0,
+        "tracked_cameras": [],
+        "video": "media/09-sam3.mp4",
+        "reference_image": "media/09-sam3-reference.png",
+        "reference_mask": "media/09-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 11,
+    "candidate_id": "akfull_action_recognition_TVAUKXGD_00029000",
+    "domain": "animal",
+    "category": "dog",
+    "split": "val",
+    "source_group_id": "ak_source_e50d8cdd494210637455",
+    "caption": "Three kangaroos are seen in a grassy field, with one kangaroo standing upright and facing two dogs. The kangaroo appears startled, hopping away quickly while the dogs pursue it. The kangaroo leaps into tall grass,躲避 the dogs' pursuit, and continues hopping through the field. The dogs chase after it, displaying alert and aggressive postures.",
+    "target_video": "media/target-10.mp4",
+    "backends": {
+      "sam2": {
+        "status": "failed",
+        "reason": "No target detection"
+      },
+      "sam3": {
+        "status": "failed",
+        "reason": "No target detection"
+      }
+    }
+  },
+  {
+    "index": 12,
+    "candidate_id": "akfull_action_recognition_BAAOFDFC_00029000",
+    "domain": "animal",
+    "category": "cattle",
+    "split": "train",
+    "source_group_id": "ak_source_2f2dbb844a5a60a572bf",
+    "caption": "Numerous cattle are walking along a paved road, moving in a synchronized manner. Their bodies are predominantly reddish-brown, with some individuals displaying darker patches or horns. The cattle are spaced closely together, creating a herd-like formation as they traverse the sunny, tree-lined area. Shadows cast by the cattle and trees indicate bright daylight conditions.",
+    "target_video": "media/target-11.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内同轨迹回退",
+        "reference_timestamp": 4.125,
+        "tracked_cameras": [],
+        "video": "media/11-sam2.mp4",
+        "reference_image": "media/11-sam2-reference.png",
+        "reference_mask": "media/11-sam2-mask.png",
+        "empty_mask_observations": 1
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 2.875,
+        "tracked_cameras": [],
+        "video": "media/11-sam3.mp4",
+        "reference_image": "media/11-sam3-reference.png",
+        "reference_mask": "media/11-sam3-mask.png",
+        "empty_mask_observations": 1
+      }
+    }
+  },
+  {
+    "index": 13,
+    "candidate_id": "akfull_action_recognition_LLCDYDUS_00029000",
+    "domain": "animal",
+    "category": "cattle",
+    "split": "train",
+    "source_group_id": "ak_source_5ad670fbd3a9e2a200f8",
+    "caption": "Six elephants are grazing peacefully in a lush, expansive savannah. They are scattered across the open grassland, with some closer to the foreground and others further back near a muddy watercourse. Dense green forest forms a backdrop, contrasting with the vibrant green grasslands. The elephants appear calm, occasionally shifting their weight or grazing slowly. The scene is tranquil, with no visible disturbances or interactions among the elephants.",
+    "target_video": "media/target-12.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 6.125,
+        "tracked_cameras": [],
+        "video": "media/12-sam2.mp4",
+        "reference_image": "media/12-sam2-reference.png",
+        "reference_mask": "media/12-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "failed",
+        "reason": "No target detection"
+      }
+    }
+  },
+  {
+    "index": 14,
+    "candidate_id": "akfull_video_grounding_NRAKRKEW_00246000",
+    "domain": "animal",
+    "category": "sheep_goat",
+    "split": "train",
+    "source_group_id": "ak_source_974b0046869fa1abb524",
+    "caption": "A brown goat with a white patch on its side walks across a grassy field, moving from left to right. Shortly after, a white goat wearing a blue collar appears, also walking across the field in the same direction. Both goats move calmly through the green pasture dotted with small yellow flowers.",
+    "target_video": "media/target-13.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内同轨迹回退",
+        "reference_timestamp": 26.966666666666665,
+        "tracked_cameras": [],
+        "video": "media/13-sam2.mp4",
+        "reference_image": "media/13-sam2-reference.png",
+        "reference_mask": "media/13-sam2-mask.png",
+        "empty_mask_observations": 13
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 28.366666666666667,
+        "tracked_cameras": [],
+        "video": "media/13-sam3.mp4",
+        "reference_image": "media/13-sam3-reference.png",
+        "reference_mask": "media/13-sam3-mask.png",
+        "empty_mask_observations": 13
+      }
+    }
+  },
+  {
+    "index": 15,
+    "candidate_id": "akfull_video_grounding_WTPIPUPH_00240000",
+    "domain": "animal",
+    "category": "sheep_goat",
+    "split": "train",
+    "source_group_id": "ak_source_db18c42d0477f7a7ddc9",
+    "caption": "Three ibexes are resting on a rocky cliffside. The adult ibex, distinguished by its curved horns, lies on the left, grooming itself while occasionally licking its neck. Two juvenile ibexes rest beside it, one nestled close to the adult and the other slightly apart. Sparse vegetation and moss cover the rocks, with lush green hills and forests visible in the background.",
+    "target_video": "media/target-14.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内同轨迹回退",
+        "reference_timestamp": 24.166666666666668,
+        "tracked_cameras": [],
+        "video": "media/14-sam2.mp4",
+        "reference_image": "media/14-sam2-reference.png",
+        "reference_mask": "media/14-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 23.966666666666665,
+        "tracked_cameras": [],
+        "video": "media/14-sam3.mp4",
+        "reference_image": "media/14-sam3-reference.png",
+        "reference_mask": "media/14-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 16,
+    "candidate_id": "akfull_video_grounding_MHFAFKEW_00007000",
+    "domain": "animal",
+    "category": "sheep_goat",
+    "split": "val",
+    "source_group_id": "ak_source_1cefdbd0da18f9c32cf7",
+    "caption": "Facing away from the camera, a black-and-white goat grazes peacefully in a lush green pasture. Its body is predominantly white with black markings on its legs, ears, and tail. The goat grazes calmly, occasionally lifting its head to survey its surroundings. Sparse trees and fencing are visible in the background under an overcast sky.",
+    "target_video": "media/target-15.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 4.5,
+        "tracked_cameras": [],
+        "video": "media/15-sam2.mp4",
+        "reference_image": "media/15-sam2-reference.png",
+        "reference_mask": "media/15-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 0.23333333333333334,
+        "tracked_cameras": [],
+        "video": "media/15-sam3.mp4",
+        "reference_image": "media/15-sam3-reference.png",
+        "reference_mask": "media/15-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 17,
+    "candidate_id": "akfull_action_recognition_ABNMGXGD_00029000",
+    "domain": "animal",
+    "category": "horse",
+    "split": "train",
+    "source_group_id": "ak_source_50ae2d3f5360ec18f205",
+    "caption": "Two black horses graze peacefully in a grassy field bordered by trees. One horse grazes steadily while the other occasionally lifts its head, chewing cud. Sparse vegetation surrounds them, and a dirt path runs along the left edge of the frame. The scene is calm and pastoral.",
+    "target_video": "media/target-16.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内同轨迹回退",
+        "reference_timestamp": 5.166666666666667,
+        "tracked_cameras": [],
+        "video": "media/16-sam2.mp4",
+        "reference_image": "media/16-sam2-reference.png",
+        "reference_mask": "media/16-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 6.166666666666667,
+        "tracked_cameras": [],
+        "video": "media/16-sam3.mp4",
+        "reference_image": "media/16-sam3-reference.png",
+        "reference_mask": "media/16-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 18,
+    "candidate_id": "akfull_action_recognition_AQCYDXGD_00058000",
+    "domain": "animal",
+    "category": "horse",
+    "split": "train",
+    "source_group_id": "ak_source_c5301b31aa7da20805fe",
+    "caption": "Facing away from the camera, a white horse with a light mane grazes peacefully while a smaller brown foal stands close beside it, occasionally sniffing around. Both animals are positioned in a wooded area with sparse trees and patches of grass, enjoying the tranquil natural setting.",
+    "target_video": "media/target-17.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 9.083333333333334,
+        "tracked_cameras": [],
+        "video": "media/17-sam2.mp4",
+        "reference_image": "media/17-sam2-reference.png",
+        "reference_mask": "media/17-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 9.083333333333334,
+        "tracked_cameras": [],
+        "video": "media/17-sam3.mp4",
+        "reference_image": "media/17-sam3-reference.png",
+        "reference_mask": "media/17-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 19,
+    "candidate_id": "akfull_action_recognition_LXAXBXGD_00029000",
+    "domain": "animal",
+    "category": "horse",
+    "split": "val",
+    "source_group_id": "ak_source_088e3e3b6c7309cea20d",
+    "caption": "Two horses are grazing in a grassy field dotted with trees. One adult horse grazes calmly while the younger foal stands nearby, occasionally shifting its weight and wagging its tail. The foal appears restless, moving slightly and looking around attentively. Both horses remain stationary throughout the scene.",
+    "target_video": "media/target-18.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内同轨迹回退",
+        "reference_timestamp": 5.625,
+        "tracked_cameras": [],
+        "video": "media/18-sam2.mp4",
+        "reference_image": "media/18-sam2-reference.png",
+        "reference_mask": "media/18-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 5.75,
+        "tracked_cameras": [],
+        "video": "media/18-sam3.mp4",
+        "reference_image": "media/18-sam3-reference.png",
+        "reference_mask": "media/18-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 20,
+    "candidate_id": "akfull_action_recognition_EOWKTFJG_00029000",
+    "domain": "animal",
+    "category": "deer",
+    "split": "train",
+    "source_group_id": "ak_source_bf1f7b81563a488635a7",
+    "caption": "A deer with a reddish-brown coat and small antlers grazes peacefully in a lush, verdant forest. Dense foliage surrounds it, with sunlight filtering through the canopy above. The deer moves slowly, its head lowered as it feeds on the ground amidst fallen leaves and twigs.",
+    "target_video": "media/target-19.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 6.208333333333333,
+        "tracked_cameras": [],
+        "video": "media/19-sam2.mp4",
+        "reference_image": "media/19-sam2-reference.png",
+        "reference_mask": "media/19-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 6.208333333333333,
+        "tracked_cameras": [],
+        "video": "media/19-sam3.mp4",
+        "reference_image": "media/19-sam3-reference.png",
+        "reference_mask": "media/19-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 21,
+    "candidate_id": "akfull_action_recognition_HQSWSVMP_00029000",
+    "domain": "animal",
+    "category": "deer",
+    "split": "train",
+    "source_group_id": "ak_source_96bf4eb830c1ca8f594a",
+    "caption": "Two deer are seen grazing peacefully in a lush green pasture, with one deer nursing a calf. The mother deer stands calmly while the calf grazes nearby. Shortly after, another deer enters the frame from the left, running swiftly across the pasture before exiting to the right. The background features dense trees, adding depth to the serene woodland setting.",
+    "target_video": "media/target-20.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内同轨迹回退",
+        "reference_timestamp": 4.333333333333333,
+        "tracked_cameras": [],
+        "video": "media/20-sam2.mp4",
+        "reference_image": "media/20-sam2-reference.png",
+        "reference_mask": "media/20-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 1.9583333333333333,
+        "tracked_cameras": [],
+        "video": "media/20-sam3.mp4",
+        "reference_image": "media/20-sam3-reference.png",
+        "reference_mask": "media/20-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 22,
+    "candidate_id": "akfull_video_grounding_TVAWJLQI_00145000",
+    "domain": "animal",
+    "category": "deer",
+    "split": "val",
+    "source_group_id": "ak_source_3369d9f18ab80ada8597",
+    "caption": "A barking deer, identified by its Latin name *Muntiacus*, is seen grazing in a dense forest. Its reddish-brown fur blends with the surrounding foliage, and it appears to be feeding on the ground amidst scattered leaves and twigs. The deer’s posture is relaxed, with its head lowered toward the forest floor. Text overlays provide information about the species, including its nocturnal sleep cycle and omnivorous diet.",
+    "target_video": "media/target-21.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 13.6,
+        "tracked_cameras": [],
+        "video": "media/21-sam2.mp4",
+        "reference_image": "media/21-sam2-reference.png",
+        "reference_mask": "media/21-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口外同轨迹",
+        "reference_timestamp": 13.5,
+        "tracked_cameras": [],
+        "video": "media/21-sam3.mp4",
+        "reference_image": "media/21-sam3-reference.png",
+        "reference_mask": "media/21-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 23,
+    "candidate_id": "nuplan_2021.05.12.19.36.12_veh-35_00005_00204_f000000__s000000_n000029",
+    "domain": "driving",
+    "category": "driving",
+    "split": "train",
+    "source_group_id": "2021.05.12.19.36.12_veh-35_00005_00204",
+    "caption": "This multi-camera perspective captures a forward-moving vehicle traveling along a multi-laned urban road under clear skies. The road is divided into four lanes in each direction, separated by dashed white lines, with additional lanes marked by solid white lines. Tall palm trees line both sides of the road, interspersed with modern buildings and billboards. Vehicles are present ahead and to the sides, including a black sedan turning left and a few cars moving in the opposite direction. Streetlights and utility poles run alongside the road, and the pavement shows signs of wear. The scene is well-lit by natural daylight, suggesting a sunny day with no visible obstructions or adverse weather conditions.",
+    "target_video": "media/target-22.mp4",
+    "backends": {
+      "sam2": {
+        "status": "ready",
+        "reason": "Native track CC7BC41909715361 is the same dark sedan across CAM_B0 and CAM_L2;29-frame six-camera sheet shows continuous motion and matching reference crop.",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620848224.217663,
+        "tracked_cameras": [
+          "CAM_L2",
+          "CAM_B0"
+        ],
+        "video": "media/22-sam2.mp4",
+        "reference_image": "media/22-sam2-reference.png",
+        "reference_mask": "media/22-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "ready",
+        "reason": "Native track CC7BC41909715361 is the same dark sedan across CAM_B0 and CAM_L2;29-frame six-camera sheet shows continuous motion and matching reference crop.",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620848224.217663,
+        "tracked_cameras": [
+          "CAM_L2",
+          "CAM_B0"
+        ],
+        "video": "media/22-sam3.mp4",
+        "reference_image": "media/22-sam3-reference.png",
+        "reference_mask": "media/22-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 24,
+    "candidate_id": "nuplan_2021.05.12.19.36.12_veh-35_00215_00405_f000000__s000000_n000029",
+    "domain": "driving",
+    "category": "driving",
+    "split": "train",
+    "source_group_id": "2021.05.12.19.36.12_veh-35_00215_00405",
+    "caption": "This multi-camera perspective captures a bustling urban intersection dominated by heavy traffic congestion. Vehicles are queued at a red light, with cars tightly packed across multiple lanes. The scene unfolds under clear skies with bright sunlight casting sharp shadows, indicating favorable weather conditions. Tall buildings flank the roadway, including recognizable structures like a McDonald’s and a Warner Bros. Studio Center sign. Palm trees line the streets, adding a distinctive touch to the cityscape. Traffic flows slowly as vehicles inch forward, awaiting the signal change. Pedestrian activity is minimal but noticeable near sidewalks and crosswalks. Overall, the environment reflects a typical busy metropolitan setting with dense vehicular movement and iconic landmarks.",
+    "target_video": "media/target-23.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620848434.079741,
+        "tracked_cameras": [
+          "CAM_F0",
+          "CAM_L0"
+        ],
+        "video": "media/23-sam2.mp4",
+        "reference_image": "media/23-sam2-reference.png",
+        "reference_mask": "media/23-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620848433.579728,
+        "tracked_cameras": [
+          "CAM_F0",
+          "CAM_L0"
+        ],
+        "video": "media/23-sam3.mp4",
+        "reference_image": "media/23-sam3-reference.png",
+        "reference_mask": "media/23-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 25,
+    "candidate_id": "nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029",
+    "domain": "driving",
+    "category": "driving",
+    "split": "val",
+    "source_group_id": "2021.05.12.19.36.12_veh-35_00416_00557",
+    "caption": "This multi-camera perspective captures a bustling urban intersection dominated by a wide, multi-laned road under clear skies. Vehicles populate the scene, including taxis, sedans, SUVs, vans, and buses, navigating through the intersection. Traffic flows steadily, with cars queued at a signalized junction and others moving through the crossroads. Buildings flank both sides of the road, featuring modern architecture with prominent signage and advertisements. Pedestrian crossings and traffic lights regulate the flow, while palm trees line parts of the roadway, adding a touch of greenery to the metropolitan setting. The overall atmosphere reflects a busy city environment with coordinated vehicular movement and structured infrastructure.",
+    "target_video": "media/target-24.mp4",
+    "backends": {
+      "sam2": {
+        "status": "ready",
+        "reason": "Native track D8B59F10148154C6 is the silver Prius across CAM_B0 and CAM_R2;29-frame sheet and reference match. Reference is partly truncated at image border, explicitly accepted for pipeline pilot.",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620848634.907169,
+        "tracked_cameras": [
+          "CAM_R2",
+          "CAM_B0"
+        ],
+        "video": "media/24-sam2.mp4",
+        "reference_image": "media/24-sam2-reference.png",
+        "reference_mask": "media/24-sam2-mask.png",
+        "empty_mask_observations": 2
+      },
+      "sam3": {
+        "status": "ready",
+        "reason": "Native track D8B59F10148154C6 is the silver Prius across CAM_B0 and CAM_R2;29-frame sheet and reference match. Reference is partly truncated at image border, explicitly accepted for pipeline pilot.",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620848634.907169,
+        "tracked_cameras": [
+          "CAM_R2",
+          "CAM_B0"
+        ],
+        "video": "media/24-sam3.mp4",
+        "reference_image": "media/24-sam3-reference.png",
+        "reference_mask": "media/24-sam3-mask.png",
+        "empty_mask_observations": 2
+      }
+    }
+  },
+  {
+    "index": 26,
+    "candidate_id": "nuplan_2021.05.12.19.36.12_veh-35_00568_01168_f000000__s000000_n000029",
+    "domain": "driving",
+    "category": "driving",
+    "split": "train",
+    "source_group_id": "2021.05.12.19.36.12_veh-35_00568_01168",
+    "caption": "This multi-camera perspective captures a forward-moving vehicle traveling along a multi-laned urban road under clear skies. The road is divided into three lanes in each direction, separated by median barriers and marked with directional arrows. Orange traffic cones are strategically placed along the median, indicating some form of construction or rerouting. Buildings flank both sides of the road, featuring modern architecture with large windows and signage. Palm trees line the sidewalks, adding a tropical ambiance. Vehicles are seen moving in both directions, including sedans and SUVs, while pedestrians stroll along the sidewalks. Traffic flows smoothly, with no apparent congestion. The overall scene suggests a bustling city environment with well-maintained infrastructure and organized traffic management.",
+    "target_video": "media/target-25.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620848787.179824,
+        "tracked_cameras": [
+          "CAM_F0",
+          "CAM_L0"
+        ],
+        "video": "media/25-sam2.mp4",
+        "reference_image": "media/25-sam2-reference.png",
+        "reference_mask": "media/25-sam2-mask.png",
+        "empty_mask_observations": 11
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620848787.179824,
+        "tracked_cameras": [
+          "CAM_F0",
+          "CAM_L0"
+        ],
+        "video": "media/25-sam3.mp4",
+        "reference_image": "media/25-sam3-reference.png",
+        "reference_mask": "media/25-sam3-mask.png",
+        "empty_mask_observations": 11
+      }
+    }
+  },
+  {
+    "index": 27,
+    "candidate_id": "nuplan_2021.05.12.19.36.12_veh-35_01179_01278_f000000__s000000_n000029",
+    "domain": "driving",
+    "category": "driving",
+    "split": "train",
+    "source_group_id": "2021.05.12.19.36.12_veh-35_01179_01278",
+    "caption": "This multi-camera perspective captures a bustling urban intersection dominated by tall buildings and commercial establishments. Vehicles populate the scene, including a white van on the left, a black SUV in the foreground, and a white truck ahead in the center lane. Pedestrian crossings and traffic signals are visible, guiding vehicular flow. Palm trees line the sidewalks, adding a touch of greenery to the concrete-heavy environment. Bright daylight illuminates the area, casting sharp shadows and highlighting the vibrant storefronts and signage. Traffic appears moderately dense, with cars moving steadily through the intersection. The surrounding architecture features modern skyscrapers and retail complexes, contributing to the metropolitan atmosphere.",
+    "target_video": "media/target-26.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620849397.9125,
+        "tracked_cameras": [
+          "CAM_L2",
+          "CAM_B0"
+        ],
+        "video": "media/26-sam2.mp4",
+        "reference_image": "media/26-sam2-reference.png",
+        "reference_mask": "media/26-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620849397.212525,
+        "tracked_cameras": [
+          "CAM_L2",
+          "CAM_B0"
+        ],
+        "video": "media/26-sam3.mp4",
+        "reference_image": "media/26-sam3-reference.png",
+        "reference_mask": "media/26-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 28,
+    "candidate_id": "nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029",
+    "domain": "driving",
+    "category": "driving",
+    "split": "val",
+    "source_group_id": "2021.05.12.19.36.12_veh-35_01305_01389",
+    "caption": "This multi-camera perspective captures a forward-moving vehicle traveling along a straight, two-lane road bordered by palm trees and upscale buildings under clear skies. Vehicles ahead—including sedans and SUVs—are visible, maintaining a steady pace. Traffic flows smoothly, with no congestion evident. Palm trees line both sides of the road, interspersed with manicured shrubbery and gravel beds. Buildings flank the roadway, featuring ornate facades and signage, indicative of a commercial or entertainment district. Pedestrian pathways run alongside the road, where a few pedestrians can be seen walking leisurely. Overhead, a pedestrian bridge spans the street, connecting adjacent areas. The scene is bathed in bright sunlight, casting sharp shadows and highlighting the vibrant urban environment.",
+    "target_video": "media/target-27.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620849521.379502,
+        "tracked_cameras": [
+          "CAM_F0",
+          "CAM_L0"
+        ],
+        "video": "media/27-sam2.mp4",
+        "reference_image": "media/27-sam2-reference.png",
+        "reference_mask": "media/27-sam2-mask.png",
+        "empty_mask_observations": 3
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620849521.379502,
+        "tracked_cameras": [
+          "CAM_F0",
+          "CAM_L0"
+        ],
+        "video": "media/27-sam3.mp4",
+        "reference_image": "media/27-sam3-reference.png",
+        "reference_mask": "media/27-sam3-mask.png",
+        "empty_mask_observations": 3
+      }
+    }
+  },
+  {
+    "index": 29,
+    "candidate_id": "nuplan_2021.05.12.19.36.12_veh-35_01400_01643_f000000__s000000_n000029",
+    "domain": "driving",
+    "category": "driving",
+    "split": "train",
+    "source_group_id": "2021.05.12.19.36.12_veh-35_01400_01643",
+    "caption": "This multi-camera perspective captures a bustling urban street scene under clear skies, with bright sunlight illuminating the area. Pedestrians are actively crossing the road at designated crosswalks, while others stroll along sidewalks lined with palm trees and upscale storefronts. Vehicles, including sedans and SUVs, navigate the roadway, some moving steadily while others pause at traffic signals. Buildings with ornate facades flank both sides of the street, contributing to the lively city atmosphere. Traffic flows smoothly, with no apparent congestion, and pedestrians maintain safe distances from vehicular traffic. The overall ambiance reflects a vibrant metropolitan environment where commerce and movement intersect seamlessly.",
+    "target_video": "media/target-28.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620849616.617476,
+        "tracked_cameras": [
+          "CAM_L2",
+          "CAM_B0"
+        ],
+        "video": "media/28-sam2.mp4",
+        "reference_image": "media/28-sam2-reference.png",
+        "reference_mask": "media/28-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620849617.917835,
+        "tracked_cameras": [
+          "CAM_L2",
+          "CAM_B0"
+        ],
+        "video": "media/28-sam3.mp4",
+        "reference_image": "media/28-sam3-reference.png",
+        "reference_mask": "media/28-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 30,
+    "candidate_id": "nuplan_2021.05.12.19.36.12_veh-35_01654_01733_f000000__s000000_n000029",
+    "domain": "driving",
+    "category": "driving",
+    "split": "train",
+    "source_group_id": "2021.05.12.19.36.12_veh-35_01654_01733",
+    "caption": "This multi-camera perspective captures a vehicle traveling along a multi-laned urban road under clear skies and bright sunlight. The road is divided into four lanes, with the ego-vehicle positioned in the second lane. Ahead, a white pickup truck is stopped at an intersection, signaling for the ego-vehicle to halt. Traffic lights regulate the flow, and pedestrians are visible near the curb on the right side. Tall palm trees line the roadside, and modern buildings flank both sides of the street. Street lamps and manicured hedges enhance the urban aesthetic. As the sequence progresses, the ego-vehicle comes to a stop behind the pickup truck, maintaining a safe distance while waiting for the signal to change.",
+    "target_video": "media/target-29.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620849872.279803,
+        "tracked_cameras": [
+          "CAM_F0",
+          "CAM_L0"
+        ],
+        "video": "media/29-sam2.mp4",
+        "reference_image": "media/29-sam2-reference.png",
+        "reference_mask": "media/29-sam2-mask.png",
+        "empty_mask_observations": 18
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620849872.679808,
+        "tracked_cameras": [
+          "CAM_F0",
+          "CAM_L0"
+        ],
+        "video": "media/29-sam3.mp4",
+        "reference_image": "media/29-sam3-reference.png",
+        "reference_mask": "media/29-sam3-mask.png",
+        "empty_mask_observations": 16
+      }
+    }
+  },
+  {
+    "index": 31,
+    "candidate_id": "nuplan_2021.05.12.19.36.12_veh-35_01744_01934_f000000__s000000_n000029",
+    "domain": "driving",
+    "category": "driving",
+    "split": "train",
+    "source_group_id": "2021.05.12.19.36.12_veh-35_01744_01934",
+    "caption": "This multi-camera perspective captures a bustling urban intersection dominated by a wide, multi-laned road under clear skies. Traffic flows steadily through the junction, with vehicles queued at a red light and others moving through the intersection. Palm trees line the sidewalks, adding a tropical flair to the cityscape. Buildings flank both sides of the road, including a prominent structure with a curved facade on the left and a tall tower in the background. Cars—including taxis and private vehicles—are visible, some waiting patiently while others proceed through the intersection. Pedestrian activity is minimal but noticeable near crosswalks. The scene reflects a typical busy metropolitan environment with orderly traffic management and well-marked infrastructure.",
+    "target_video": "media/target-30.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620849961.217484,
+        "tracked_cameras": [
+          "CAM_L2",
+          "CAM_B0"
+        ],
+        "video": "media/30-sam2.mp4",
+        "reference_image": "media/30-sam2-reference.png",
+        "reference_mask": "media/30-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620849962.117807,
+        "tracked_cameras": [
+          "CAM_L2",
+          "CAM_B0"
+        ],
+        "video": "media/30-sam3.mp4",
+        "reference_image": "media/30-sam3-reference.png",
+        "reference_mask": "media/30-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  },
+  {
+    "index": 32,
+    "candidate_id": "nuplan_2021.05.12.19.36.12_veh-35_01945_02065_f000000__s000000_n000029",
+    "domain": "driving",
+    "category": "driving",
+    "split": "train",
+    "source_group_id": "2021.05.12.19.36.12_veh-35_01945_02065",
+    "caption": "This multi-camera perspective captures a bustling urban intersection dominated by Las Vegas Boulevard, showcasing a vibrant cityscape with towering hotels and casinos lining the streets. Vehicles populate the scene, including sedans, SUVs, and buses navigating through the intersection. Traffic flows steadily, with cars moving in both directions under clear skies and bright sunlight. Pedestrian crossings are visible, and pedestrians can be seen crossing the street. Buildings flank the boulevard, featuring modern architecture with large windows and distinctive signage. The overall atmosphere reflects the lively energy of Las Vegas, with vehicles and pedestrians coexisting amidst the city’s iconic landmarks.",
+    "target_video": "media/target-31.mp4",
+    "backends": {
+      "sam2": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620850162.617853,
+        "tracked_cameras": [
+          "CAM_L2",
+          "CAM_B0"
+        ],
+        "video": "media/31-sam2.mp4",
+        "reference_image": "media/31-sam2-reference.png",
+        "reference_mask": "media/31-sam2-mask.png",
+        "empty_mask_observations": 0
+      },
+      "sam3": {
+        "status": "pending",
+        "reason": "",
+        "pair_type": "窗口内跨相机原生 ID",
+        "reference_timestamp": 1620850163.317766,
+        "tracked_cameras": [
+          "CAM_L2",
+          "CAM_B0"
+        ],
+        "video": "media/31-sam3.mp4",
+        "reference_image": "media/31-sam3-reference.png",
+        "reference_mask": "media/31-sam3-mask.png",
+        "empty_mask_observations": 0
+      }
+    }
+  }
+]

@@ -1,0 +1,81 @@
+{
+  "checked_utc": "2026-10-12T06:39:49.807896+00:00",
+  "source_project": "cosmos-pred-multiview-reference",
+  "scope": "Existing artifacts audited and republished; no new annotation/model execution",
+  "candidate_windows": 32,
+  "domains": {
+    "animal": 22,
+    "driving": 10
+  },
+  "classes": {
+    "elephant": 3,
+    "giraffe": 3,
+    "cat": 2,
+    "dog": 3,
+    "cattle": 2,
+    "sheep_goat": 3,
+    "horse": 3,
+    "deer": 3,
+    "driving": 10
+  },
+  "unique_source_groups": 32,
+  "unique_driving_recordings": 1,
+  "annotation_counts": {
+    "sam2": 31,
+    "sam3": 29
+  },
+  "failures": {
+    "sam2": {
+      "akfull_action_recognition_TVAUKXGD_00029000": "No target detection"
+    },
+    "sam3": {
+      "akfull_action_recognition_IPXPHSBA_00000000": "No target detection",
+      "akfull_action_recognition_TVAUKXGD_00029000": "No target detection",
+      "akfull_action_recognition_LLCDYDUS_00029000": "No target detection"
+    }
+  },
+  "ready_pairs_per_backend": {
+    "sam2": 4,
+    "sam3": 4
+  },
+  "unique_ready_windows": 4,
+  "ready_content": "2 elephant windows + 2 vehicle windows; same originals in each backend",
+  "pair_types": {
+    "sam2": {
+      "窗口内同轨迹回退": 12,
+      "窗口外同轨迹": 9,
+      "窗口内跨相机原生 ID": 10
+    },
+    "sam3": {
+      "窗口外同轨迹": 19,
+      "窗口内跨相机原生 ID": 10
+    }
+  },
+  "raw_mask_files_present": 2320,
+  "released_asset_hashes_verified": 480,
+  "reader_evidence_reused": {
+    "sam2": {
+      "passed_pairs": 4,
+      "report": "sam2-reader-validation.json",
+      "sha256": "c89be1261e26ab99bcfd34ee5fac869dabf17bc225a6a8b4152a91ff15e07fc5"
+    },
+    "sam3": {
+      "passed_pairs": 4,
+      "report": "sam3-reader-validation.json",
+      "sha256": "94714328400790f13ec9ac76a03ee423e595406183ceaf8229d1c108d07f9d5e"
+    }
+  },
+  "reader_rerun": false,
+  "generator_run": false,
+  "source_split_overlap": false,
+  "media_count": 92,
+  "media_full_decode": true,
+  "new_semantic_acceptance": false,
+  "model_geometry_control_implemented": false,
+  "backend_decision": {
+    "selected": "sam3",
+    "decided_date": "2026-10-12",
+    "basis": "User reviewed the gallery and selected SAM3 for subsequent data construction",
+    "automatic_promotion_of_pending_pairs": false
+  }
+}

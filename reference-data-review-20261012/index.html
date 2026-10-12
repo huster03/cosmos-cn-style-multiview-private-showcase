@@ -1,0 +1,465 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>方案二 · 参考图数据评估</title><style>
+*{box-sizing:border-box}body{margin:0;background:#fff;color:#24282c;font:18px/1.7 system-ui,sans-serif}main{max-width:1520px;margin:36px auto;padding:0 24px}h1{font-size:34px}h2{font-size:26px}h3{font-size:22px}a{color:#1766a5}p{margin:.65em 0}.muted,.meta{color:#59636e}.meta{font-size:16px}.identity{font-size:14px;overflow-wrap:anywhere;color:#59636e}article{border-top:1px solid #dfe2e5;padding:28px 0}.comparison{display:grid;grid-template-columns:1fr 1fr;gap:28px}video{width:100%;background:#f3f4f5;max-height:520px}.refs{display:grid;grid-template-columns:1fr 1fr;gap:16px}.refs img{width:100%;height:190px;object-fit:contain;background:#f7f8f9}figure{margin:12px 0}figcaption{font-size:16px}.badge{display:inline-block;padding:3px 10px;border-radius:5px;font-size:16px}.ready{background:#e8f5ed;color:#195537}.pending{background:#fff4d8;color:#75531c}.failed{background:#fbe9e9;color:#8f2727}button,select{font:17px system-ui;padding:9px 13px;margin:6px 8px 10px 0;border:1px solid #adb5bd;border-radius:5px;background:white;color:#24282c}button{cursor:pointer}.filters{padding:12px;background:#f7f8f9}.original{margin:16px 0}summary{cursor:pointer}table{width:100%;border-collapse:collapse}th,td{text-align:left;border-bottom:1px solid #ddd;padding:10px}.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.flow div{padding:14px;border:1px solid #ddd;border-radius:6px}.flow strong{display:block}.notice{border-left:3px solid #657c8e;padding:8px 16px;background:#f6f8fa}.tablewrap{overflow:auto}article[hidden]{display:none}@media(max-width:800px){main{padding:0 14px}.comparison,.flow{grid-template-columns:1fr}h1{font-size:28px}}
+</style></head><body><main><nav><a href="../index.html">返回实验展示首页</a></nav><h1>方案二 · 参考图数据评估</h1>
+<p class="notice"><strong>2026-10-12 已选定 SAM3。</strong>用户评估本页后，决定后续数据构造采用 SAM3。保留 SAM2 对照与原始逐窗状态，便于追溯。</p>
+<p>32 个真实窗口：22 个单视角动物＋10 个六视角驾驶。每个窗口展示原始视频、两套预测分割、参考图、参考 mask 和原文本。</p>
+<p class="notice"><strong>这是数据构造展示。</strong>绿色表示预测主体 mask，视频来自真实数据；参考图生成模型尚未训练。以下复核状态沿用 10 月 11 日记录，本次没有扩大放行范围。</p>
+<div class="tablewrap"><table><thead><tr><th>数据阶段</th><th>SAM 2.1</th><th>SAM 3</th></tr></thead><tbody>
+<tr><td>尝试窗口</td><td>32（22 动物＋10 驾驶）</td><td>同一批 32</td></tr>
+<tr><td>产出标注</td><td>31（21 动物＋10 驾驶）</td><td>29（19 动物＋10 驾驶）</td></tr>
+<tr><td>未检出目标</td><td>1 条狗</td><td>猫、狗、牛各 1 条</td></tr>
+<tr><td>已复核且实际读入 batch</td><td>4（2 大象＋2 车辆）</td><td>同 4 个原始窗口</td></tr>
+<tr><td>有产物、仍待主体复核</td><td>27</td><td>25</td></tr></tbody></table></div>
+<p>两套共 60 条标注视频，覆盖 31 个独立窗口；不计作 60 份新数据。两套各 4 条 ready 配对合计 8 条后端记录，仍只有 4 个原始窗口。数量不能代表分割精度排名。</p>
+<p>驾驶的 10 个 clip 均来自同次采集，当前主要验证车辆跨相机配对。每个窗口保留六路 RGB，但只对选中的两路相机跟踪同一主体；其他四路未标注该主体，不能按负样本处理。没有真实六视角动物道路数据。</p>
+<details><summary><strong>数据通路与下一步</strong></summary>
+<div class="flow"><div><strong>① 选真实窗口</strong>Kingdom 单视角／nuPlan 六视角；29 帧、10 FPS，记录源 ID、时间戳及文本。</div>
+<div><strong>② 定位主体</strong>动物：DINO 或 SAM3 文本检测。驾驶：原生 track_token＋标定＋3D 框投影。</div>
+<div><strong>③ 分割与跟踪</strong>动物双向跟踪；驾驶分相机独立跟踪。保存逐帧 mask、框和观测时间。</div>
+<div><strong>④ 取参考图并复核</strong>同主体、同来源；动物优先窗口外，允许明确标记的窗口内回退。核对换主体、遮挡、裁剪和 mask 漂移。</div>
+<div><strong>⑤ 装配并读取</strong>pairs.jsonl＋图像/mask/SHA＋真实 target reader；参考图 256×256，目标每路 29×480×832。</div>
+<div><strong>⑥ 模型草案，待验证</strong>参考图抑制背景→冻结 VAE→参考 cross-attention；零目标首帧。框、轨迹和标定尚未进入模型控制。</div></div>
+<p><strong>评估重点：</strong>参考图是否为绿色区域对应的同一主体；29 帧是否漂移或换个体；腿、尾巴、长颈等细部是否漏分；道路主体在两路相机中是否对应；参考图是否模糊或被画面边界截断。</p>
+<p><strong>下一步：</strong>后续采用 SAM3，优先补漏检、处理错主体／遮挡／裁剪问题，并完善窗口外参考；再扩大来源与八类覆盖。模型需另行验证条件有效性、前后向与保存恢复，并做正确／无／错误参考对照；随后结合几何控制。扩量、增强和正式训练配方仍待确定。</p>
+<p>当前两种 mask 作用不同：参考 mask 已在模型草案中用于抑制背景；目标视频 mask 当前用于数据关联和评估，未接入空间控制或额外监督损失。原始目标 RGB 保持真实画面，不做动物贴图。</p>
+</details>
+<p><a href="status.json">核对报告</a> · <a href="windows.csv">窗口清单 CSV</a> · <a href="windows.json">完整文本与产物索引</a> · <a href="sam2-reader-validation.json">SAM2 reader 记录</a> · <a href="sam3-reader-validation.json">SAM3 reader 记录</a></p>
+<div class="filters"><label>范围 <select id="scope" onchange="filterCards()"><option value="all">全部 32 窗</option value="animal">单视角动物</option value="driving">六视角驾驶</option value="ready">已复核的 4 窗</option value="pending">待复核或定位失败</option value="failed">含定位失败的窗口</option></select></label>
+<label>类别 <select id="category" onchange="filterCards()"><option value="all">全部类别</option><option value="elephant">大象（3）</option><option value="giraffe">长颈鹿（3）</option><option value="cat">猫（2）</option><option value="dog">狗（3）</option><option value="cattle">牛（2）</option><option value="sheep_goat">羊／山羊（3）</option><option value="horse">马（3）</option><option value="deer">鹿（3）</option><option value="driving">六视角驾驶（10）</option></select></label><span id="count">显示 32／32</span></div>
+<p class="meta">六视角显示顺序：CAM_L0／CAM_F0／CAM_R0，CAM_L2／CAM_B0／CAM_R2。视频是等比预览，训练目标另按 reader 变换到 480×832；所有视频均完整 29 帧。</p><article id="window-1" data-domain="animal" data-class="elephant" data-ready="true" data-failed="false">
+<h2>01 · 大象 <span class="meta">train · 1 视角</span></h2>
+<p class="identity">akfull_action_recognition_AAOYRUDX_00029000</p><p>Five elephants are walking together under a tree in a dusty savannah environment. Dust rises around their feet as they move forward. The elephants appear calm and united, with their trunks occasionally twitching slightly. Sparse vegetation and rocky terrain surround them, emphasizing the arid habitat. The scene captures a serene moment of wildlife in motion.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-00.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge ready">已复核并读入 batch</p>
+<video controls playsinline preload="none" src="media/00-sam2.mp4" aria-label="大象 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/00-sam2-reference.png" target="_blank"><img loading="lazy" src="media/00-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/00-sam2-mask.png" target="_blank"><img loading="lazy" src="media/00-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内同轨迹回退</p><p class="meta">参考帧 100 · 4.167 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p><details><summary>已有复核记录</summary><p>29-frame sheet shows the same rightmost elephant throughout; reference crop matches its frontal appearance. Coarse silhouette accepted for pilot.</p></details></section><section><h3>SAM 3</h3><p class="badge ready">已复核并读入 batch</p>
+<video controls playsinline preload="none" src="media/00-sam3.mp4" aria-label="大象 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/00-sam3-reference.png" target="_blank"><img loading="lazy" src="media/00-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/00-sam3-mask.png" target="_blank"><img loading="lazy" src="media/00-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 143 · 5.958 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p><details><summary>已有复核记录</summary><p>29-frame sheet shows the same rightmost elephant throughout; reference crop matches its frontal appearance. Coarse silhouette accepted for pilot.</p></details></section></div></article>
+<article id="window-2" data-domain="animal" data-class="elephant" data-ready="false" data-failed="false">
+<h2>02 · 大象 <span class="meta">train · 1 视角</span></h2>
+<p class="identity">akfull_action_recognition_AEQVOUDX_00029000</p><p>An elephant is seen struggling to climb a sandy hillside, its trunk curled and legs kicking up dust as it attempts to ascend. Sparse vegetation dots the sandy terrain, contrasting with the elephant’s massive form. The scene captures the animal’s effort against the challenging environment.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-01.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/01-sam2.mp4" aria-label="大象 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/01-sam2-reference.png" target="_blank"><img loading="lazy" src="media/01-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/01-sam2-mask.png" target="_blank"><img loading="lazy" src="media/01-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内同轨迹回退</p><p class="meta">参考帧 121 · 5.042 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/01-sam3.mp4" aria-label="大象 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/01-sam3-reference.png" target="_blank"><img loading="lazy" src="media/01-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/01-sam3-mask.png" target="_blank"><img loading="lazy" src="media/01-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 68 · 2.833 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section></div></article>
+<article id="window-3" data-domain="animal" data-class="elephant" data-ready="true" data-failed="false">
+<h2>03 · 大象 <span class="meta">val · 1 视角</span></h2>
+<p class="identity">akfull_action_recognition_BFGQKGCS_00029000</p><p>Facing the camera, an elephant stands majestically on a paved road, its massive tusks and expansive ears clearly visible. Surrounded by lush greenery under a bright blue sky dotted with fluffy clouds, the elephant appears calm and stationary, embodying the serene beauty of wildlife in its natural habitat.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-02.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge ready">已复核并读入 batch</p>
+<video controls playsinline preload="none" src="media/02-sam2.mp4" aria-label="大象 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/02-sam2-reference.png" target="_blank"><img loading="lazy" src="media/02-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/02-sam2-mask.png" target="_blank"><img loading="lazy" src="media/02-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 161 · 6.708 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p><details><summary>已有复核记录</summary><p>Single road elephant remains the target throughout29 frames; reference crop matches that animal. Mask is predicted, fine boundaries are not certified.</p></details></section><section><h3>SAM 3</h3><p class="badge ready">已复核并读入 batch</p>
+<video controls playsinline preload="none" src="media/02-sam3.mp4" aria-label="大象 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/02-sam3-reference.png" target="_blank"><img loading="lazy" src="media/02-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/02-sam3-mask.png" target="_blank"><img loading="lazy" src="media/02-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 161 · 6.708 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p><details><summary>已有复核记录</summary><p>Single road elephant remains the target throughout29 frames; reference crop matches that animal. Mask is predicted, fine boundaries are not certified.</p></details></section></div></article>
+<article id="window-4" data-domain="animal" data-class="giraffe" data-ready="false" data-failed="false">
+<h2>04 · 长颈鹿 <span class="meta">train · 1 视角</span></h2>
+<p class="identity">akfull_action_recognition_FJCHTKRF_00029000</p><p>Three giraffes stand together in a lush green savanna, surrounded by tall grass and scattered trees. One giraffe bends its neck down toward the ground, possibly grazing or investigating something on the ground. The other two giraffes remain relatively still, observing their surroundings. The scene captures a peaceful moment in the natural habitat of these majestic animals.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-03.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/03-sam2.mp4" aria-label="长颈鹿 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/03-sam2-reference.png" target="_blank"><img loading="lazy" src="media/03-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/03-sam2-mask.png" target="_blank"><img loading="lazy" src="media/03-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内同轨迹回退</p><p class="meta">参考帧 81 · 3.375 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/03-sam3.mp4" aria-label="长颈鹿 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/03-sam3-reference.png" target="_blank"><img loading="lazy" src="media/03-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/03-sam3-mask.png" target="_blank"><img loading="lazy" src="media/03-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 47 · 1.958 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section></div></article>
+<article id="window-5" data-domain="animal" data-class="giraffe" data-ready="false" data-failed="false">
+<h2>05 · 长颈鹿 <span class="meta">train · 1 视角</span></h2>
+<p class="identity">akfull_action_recognition_UYFARXDO_00029000</p><p>Eight giraffes are seen galloping across a dusty savannah, kicking up dust as they move swiftly from left to right. Their long necks and distinctive spotted coats are clearly visible, and they maintain a cohesive formation while trotting through the open landscape dotted with sparse shrubbery.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-04.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/04-sam2.mp4" aria-label="长颈鹿 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/04-sam2-reference.png" target="_blank"><img loading="lazy" src="media/04-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/04-sam2-mask.png" target="_blank"><img loading="lazy" src="media/04-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 159 · 6.625 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/04-sam3.mp4" aria-label="长颈鹿 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/04-sam3-reference.png" target="_blank"><img loading="lazy" src="media/04-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/04-sam3-mask.png" target="_blank"><img loading="lazy" src="media/04-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 155 · 6.458 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section></div></article>
+<article id="window-6" data-domain="animal" data-class="giraffe" data-ready="false" data-failed="false">
+<h2>06 · 长颈鹿 <span class="meta">val · 1 视角</span></h2>
+<p class="identity">akfull_action_recognition_GKQMGUXS_00029000</p><p>Three giraffes are visible in the frame, standing amidst lush green vegetation. Two giraffes are positioned prominently in the foreground, facing slightly toward the camera, while a third giraffe is partially obscured behind them. The giraffes exhibit their characteristic long necks and distinctive spotted patterns. The surrounding environment consists of dense foliage and trees, creating a natural habitat setting.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-05.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/05-sam2.mp4" aria-label="长颈鹿 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/05-sam2-reference.png" target="_blank"><img loading="lazy" src="media/05-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/05-sam2-mask.png" target="_blank"><img loading="lazy" src="media/05-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 46 · 1.917 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/05-sam3.mp4" aria-label="长颈鹿 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/05-sam3-reference.png" target="_blank"><img loading="lazy" src="media/05-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/05-sam3-mask.png" target="_blank"><img loading="lazy" src="media/05-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 46 · 1.917 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section></div></article>
+<article id="window-7" data-domain="animal" data-class="cat" data-ready="false" data-failed="false">
+<h2>07 · 猫 <span class="meta">train · 1 视角</span></h2>
+<p class="identity">akfull_action_recognition_KSDNNLVZ_00029000</p><p>A puff adder snake is coiled on the ground amidst dry grass and soil, its reddish-brown scales blending with the earthy surroundings. Nearby, a cat cautiously approaches, sniffing and investigating the snake’s position before stepping back slightly. The scene captures a tense standoff between predator and prey in a natural habitat.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-06.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/06-sam2.mp4" aria-label="猫 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/06-sam2-reference.png" target="_blank"><img loading="lazy" src="media/06-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/06-sam2-mask.png" target="_blank"><img loading="lazy" src="media/06-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内同轨迹回退</p><p class="meta">参考帧 136 · 5.667 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/06-sam3.mp4" aria-label="猫 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/06-sam3-reference.png" target="_blank"><img loading="lazy" src="media/06-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/06-sam3-mask.png" target="_blank"><img loading="lazy" src="media/06-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 138 · 5.750 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section></div></article>
+<article id="window-8" data-domain="animal" data-class="cat" data-ready="false" data-failed="true">
+<h2>08 · 猫 <span class="meta">val · 1 视角</span></h2>
+<p class="identity">akfull_action_recognition_IPXPHSBA_00000000</p><p>A brown tabby cat sits calmly on a patch of earth near a pond, observing its surroundings. In the foreground, a duck swims peacefully across the murky water, occasionally dipping its head underwater. Sparse vegetation borders the pond, adding to the tranquil natural setting.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-07.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/07-sam2.mp4" aria-label="猫 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/07-sam2-reference.png" target="_blank"><img loading="lazy" src="media/07-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/07-sam2-mask.png" target="_blank"><img loading="lazy" src="media/07-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内同轨迹回退</p><p class="meta">参考帧 57 · 2.375 秒；目标 0.000—2.792 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section><section><h3>SAM 3</h3><p class="badge failed">定位失败</p><p>未检出目标，未构造参考配对。</p><details><summary>原始原因</summary><p>No target detection</p></details></section></div></article>
+<article id="window-9" data-domain="animal" data-class="dog" data-ready="false" data-failed="false">
+<h2>09 · 狗 <span class="meta">train · 1 视角</span></h2>
+<p class="identity">akfull_video_grounding_JKZLLXGD_00522000</p><p>Two tan dogs are seen in a grassy outdoor setting with greenery in the background. One dog stands upright while the other sits down. The standing dog turns its head to the left, then lowers its head toward the ground. The sitting dog remains mostly still, occasionally shifting its gaze. The standing dog then walks away from the seated dog, exiting the frame.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-08.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/08-sam2.mp4" aria-label="狗 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/08-sam2-reference.png" target="_blank"><img loading="lazy" src="media/08-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/08-sam2-mask.png" target="_blank"><img loading="lazy" src="media/08-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 1656 · 55.200 秒；目标 52.200—55.000 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/08-sam3.mp4" aria-label="狗 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/08-sam3-reference.png" target="_blank"><img loading="lazy" src="media/08-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/08-sam3-mask.png" target="_blank"><img loading="lazy" src="media/08-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 1656 · 55.200 秒；目标 52.200—55.000 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section></div></article>
+<article id="window-10" data-domain="animal" data-class="dog" data-ready="false" data-failed="false">
+<h2>10 · 狗 <span class="meta">train · 1 视角</span></h2>
+<p class="identity">akfull_video_grounding_JTZTDBME_00029000</p><p>Two horses—a black horse and a white-and-black horse—are standing in a lush forest, surrounded by ferns and trees. A brown dog approaches them from the foreground, wagging its tail as it observes the horses. The horses remain relatively still, with the black horse occasionally shifting its stance. The dog appears curious and attentive to the horses’ presence.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-09.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/09-sam2.mp4" aria-label="狗 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/09-sam2-reference.png" target="_blank"><img loading="lazy" src="media/09-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/09-sam2-mask.png" target="_blank"><img loading="lazy" src="media/09-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内同轨迹回退</p><p class="meta">参考帧 139 · 4.633 秒；目标 2.900—5.700 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/09-sam3.mp4" aria-label="狗 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/09-sam3-reference.png" target="_blank"><img loading="lazy" src="media/09-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/09-sam3-mask.png" target="_blank"><img loading="lazy" src="media/09-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 180 · 6.000 秒；目标 2.900—5.700 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section></div></article>
+<article id="window-11" data-domain="animal" data-class="dog" data-ready="false" data-failed="true">
+<h2>11 · 狗 <span class="meta">val · 1 视角</span></h2>
+<p class="identity">akfull_action_recognition_TVAUKXGD_00029000</p><p>Three kangaroos are seen in a grassy field, with one kangaroo standing upright and facing two dogs. The kangaroo appears startled, hopping away quickly while the dogs pursue it. The kangaroo leaps into tall grass,躲避 the dogs&#x27; pursuit, and continues hopping through the field. The dogs chase after it, displaying alert and aggressive postures.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-10.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge failed">定位失败</p><p>未检出目标，未构造参考配对。</p><details><summary>原始原因</summary><p>No target detection</p></details></section><section><h3>SAM 3</h3><p class="badge failed">定位失败</p><p>未检出目标，未构造参考配对。</p><details><summary>原始原因</summary><p>No target detection</p></details></section></div></article>
+<article id="window-12" data-domain="animal" data-class="cattle" data-ready="false" data-failed="false">
+<h2>12 · 牛 <span class="meta">train · 1 视角</span></h2>
+<p class="identity">akfull_action_recognition_BAAOFDFC_00029000</p><p>Numerous cattle are walking along a paved road, moving in a synchronized manner. Their bodies are predominantly reddish-brown, with some individuals displaying darker patches or horns. The cattle are spaced closely together, creating a herd-like formation as they traverse the sunny, tree-lined area. Shadows cast by the cattle and trees indicate bright daylight conditions.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-11.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/11-sam2.mp4" aria-label="牛 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/11-sam2-reference.png" target="_blank"><img loading="lazy" src="media/11-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/11-sam2-mask.png" target="_blank"><img loading="lazy" src="media/11-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内同轨迹回退</p><p class="meta">参考帧 99 · 4.125 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/11-sam3.mp4" aria-label="牛 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/11-sam3-reference.png" target="_blank"><img loading="lazy" src="media/11-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/11-sam3-mask.png" target="_blank"><img loading="lazy" src="media/11-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 69 · 2.875 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section></div></article>
+<article id="window-13" data-domain="animal" data-class="cattle" data-ready="false" data-failed="true">
+<h2>13 · 牛 <span class="meta">train · 1 视角</span></h2>
+<p class="identity">akfull_action_recognition_LLCDYDUS_00029000</p><p>Six elephants are grazing peacefully in a lush, expansive savannah. They are scattered across the open grassland, with some closer to the foreground and others further back near a muddy watercourse. Dense green forest forms a backdrop, contrasting with the vibrant green grasslands. The elephants appear calm, occasionally shifting their weight or grazing slowly. The scene is tranquil, with no visible disturbances or interactions among the elephants.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-12.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/12-sam2.mp4" aria-label="牛 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/12-sam2-reference.png" target="_blank"><img loading="lazy" src="media/12-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/12-sam2-mask.png" target="_blank"><img loading="lazy" src="media/12-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 147 · 6.125 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section><section><h3>SAM 3</h3><p class="badge failed">定位失败</p><p>未检出目标，未构造参考配对。</p><details><summary>原始原因</summary><p>No target detection</p></details></section></div></article>
+<article id="window-14" data-domain="animal" data-class="sheep_goat" data-ready="false" data-failed="false">
+<h2>14 · 羊／山羊 <span class="meta">train · 1 视角</span></h2>
+<p class="identity">akfull_video_grounding_NRAKRKEW_00246000</p><p>A brown goat with a white patch on its side walks across a grassy field, moving from left to right. Shortly after, a white goat wearing a blue collar appears, also walking across the field in the same direction. Both goats move calmly through the green pasture dotted with small yellow flowers.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-13.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/13-sam2.mp4" aria-label="羊／山羊 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/13-sam2-reference.png" target="_blank"><img loading="lazy" src="media/13-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/13-sam2-mask.png" target="_blank"><img loading="lazy" src="media/13-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内同轨迹回退</p><p class="meta">参考帧 809 · 26.967 秒；目标 24.600—27.400 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/13-sam3.mp4" aria-label="羊／山羊 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/13-sam3-reference.png" target="_blank"><img loading="lazy" src="media/13-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/13-sam3-mask.png" target="_blank"><img loading="lazy" src="media/13-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 851 · 28.367 秒；目标 24.600—27.400 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section></div></article>
+<article id="window-15" data-domain="animal" data-class="sheep_goat" data-ready="false" data-failed="false">
+<h2>15 · 羊／山羊 <span class="meta">train · 1 视角</span></h2>
+<p class="identity">akfull_video_grounding_WTPIPUPH_00240000</p><p>Three ibexes are resting on a rocky cliffside. The adult ibex, distinguished by its curved horns, lies on the left, grooming itself while occasionally licking its neck. Two juvenile ibexes rest beside it, one nestled close to the adult and the other slightly apart. Sparse vegetation and moss cover the rocks, with lush green hills and forests visible in the background.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-14.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/14-sam2.mp4" aria-label="羊／山羊 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/14-sam2-reference.png" target="_blank"><img loading="lazy" src="media/14-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/14-sam2-mask.png" target="_blank"><img loading="lazy" src="media/14-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内同轨迹回退</p><p class="meta">参考帧 725 · 24.167 秒；目标 24.000—26.800 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/14-sam3.mp4" aria-label="羊／山羊 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/14-sam3-reference.png" target="_blank"><img loading="lazy" src="media/14-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/14-sam3-mask.png" target="_blank"><img loading="lazy" src="media/14-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 719 · 23.967 秒；目标 24.000—26.800 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section></div></article>
+<article id="window-16" data-domain="animal" data-class="sheep_goat" data-ready="false" data-failed="false">
+<h2>16 · 羊／山羊 <span class="meta">val · 1 视角</span></h2>
+<p class="identity">akfull_video_grounding_MHFAFKEW_00007000</p><p>Facing away from the camera, a black-and-white goat grazes peacefully in a lush green pasture. Its body is predominantly white with black markings on its legs, ears, and tail. The goat grazes calmly, occasionally lifting its head to survey its surroundings. Sparse trees and fencing are visible in the background under an overcast sky.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-15.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/15-sam2.mp4" aria-label="羊／山羊 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/15-sam2-reference.png" target="_blank"><img loading="lazy" src="media/15-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/15-sam2-mask.png" target="_blank"><img loading="lazy" src="media/15-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 135 · 4.500 秒；目标 0.700—3.500 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/15-sam3.mp4" aria-label="羊／山羊 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/15-sam3-reference.png" target="_blank"><img loading="lazy" src="media/15-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/15-sam3-mask.png" target="_blank"><img loading="lazy" src="media/15-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 7 · 0.233 秒；目标 0.700—3.500 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section></div></article>
+<article id="window-17" data-domain="animal" data-class="horse" data-ready="false" data-failed="false">
+<h2>17 · 马 <span class="meta">train · 1 视角</span></h2>
+<p class="identity">akfull_action_recognition_ABNMGXGD_00029000</p><p>Two black horses graze peacefully in a grassy field bordered by trees. One horse grazes steadily while the other occasionally lifts its head, chewing cud. Sparse vegetation surrounds them, and a dirt path runs along the left edge of the frame. The scene is calm and pastoral.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-16.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/16-sam2.mp4" aria-label="马 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/16-sam2-reference.png" target="_blank"><img loading="lazy" src="media/16-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/16-sam2-mask.png" target="_blank"><img loading="lazy" src="media/16-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内同轨迹回退</p><p class="meta">参考帧 124 · 5.167 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/16-sam3.mp4" aria-label="马 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/16-sam3-reference.png" target="_blank"><img loading="lazy" src="media/16-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/16-sam3-mask.png" target="_blank"><img loading="lazy" src="media/16-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 148 · 6.167 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section></div></article>
+<article id="window-18" data-domain="animal" data-class="horse" data-ready="false" data-failed="false">
+<h2>18 · 马 <span class="meta">train · 1 视角</span></h2>
+<p class="identity">akfull_action_recognition_AQCYDXGD_00058000</p><p>Facing away from the camera, a white horse with a light mane grazes peacefully while a smaller brown foal stands close beside it, occasionally sniffing around. Both animals are positioned in a wooded area with sparse trees and patches of grass, enjoying the tranquil natural setting.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-17.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/17-sam2.mp4" aria-label="马 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/17-sam2-reference.png" target="_blank"><img loading="lazy" src="media/17-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/17-sam2-mask.png" target="_blank"><img loading="lazy" src="media/17-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 218 · 9.083 秒；目标 5.792—8.583 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/17-sam3.mp4" aria-label="马 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/17-sam3-reference.png" target="_blank"><img loading="lazy" src="media/17-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/17-sam3-mask.png" target="_blank"><img loading="lazy" src="media/17-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 218 · 9.083 秒；目标 5.792—8.583 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section></div></article>
+<article id="window-19" data-domain="animal" data-class="horse" data-ready="false" data-failed="false">
+<h2>19 · 马 <span class="meta">val · 1 视角</span></h2>
+<p class="identity">akfull_action_recognition_LXAXBXGD_00029000</p><p>Two horses are grazing in a grassy field dotted with trees. One adult horse grazes calmly while the younger foal stands nearby, occasionally shifting its weight and wagging its tail. The foal appears restless, moving slightly and looking around attentively. Both horses remain stationary throughout the scene.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-18.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/18-sam2.mp4" aria-label="马 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/18-sam2-reference.png" target="_blank"><img loading="lazy" src="media/18-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/18-sam2-mask.png" target="_blank"><img loading="lazy" src="media/18-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内同轨迹回退</p><p class="meta">参考帧 135 · 5.625 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/18-sam3.mp4" aria-label="马 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/18-sam3-reference.png" target="_blank"><img loading="lazy" src="media/18-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/18-sam3-mask.png" target="_blank"><img loading="lazy" src="media/18-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 138 · 5.750 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section></div></article>
+<article id="window-20" data-domain="animal" data-class="deer" data-ready="false" data-failed="false">
+<h2>20 · 鹿 <span class="meta">train · 1 视角</span></h2>
+<p class="identity">akfull_action_recognition_EOWKTFJG_00029000</p><p>A deer with a reddish-brown coat and small antlers grazes peacefully in a lush, verdant forest. Dense foliage surrounds it, with sunlight filtering through the canopy above. The deer moves slowly, its head lowered as it feeds on the ground amidst fallen leaves and twigs.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-19.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/19-sam2.mp4" aria-label="鹿 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/19-sam2-reference.png" target="_blank"><img loading="lazy" src="media/19-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/19-sam2-mask.png" target="_blank"><img loading="lazy" src="media/19-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 149 · 6.208 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/19-sam3.mp4" aria-label="鹿 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/19-sam3-reference.png" target="_blank"><img loading="lazy" src="media/19-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/19-sam3-mask.png" target="_blank"><img loading="lazy" src="media/19-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 149 · 6.208 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section></div></article>
+<article id="window-21" data-domain="animal" data-class="deer" data-ready="false" data-failed="false">
+<h2>21 · 鹿 <span class="meta">train · 1 视角</span></h2>
+<p class="identity">akfull_action_recognition_HQSWSVMP_00029000</p><p>Two deer are seen grazing peacefully in a lush green pasture, with one deer nursing a calf. The mother deer stands calmly while the calf grazes nearby. Shortly after, another deer enters the frame from the left, running swiftly across the pasture before exiting to the right. The background features dense trees, adding depth to the serene woodland setting.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-20.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/20-sam2.mp4" aria-label="鹿 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/20-sam2-reference.png" target="_blank"><img loading="lazy" src="media/20-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/20-sam2-mask.png" target="_blank"><img loading="lazy" src="media/20-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内同轨迹回退</p><p class="meta">参考帧 104 · 4.333 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/20-sam3.mp4" aria-label="鹿 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/20-sam3-reference.png" target="_blank"><img loading="lazy" src="media/20-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/20-sam3-mask.png" target="_blank"><img loading="lazy" src="media/20-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 47 · 1.958 秒；目标 2.917—5.708 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section></div></article>
+<article id="window-22" data-domain="animal" data-class="deer" data-ready="false" data-failed="false">
+<h2>22 · 鹿 <span class="meta">val · 1 视角</span></h2>
+<p class="identity">akfull_video_grounding_TVAWJLQI_00145000</p><p>A barking deer, identified by its Latin name *Muntiacus*, is seen grazing in a dense forest. Its reddish-brown fur blends with the surrounding foliage, and it appears to be feeding on the ground amidst scattered leaves and twigs. The deer’s posture is relaxed, with its head lowered toward the forest floor. Text overlays provide information about the species, including its nocturnal sleep cycle and omnivorous diet.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-21.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/21-sam2.mp4" aria-label="鹿 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/21-sam2-reference.png" target="_blank"><img loading="lazy" src="media/21-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/21-sam2-mask.png" target="_blank"><img loading="lazy" src="media/21-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 408 · 13.600 秒；目标 14.500—17.300 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/21-sam3.mp4" aria-label="鹿 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/21-sam3-reference.png" target="_blank"><img loading="lazy" src="media/21-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/21-sam3-mask.png" target="_blank"><img loading="lazy" src="media/21-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口外同轨迹</p><p class="meta">参考帧 405 · 13.500 秒；目标 14.500—17.300 秒</p><p>单视角主体跟踪；绿色为预测 mask。</p></section></div></article>
+<article id="window-23" data-domain="driving" data-class="driving" data-ready="true" data-failed="false">
+<h2>23 · 六视角驾驶 <span class="meta">train · 6 视角</span></h2>
+<p class="identity">nuplan_2021.05.12.19.36.12_veh-35_00005_00204_f000000__s000000_n000029</p><p>This multi-camera perspective captures a forward-moving vehicle traveling along a multi-laned urban road under clear skies. The road is divided into four lanes in each direction, separated by dashed white lines, with additional lanes marked by solid white lines. Tall palm trees line both sides of the road, interspersed with modern buildings and billboards. Vehicles are present ahead and to the sides, including a black sedan turning left and a few cars moving in the opposite direction. Streetlights and utility poles run alongside the road, and the pavement shows signs of wear. The scene is well-lit by natural daylight, suggesting a sunny day with no visible obstructions or adverse weather conditions.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-22.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge ready">已复核并读入 batch</p>
+<video controls playsinline preload="none" src="media/22-sam2.mp4" aria-label="六视角驾驶 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/22-sam2-reference.png" target="_blank"><img loading="lazy" src="media/22-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/22-sam2-mask.png" target="_blank"><img loading="lazy" src="media/22-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_L2 · 主体轨迹 CC7BC41909715361</p><p>已跟踪相机：CAM_L2, CAM_B0；其余四路未标注该主体。</p><details><summary>已有复核记录</summary><p>Native track CC7BC41909715361 is the same dark sedan across CAM_B0 and CAM_L2;29-frame six-camera sheet shows continuous motion and matching reference crop.</p></details></section><section><h3>SAM 3</h3><p class="badge ready">已复核并读入 batch</p>
+<video controls playsinline preload="none" src="media/22-sam3.mp4" aria-label="六视角驾驶 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/22-sam3-reference.png" target="_blank"><img loading="lazy" src="media/22-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/22-sam3-mask.png" target="_blank"><img loading="lazy" src="media/22-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_L2 · 主体轨迹 CC7BC41909715361</p><p>已跟踪相机：CAM_L2, CAM_B0；其余四路未标注该主体。</p><details><summary>已有复核记录</summary><p>Native track CC7BC41909715361 is the same dark sedan across CAM_B0 and CAM_L2;29-frame six-camera sheet shows continuous motion and matching reference crop.</p></details></section></div></article>
+<article id="window-24" data-domain="driving" data-class="driving" data-ready="false" data-failed="false">
+<h2>24 · 六视角驾驶 <span class="meta">train · 6 视角</span></h2>
+<p class="identity">nuplan_2021.05.12.19.36.12_veh-35_00215_00405_f000000__s000000_n000029</p><p>This multi-camera perspective captures a bustling urban intersection dominated by heavy traffic congestion. Vehicles are queued at a red light, with cars tightly packed across multiple lanes. The scene unfolds under clear skies with bright sunlight casting sharp shadows, indicating favorable weather conditions. Tall buildings flank the roadway, including recognizable structures like a McDonald’s and a Warner Bros. Studio Center sign. Palm trees line the streets, adding a distinctive touch to the cityscape. Traffic flows slowly as vehicles inch forward, awaiting the signal change. Pedestrian activity is minimal but noticeable near sidewalks and crosswalks. Overall, the environment reflects a typical busy metropolitan setting with dense vehicular movement and iconic landmarks.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-23.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/23-sam2.mp4" aria-label="六视角驾驶 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/23-sam2-reference.png" target="_blank"><img loading="lazy" src="media/23-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/23-sam2-mask.png" target="_blank"><img loading="lazy" src="media/23-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_L0 · 主体轨迹 D3982CF1D0E45610</p><p>已跟踪相机：CAM_F0, CAM_L0；其余四路未标注该主体。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/23-sam3.mp4" aria-label="六视角驾驶 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/23-sam3-reference.png" target="_blank"><img loading="lazy" src="media/23-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/23-sam3-mask.png" target="_blank"><img loading="lazy" src="media/23-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_L0 · 主体轨迹 D3982CF1D0E45610</p><p>已跟踪相机：CAM_F0, CAM_L0；其余四路未标注该主体。</p></section></div></article>
+<article id="window-25" data-domain="driving" data-class="driving" data-ready="true" data-failed="false">
+<h2>25 · 六视角驾驶 <span class="meta">val · 6 视角</span></h2>
+<p class="identity">nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029</p><p>This multi-camera perspective captures a bustling urban intersection dominated by a wide, multi-laned road under clear skies. Vehicles populate the scene, including taxis, sedans, SUVs, vans, and buses, navigating through the intersection. Traffic flows steadily, with cars queued at a signalized junction and others moving through the crossroads. Buildings flank both sides of the road, featuring modern architecture with prominent signage and advertisements. Pedestrian crossings and traffic lights regulate the flow, while palm trees line parts of the roadway, adding a touch of greenery to the metropolitan setting. The overall atmosphere reflects a busy city environment with coordinated vehicular movement and structured infrastructure.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-24.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge ready">已复核并读入 batch</p>
+<video controls playsinline preload="none" src="media/24-sam2.mp4" aria-label="六视角驾驶 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/24-sam2-reference.png" target="_blank"><img loading="lazy" src="media/24-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/24-sam2-mask.png" target="_blank"><img loading="lazy" src="media/24-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_R2 · 主体轨迹 D8B59F10148154C6</p><p>已跟踪相机：CAM_R2, CAM_B0；其余四路未标注该主体。</p><details><summary>已有复核记录</summary><p>Native track D8B59F10148154C6 is the silver Prius across CAM_B0 and CAM_R2;29-frame sheet and reference match. Reference is partly truncated at image border, explicitly accepted for pipeline pilot.</p></details></section><section><h3>SAM 3</h3><p class="badge ready">已复核并读入 batch</p>
+<video controls playsinline preload="none" src="media/24-sam3.mp4" aria-label="六视角驾驶 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/24-sam3-reference.png" target="_blank"><img loading="lazy" src="media/24-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/24-sam3-mask.png" target="_blank"><img loading="lazy" src="media/24-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_R2 · 主体轨迹 D8B59F10148154C6</p><p>已跟踪相机：CAM_R2, CAM_B0；其余四路未标注该主体。</p><details><summary>已有复核记录</summary><p>Native track D8B59F10148154C6 is the silver Prius across CAM_B0 and CAM_R2;29-frame sheet and reference match. Reference is partly truncated at image border, explicitly accepted for pipeline pilot.</p></details></section></div></article>
+<article id="window-26" data-domain="driving" data-class="driving" data-ready="false" data-failed="false">
+<h2>26 · 六视角驾驶 <span class="meta">train · 6 视角</span></h2>
+<p class="identity">nuplan_2021.05.12.19.36.12_veh-35_00568_01168_f000000__s000000_n000029</p><p>This multi-camera perspective captures a forward-moving vehicle traveling along a multi-laned urban road under clear skies. The road is divided into three lanes in each direction, separated by median barriers and marked with directional arrows. Orange traffic cones are strategically placed along the median, indicating some form of construction or rerouting. Buildings flank both sides of the road, featuring modern architecture with large windows and signage. Palm trees line the sidewalks, adding a tropical ambiance. Vehicles are seen moving in both directions, including sedans and SUVs, while pedestrians stroll along the sidewalks. Traffic flows smoothly, with no apparent congestion. The overall scene suggests a bustling city environment with well-maintained infrastructure and organized traffic management.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-25.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/25-sam2.mp4" aria-label="六视角驾驶 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/25-sam2-reference.png" target="_blank"><img loading="lazy" src="media/25-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/25-sam2-mask.png" target="_blank"><img loading="lazy" src="media/25-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_L0 · 主体轨迹 8CB3D6B4CA715767</p><p>已跟踪相机：CAM_F0, CAM_L0；其余四路未标注该主体。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/25-sam3.mp4" aria-label="六视角驾驶 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/25-sam3-reference.png" target="_blank"><img loading="lazy" src="media/25-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/25-sam3-mask.png" target="_blank"><img loading="lazy" src="media/25-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_L0 · 主体轨迹 8CB3D6B4CA715767</p><p>已跟踪相机：CAM_F0, CAM_L0；其余四路未标注该主体。</p></section></div></article>
+<article id="window-27" data-domain="driving" data-class="driving" data-ready="false" data-failed="false">
+<h2>27 · 六视角驾驶 <span class="meta">train · 6 视角</span></h2>
+<p class="identity">nuplan_2021.05.12.19.36.12_veh-35_01179_01278_f000000__s000000_n000029</p><p>This multi-camera perspective captures a bustling urban intersection dominated by tall buildings and commercial establishments. Vehicles populate the scene, including a white van on the left, a black SUV in the foreground, and a white truck ahead in the center lane. Pedestrian crossings and traffic signals are visible, guiding vehicular flow. Palm trees line the sidewalks, adding a touch of greenery to the concrete-heavy environment. Bright daylight illuminates the area, casting sharp shadows and highlighting the vibrant storefronts and signage. Traffic appears moderately dense, with cars moving steadily through the intersection. The surrounding architecture features modern skyscrapers and retail complexes, contributing to the metropolitan atmosphere.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-26.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/26-sam2.mp4" aria-label="六视角驾驶 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/26-sam2-reference.png" target="_blank"><img loading="lazy" src="media/26-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/26-sam2-mask.png" target="_blank"><img loading="lazy" src="media/26-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_B0 · 主体轨迹 4B81F68CF87A5C36</p><p>已跟踪相机：CAM_L2, CAM_B0；其余四路未标注该主体。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/26-sam3.mp4" aria-label="六视角驾驶 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/26-sam3-reference.png" target="_blank"><img loading="lazy" src="media/26-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/26-sam3-mask.png" target="_blank"><img loading="lazy" src="media/26-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_B0 · 主体轨迹 4B81F68CF87A5C36</p><p>已跟踪相机：CAM_L2, CAM_B0；其余四路未标注该主体。</p></section></div></article>
+<article id="window-28" data-domain="driving" data-class="driving" data-ready="false" data-failed="false">
+<h2>28 · 六视角驾驶 <span class="meta">val · 6 视角</span></h2>
+<p class="identity">nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029</p><p>This multi-camera perspective captures a forward-moving vehicle traveling along a straight, two-lane road bordered by palm trees and upscale buildings under clear skies. Vehicles ahead—including sedans and SUVs—are visible, maintaining a steady pace. Traffic flows smoothly, with no congestion evident. Palm trees line both sides of the road, interspersed with manicured shrubbery and gravel beds. Buildings flank the roadway, featuring ornate facades and signage, indicative of a commercial or entertainment district. Pedestrian pathways run alongside the road, where a few pedestrians can be seen walking leisurely. Overhead, a pedestrian bridge spans the street, connecting adjacent areas. The scene is bathed in bright sunlight, casting sharp shadows and highlighting the vibrant urban environment.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-27.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/27-sam2.mp4" aria-label="六视角驾驶 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/27-sam2-reference.png" target="_blank"><img loading="lazy" src="media/27-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/27-sam2-mask.png" target="_blank"><img loading="lazy" src="media/27-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_L0 · 主体轨迹 B417728CBFB556EE</p><p>已跟踪相机：CAM_F0, CAM_L0；其余四路未标注该主体。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/27-sam3.mp4" aria-label="六视角驾驶 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/27-sam3-reference.png" target="_blank"><img loading="lazy" src="media/27-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/27-sam3-mask.png" target="_blank"><img loading="lazy" src="media/27-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_L0 · 主体轨迹 B417728CBFB556EE</p><p>已跟踪相机：CAM_F0, CAM_L0；其余四路未标注该主体。</p></section></div></article>
+<article id="window-29" data-domain="driving" data-class="driving" data-ready="false" data-failed="false">
+<h2>29 · 六视角驾驶 <span class="meta">train · 6 视角</span></h2>
+<p class="identity">nuplan_2021.05.12.19.36.12_veh-35_01400_01643_f000000__s000000_n000029</p><p>This multi-camera perspective captures a bustling urban street scene under clear skies, with bright sunlight illuminating the area. Pedestrians are actively crossing the road at designated crosswalks, while others stroll along sidewalks lined with palm trees and upscale storefronts. Vehicles, including sedans and SUVs, navigate the roadway, some moving steadily while others pause at traffic signals. Buildings with ornate facades flank both sides of the street, contributing to the lively city atmosphere. Traffic flows smoothly, with no apparent congestion, and pedestrians maintain safe distances from vehicular traffic. The overall ambiance reflects a vibrant metropolitan environment where commerce and movement intersect seamlessly.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-28.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/28-sam2.mp4" aria-label="六视角驾驶 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/28-sam2-reference.png" target="_blank"><img loading="lazy" src="media/28-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/28-sam2-mask.png" target="_blank"><img loading="lazy" src="media/28-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_L2 · 主体轨迹 2FA37E8DFF315FD8</p><p>已跟踪相机：CAM_L2, CAM_B0；其余四路未标注该主体。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/28-sam3.mp4" aria-label="六视角驾驶 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/28-sam3-reference.png" target="_blank"><img loading="lazy" src="media/28-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/28-sam3-mask.png" target="_blank"><img loading="lazy" src="media/28-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_L2 · 主体轨迹 2FA37E8DFF315FD8</p><p>已跟踪相机：CAM_L2, CAM_B0；其余四路未标注该主体。</p></section></div></article>
+<article id="window-30" data-domain="driving" data-class="driving" data-ready="false" data-failed="false">
+<h2>30 · 六视角驾驶 <span class="meta">train · 6 视角</span></h2>
+<p class="identity">nuplan_2021.05.12.19.36.12_veh-35_01654_01733_f000000__s000000_n000029</p><p>This multi-camera perspective captures a vehicle traveling along a multi-laned urban road under clear skies and bright sunlight. The road is divided into four lanes, with the ego-vehicle positioned in the second lane. Ahead, a white pickup truck is stopped at an intersection, signaling for the ego-vehicle to halt. Traffic lights regulate the flow, and pedestrians are visible near the curb on the right side. Tall palm trees line the roadside, and modern buildings flank both sides of the street. Street lamps and manicured hedges enhance the urban aesthetic. As the sequence progresses, the ego-vehicle comes to a stop behind the pickup truck, maintaining a safe distance while waiting for the signal to change.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-29.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/29-sam2.mp4" aria-label="六视角驾驶 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/29-sam2-reference.png" target="_blank"><img loading="lazy" src="media/29-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/29-sam2-mask.png" target="_blank"><img loading="lazy" src="media/29-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_L0 · 主体轨迹 70E866D6FBBF536B</p><p>已跟踪相机：CAM_F0, CAM_L0；其余四路未标注该主体。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/29-sam3.mp4" aria-label="六视角驾驶 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/29-sam3-reference.png" target="_blank"><img loading="lazy" src="media/29-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/29-sam3-mask.png" target="_blank"><img loading="lazy" src="media/29-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_L0 · 主体轨迹 70E866D6FBBF536B</p><p>已跟踪相机：CAM_F0, CAM_L0；其余四路未标注该主体。</p></section></div></article>
+<article id="window-31" data-domain="driving" data-class="driving" data-ready="false" data-failed="false">
+<h2>31 · 六视角驾驶 <span class="meta">train · 6 视角</span></h2>
+<p class="identity">nuplan_2021.05.12.19.36.12_veh-35_01744_01934_f000000__s000000_n000029</p><p>This multi-camera perspective captures a bustling urban intersection dominated by a wide, multi-laned road under clear skies. Traffic flows steadily through the junction, with vehicles queued at a red light and others moving through the intersection. Palm trees line the sidewalks, adding a tropical flair to the cityscape. Buildings flank both sides of the road, including a prominent structure with a curved facade on the left and a tall tower in the background. Cars—including taxis and private vehicles—are visible, some waiting patiently while others proceed through the intersection. Pedestrian activity is minimal but noticeable near crosswalks. The scene reflects a typical busy metropolitan environment with orderly traffic management and well-marked infrastructure.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-30.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/30-sam2.mp4" aria-label="六视角驾驶 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/30-sam2-reference.png" target="_blank"><img loading="lazy" src="media/30-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/30-sam2-mask.png" target="_blank"><img loading="lazy" src="media/30-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_L2 · 主体轨迹 B05B6187A7195D3C</p><p>已跟踪相机：CAM_L2, CAM_B0；其余四路未标注该主体。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/30-sam3.mp4" aria-label="六视角驾驶 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/30-sam3-reference.png" target="_blank"><img loading="lazy" src="media/30-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/30-sam3-mask.png" target="_blank"><img loading="lazy" src="media/30-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_L2 · 主体轨迹 B05B6187A7195D3C</p><p>已跟踪相机：CAM_L2, CAM_B0；其余四路未标注该主体。</p></section></div></article>
+<article id="window-32" data-domain="driving" data-class="driving" data-ready="false" data-failed="false">
+<h2>32 · 六视角驾驶 <span class="meta">train · 6 视角</span></h2>
+<p class="identity">nuplan_2021.05.12.19.36.12_veh-35_01945_02065_f000000__s000000_n000029</p><p>This multi-camera perspective captures a bustling urban intersection dominated by Las Vegas Boulevard, showcasing a vibrant cityscape with towering hotels and casinos lining the streets. Vehicles populate the scene, including sedans, SUVs, and buses navigating through the intersection. Traffic flows steadily, with cars moving in both directions under clear skies and bright sunlight. Pedestrian crossings are visible, and pedestrians can be seen crossing the street. Buildings flank the boulevard, featuring modern architecture with large windows and distinctive signage. The overall atmosphere reflects the lively energy of Las Vegas, with vehicles and pedestrians coexisting amidst the city’s iconic landmarks.</p>
+<details class="original"><summary>查看原始目标视频（无绿色 mask）</summary><video controls playsinline preload="none" src="media/target-31.mp4"></video></details>
+<button type="button" onclick="playPair(this)">两套标注同步从头播放</button><button type="button" onclick="pausePair(this)">暂停本例</button>
+<div class="comparison"><section><h3>SAM 2.1</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/31-sam2.mp4" aria-label="六视角驾驶 SAM 2.1分割视频"></video>
+<div class="refs"><figure><a href="media/31-sam2-reference.png" target="_blank"><img loading="lazy" src="media/31-sam2-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/31-sam2-mask.png" target="_blank"><img loading="lazy" src="media/31-sam2-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_L2 · 主体轨迹 2B3CF6E33D6C5E9A</p><p>已跟踪相机：CAM_L2, CAM_B0；其余四路未标注该主体。</p></section><section><h3>SAM 3</h3><p class="badge pending">标注候选，待主体复核</p>
+<video controls playsinline preload="none" src="media/31-sam3.mp4" aria-label="六视角驾驶 SAM 3分割视频"></video>
+<div class="refs"><figure><a href="media/31-sam3-reference.png" target="_blank"><img loading="lazy" src="media/31-sam3-reference.png" alt="主体参考裁剪"></a><figcaption>主体参考图</figcaption></figure>
+<figure><a href="media/31-sam3-mask.png" target="_blank"><img loading="lazy" src="media/31-sam3-mask.png" alt="参考图mask"></a><figcaption>参考 mask（白色为前景）</figcaption></figure></div>
+<p>窗口内跨相机原生 ID</p><p class="meta">参考相机 CAM_L2 · 主体轨迹 2B3CF6E33D6C5E9A</p><p>已跟踪相机：CAM_L2, CAM_B0；其余四路未标注该主体。</p></section></div></article><script>
+function pausePair(button){button.closest('article').querySelectorAll('video').forEach(v=>v.pause());}
+function playPair(button){const a=button.closest('article');a.querySelectorAll('video').forEach(v=>v.pause());a.querySelectorAll('.comparison video').forEach(v=>{v.currentTime=0;v.play().catch(()=>{});});}
+function filterCards(){const scope=document.getElementById('scope').value,category=document.getElementById('category').value;let n=0;document.querySelectorAll('article').forEach(a=>{const d=a.dataset;const match=(scope==='all'||scope===d.domain||(scope==='ready'&&d.ready==='true')||(scope==='pending'&&d.ready==='false')||(scope==='failed'&&d.failed==='true'))&&(category==='all'||category===d.class);a.hidden=!match;if(match)n++;else a.querySelectorAll('video').forEach(v=>v.pause());});document.getElementById('count').textContent='显示 '+n+'／32';}
+</script></main></body></html>
