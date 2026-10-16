@@ -1,0 +1,56 @@
+{
+  "completed_utc": "2026-10-14T06:59:43.368308+00:00",
+  "processing_complete": true,
+  "training_accepted": false,
+  "requested": 9019,
+  "pools": 9019,
+  "by_domain": {
+    "animal": {
+      "pools": 1019,
+      "references": 3882,
+      "split": {
+        "train": 763,
+        "val": 256
+      },
+      "pool_sizes": {
+        "6": 535,
+        "1": 408,
+        "2": 22,
+        "4": 20,
+        "5": 19,
+        "3": 15
+      },
+      "diversity": {
+        "insufficient_angle_diversity": 758,
+        "pseudo_angle_diversity_needs_review": 261
+      },
+      "multiple_cameras": 0
+    },
+    "driving": {
+      "pools": 8000,
+      "references": 47534,
+      "split": {
+        "train": 8000
+      },
+      "pool_sizes": {
+        "6": 7751,
+        "4": 44,
+        "3": 27,
+        "5": 141,
+        "1": 8,
+        "2": 29
+      },
+      "diversity": {
+        "insufficient_angle_diversity": 7545,
+        "native_angle_diversity": 455
+      },
+      "multiple_cameras": 7144
+    }
+  },
+  "errors": [],
+  "manifest_sha256": "fcb0420f93f597b9767be31cd55397d1e81ba6632fb3ffa6fcd01711cb1ea924",
+  "build_contract_sha256": "c7169b131d7bcfa3bfb4502526a1d38ec59404f0693fc45bfba7629f6ab88105",
+  "elapsed_seconds": 729.6,
+  "source_verification": "annotation/geometry SHA, selected vehicle RGB and mask SHA, animal actual PTS; full source-video byte hashes not re-run",
+  "quality_scope": "technical filters; animal angles unverified; no semantic or same-instance release"
+}
