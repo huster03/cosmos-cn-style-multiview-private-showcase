@@ -1,0 +1,41 @@
+{
+  "case_id": "animal8_near_deer_02",
+  "category": "deer",
+  "title": "鹿",
+  "checkpoint_step": 1000,
+  "weights": "EMA",
+  "seed": 16,
+  "prompt": "The video shows a realistic front-facing autonomous driving scene on a tree-lined urban intersection with traffic lights and lane markings in daylight. The ego vehicle is stopped or creeping very slowly. Exactly one deer is already clearly visible close ahead at the beginning and walks steadily from the left toward the right across the near foreground. The animal remains fully visible in the front view throughout the clip, with a recognizable natural body, steady body size, grounded feet, and continuous motion. It stays separate from the ego vehicle and surrounding traffic. The other camera views show their corresponding road surroundings; the same animal appears in another view only if it enters that camera's field of view. The deer has a reddish-brown body, darker neck and slender dark legs.",
+  "cameras": [
+    "camera_front_wide_120fov",
+    "camera_cross_right_120fov",
+    "camera_rear_right_70fov",
+    "camera_rear_tele_30fov",
+    "camera_rear_left_70fov",
+    "camera_cross_left_120fov"
+  ],
+  "frames": 29,
+  "fps": 10,
+  "resolution": [
+    480,
+    832
+  ],
+  "guidance": 3,
+  "sampling_steps": 50,
+  "first_rgb_frames": 0,
+  "source_scene_rgb_input": false,
+  "control_enabled_in_both_results": true,
+  "panel_order": [
+    "control",
+    "text_control_reference",
+    "text_control_without_reference"
+  ],
+  "reference_modes": [
+    true,
+    false
+  ],
+  "reference_origin": "existing training reference pool; not a heldout identity benchmark",
+  "projection_scope": "direct reference injection is region-gated; cross-view propagation is not strictly forbidden",
+  "web_encoding": "H264 Main level4.1, CRF24, original resolution/frame count/PTS; source kept locally",
+  "quality_status": "unfiltered stage observation; appearance and control quality not accepted"
+}
