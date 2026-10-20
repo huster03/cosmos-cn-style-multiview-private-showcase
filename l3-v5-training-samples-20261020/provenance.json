@@ -1,0 +1,296 @@
+{
+  "title": "L3 V5 seven-view training samples",
+  "source_run": "l3_v5_3node_16gpu_7view_480p29f_ddp",
+  "kind": "training_callback_samples",
+  "iterations": [
+    1000,
+    2000,
+    3000
+  ],
+  "variants": [
+    "reg",
+    "ema"
+  ],
+  "conditional_rgb_frames_in_default_view": 1,
+  "control_weight": 1,
+  "guidance": 7,
+  "sampling_steps": 35,
+  "view_order": [
+    "rear_left",
+    "front_left",
+    "front_wide",
+    "front_right",
+    "rear_right",
+    "rear",
+    "front_tele"
+  ],
+  "training": {
+    "nodes": 3,
+    "devices_per_node": 16,
+    "total_devices": 48,
+    "parallelism": "DDP",
+    "context_parallel": 1,
+    "batch_per_rank": 1,
+    "global_batch": 48,
+    "learning_rate": 5e-05,
+    "warmup": 1000,
+    "planned_iterations": 10000,
+    "last_explicit_logged_iteration": 3700,
+    "latest_saved_checkpoint": 3000,
+    "common_seven_view_clips": 1302,
+    "resolution": [
+      480,
+      832
+    ],
+    "frames": 29
+  },
+  "limitations": [
+    "Not a held-out evaluation",
+    "No proof of completion at 10000 steps",
+    "One RGB conditioning frame in the bottom-three-row generation",
+    "No quantitative quality scores",
+    "Uncontrolled branches visibly contain color and structural artifacts"
+  ],
+  "media": [
+    {
+      "file": "media/ema-3000-bottom3.mp4",
+      "sha256": "39869fcfb025719bd39a781f41a9c256185f8a9986f86d7031de0b5df57b2100",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 474,
+      "codec": "h264",
+      "full_decode": true
+    },
+    {
+      "file": "media/ema-3000-bottom3.webm",
+      "sha256": "7fbf733caf8b8fa0e1bca2a742bc91b94104e27afb3e33b297a14e503057c498",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 474,
+      "codec": "vp8",
+      "full_decode": true
+    },
+    {
+      "file": "media/ema-3000-full.mp4",
+      "sha256": "60300aa6c58a6e8342a2077383ef26b09ab9eed66ae8b2009759906288720948",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 948,
+      "codec": "h264",
+      "full_decode": true
+    },
+    {
+      "file": "media/ema-3000-full.webm",
+      "sha256": "3591850b3d0d457efcb2cfe5e7e2e1abae290ab4548e339234e5189879502a44",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 948,
+      "codec": "vp8",
+      "full_decode": true
+    },
+    {
+      "file": "media/reg-3000-bottom3.mp4",
+      "sha256": "dea368fec71c93313248f3976ef85b34ae894e3868cb1e97639e1878be9d0b1a",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 474,
+      "codec": "h264",
+      "full_decode": true
+    },
+    {
+      "file": "media/reg-3000-bottom3.webm",
+      "sha256": "8162ae95d24523d3bc3fb2272622974e45b3173942fb0d83e1ee0cb4e40f094c",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 474,
+      "codec": "vp8",
+      "full_decode": true
+    },
+    {
+      "file": "media/reg-3000-full.mp4",
+      "sha256": "da85078308ec417e7345b88d19406ea4a9824b1a91a72320e57a1231453e92b5",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 948,
+      "codec": "h264",
+      "full_decode": true
+    },
+    {
+      "file": "media/reg-3000-full.webm",
+      "sha256": "c3a9a556bc856bd6cd133819df56db89e0ab935a40d7c4d08f7e7346e72ec84c",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 948,
+      "codec": "vp8",
+      "full_decode": true
+    },
+    {
+      "file": "media/ema-2000-bottom3.mp4",
+      "sha256": "2f1976c5b0846c03a1167e285e66b9d097a03d69435129c35826a4d466721333",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 474,
+      "codec": "h264",
+      "full_decode": true
+    },
+    {
+      "file": "media/ema-2000-bottom3.webm",
+      "sha256": "35de4a70cbdcad197eb14ade320809b3fc95eec5f4bda75355c6f73086929ae9",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 474,
+      "codec": "vp8",
+      "full_decode": true
+    },
+    {
+      "file": "media/ema-2000-full.mp4",
+      "sha256": "fd411c1b0a6541d89a5ff555366bbf382e1248afe24f3889baef8e843e7f4ce8",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 948,
+      "codec": "h264",
+      "full_decode": true
+    },
+    {
+      "file": "media/ema-2000-full.webm",
+      "sha256": "f043101962c236227bbdef175d06f94738564d9f616a122e781eeaaa5bb2cc5a",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 948,
+      "codec": "vp8",
+      "full_decode": true
+    },
+    {
+      "file": "media/reg-2000-bottom3.mp4",
+      "sha256": "ae438b4f0032f8046c983337675407dfd6b5aeca160fa7146597c29066c6c92e",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 474,
+      "codec": "h264",
+      "full_decode": true
+    },
+    {
+      "file": "media/reg-2000-bottom3.webm",
+      "sha256": "31ef6fec42886d5e37448ea1dc34ffb1a2f8c1f28a90ffaca25cc44ba11ae4c0",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 474,
+      "codec": "vp8",
+      "full_decode": true
+    },
+    {
+      "file": "media/reg-2000-full.mp4",
+      "sha256": "388e7983ad5665d37b14b52e2e454df84268255cf42f5517deb501a90712df4a",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 948,
+      "codec": "h264",
+      "full_decode": true
+    },
+    {
+      "file": "media/reg-2000-full.webm",
+      "sha256": "fc9e9f84d07eae2d37b947e2113a4152f45a567ce2e26e653fb9c91482c0f1a4",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 948,
+      "codec": "vp8",
+      "full_decode": true
+    },
+    {
+      "file": "media/ema-1000-bottom3.mp4",
+      "sha256": "3c5bb172071f963e91602365a38f6f4904cbc464d63f374e01f2648cf6b59740",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 474,
+      "codec": "h264",
+      "full_decode": true
+    },
+    {
+      "file": "media/ema-1000-bottom3.webm",
+      "sha256": "cb16f6ff10869715ff6a4224bb51bd107c910941eebadd6dfadc8b4ece10dbb7",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 474,
+      "codec": "vp8",
+      "full_decode": true
+    },
+    {
+      "file": "media/ema-1000-full.mp4",
+      "sha256": "c2f6848684c13758ef10da9d2cd839dc7c0e3507e60d92262e503a39edf9404a",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 948,
+      "codec": "h264",
+      "full_decode": true
+    },
+    {
+      "file": "media/ema-1000-full.webm",
+      "sha256": "4c1c78f57adb41cef5ac983543688a1c304a52d8838022a270e1f27a6f85ed06",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 948,
+      "codec": "vp8",
+      "full_decode": true
+    },
+    {
+      "file": "media/reg-1000-bottom3.mp4",
+      "sha256": "4a7c1e8fdfd345389787e779ca9bc6ece27200521e66ca501294e7c64fc863bf",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 474,
+      "codec": "h264",
+      "full_decode": true
+    },
+    {
+      "file": "media/reg-1000-bottom3.webm",
+      "sha256": "a50a6c419d814fb4d8b5276caec924c11a4a4fe84677b1ea492e4da92fd335ab",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 474,
+      "codec": "vp8",
+      "full_decode": true
+    },
+    {
+      "file": "media/reg-1000-full.mp4",
+      "sha256": "31f983d34ffa4339809a7d0484204456338989195a6b3f57692f50222ee15c1f",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 948,
+      "codec": "h264",
+      "full_decode": true
+    },
+    {
+      "file": "media/reg-1000-full.webm",
+      "sha256": "0ab98766f67095942b03685357fa4363b03a50a71a5d262477154b92735c0468",
+      "frames": 29,
+      "fps": 10,
+      "width": 1920,
+      "height": 948,
+      "codec": "vp8",
+      "full_decode": true
+    }
+  ]
+}

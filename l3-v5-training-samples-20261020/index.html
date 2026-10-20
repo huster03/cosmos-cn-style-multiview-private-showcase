@@ -1,0 +1,49 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>L3 V5 · 七视角训练采样</title><link rel="stylesheet" href="style.css"></head><body><main>
+<a class="back" href="https://huster03.github.io/cosmos-cn-style-multiview-private-showcase/">← 个人主页</a>
+<div class="eyebrow">COSMOS TRANSFER 2.5 / L3 V5</div><h1>七视角训练采样</h1><p class="lead">1000 / 2000 / 3000 步 · REG 与 EMA · 生成、真实视频与控制输入对照</p>
+<div class="facts"><span><strong>48</strong> 卡 · 3 × 16 DDP</span><span><strong>7</strong> 视角 · 480 × 832</span><span><strong>29</strong> 帧 · 10 FPS</span><span><strong>1,302</strong> 条七视角完整片段</span></div>
+<section class="note"><b>先看清条件，再比较效果</b><p>默认展示原始采样的底部三行：生成 / GT / 控制。生成使用 <strong>1 帧真实 RGB 条件</strong>，控制权重 1、CFG 7、35 步；这不是无首帧生成。每组可展开完整六行，比较四种首帧与控制组合。</p><p>来自训练过程的采样回调，并非独立测试集评估。无控制分支出现明显彩色失真；控制分支画面更连贯，但尚未做逐视角几何、时序或定量质量验收。</p></section>
+<details class="training"><summary>训练检查与结果来源</summary><p>入口：<code>scripts/train_l3_v5_auto_multiview_dlc.sh</code>。3 节点 × 每节点 16 卡，纯 DDP，CP=1；每卡 batch 1、全局 batch 48，学习率 5e-5，warmup 1000。输入为七视角 RGB、HDMap+BBox 与预计算文本特征，480×832、29 帧。</p><p>计划训练 10000 步，每 1000 步保存并采样。保存日志最后明确报告为 3700 步、loss 0.0481（8 月 18 日），debug 日志稍晚仍有训练数据处理记录；没有完成 10000 步的证据。现保留 3000 步检查点，1000 / 2000 步权重已按 retention=1 清理，对应采样视频仍存在。</p><p>独立的旧 results/iter2000 目录早于本次训练，视频为黑屏，未混入本页。当前展示重新从本次训练原始视频裁切，未做 AI 增强。不同步数不保证同一场景；不能仅据本页断言模型随步数单调改善。</p><a href="provenance.json">媒体来源与参数记录</a></details>
+<nav class="steps"><a href="#ema-3000">3000 步</a><a href="#ema-2000">2000 步</a><a href="#ema-1000">1000 步</a></nav>
+<article id="ema-3000"><header><h2>3,000 步 · EMA</h2><span>29 帧 / 10 FPS / 2.9 秒</span></header>
+<div class="columns"><span>左后</span><span>左前</span><span>前广角</span><span>右前</span><span>右后</span><span>后视</span><span>前长焦</span></div>
+<video controls playsinline muted loop preload="none" poster="media/ema-3000.jpg"><source src="media/ema-3000-bottom3.webm" type="video/webm"><source src="media/ema-3000-bottom3.mp4" type="video/mp4"></video>
+<p class="rows"><b>上</b> 生成：1 帧 RGB 条件 + 控制权重 1　 <b>中</b> 真实视频 GT　 <b>下</b> HDMap + BBox 控制</p>
+<p class="links"><a href="media/ema-3000-bottom3.mp4" target="_blank" rel="noopener">MP4 单独播放 / 下载</a><a href="media/ema-3000-bottom3.webm" target="_blank" rel="noopener">WebM 单独播放 / 下载</a><a href="media/ema-3000-frames.jpg" target="_blank" rel="noopener">首 / 中 / 尾帧对照</a></p>
+<details><summary>查看完整六行：包含无首帧与无控制分支</summary><video controls playsinline muted loop preload="none"><source src="media/ema-3000-full.webm" type="video/webm"><source src="media/ema-3000-full.mp4" type="video/mp4"></video>
+<p>从上到下：① 0 帧 / 控制 0；② 0 帧 / 控制 1；③ 1 帧 / 控制 0；④ 1 帧 / 控制 1；⑤ GT；⑥ 控制输入。所有生成分支均为 CFG 7、35 步。</p><a href="media/ema-3000-full.mp4" target="_blank" rel="noopener">下载完整六行 MP4</a></details><p class="status" aria-live="polite"></p></article>
+<article id="reg-3000"><header><h2>3,000 步 · REG</h2><span>29 帧 / 10 FPS / 2.9 秒</span></header>
+<div class="columns"><span>左后</span><span>左前</span><span>前广角</span><span>右前</span><span>右后</span><span>后视</span><span>前长焦</span></div>
+<video controls playsinline muted loop preload="none" poster="media/reg-3000.jpg"><source src="media/reg-3000-bottom3.webm" type="video/webm"><source src="media/reg-3000-bottom3.mp4" type="video/mp4"></video>
+<p class="rows"><b>上</b> 生成：1 帧 RGB 条件 + 控制权重 1　 <b>中</b> 真实视频 GT　 <b>下</b> HDMap + BBox 控制</p>
+<p class="links"><a href="media/reg-3000-bottom3.mp4" target="_blank" rel="noopener">MP4 单独播放 / 下载</a><a href="media/reg-3000-bottom3.webm" target="_blank" rel="noopener">WebM 单独播放 / 下载</a><a href="media/reg-3000-frames.jpg" target="_blank" rel="noopener">首 / 中 / 尾帧对照</a></p>
+<details><summary>查看完整六行：包含无首帧与无控制分支</summary><video controls playsinline muted loop preload="none"><source src="media/reg-3000-full.webm" type="video/webm"><source src="media/reg-3000-full.mp4" type="video/mp4"></video>
+<p>从上到下：① 0 帧 / 控制 0；② 0 帧 / 控制 1；③ 1 帧 / 控制 0；④ 1 帧 / 控制 1；⑤ GT；⑥ 控制输入。所有生成分支均为 CFG 7、35 步。</p><a href="media/reg-3000-full.mp4" target="_blank" rel="noopener">下载完整六行 MP4</a></details><p class="status" aria-live="polite"></p></article>
+<article id="ema-2000"><header><h2>2,000 步 · EMA</h2><span>29 帧 / 10 FPS / 2.9 秒</span></header>
+<div class="columns"><span>左后</span><span>左前</span><span>前广角</span><span>右前</span><span>右后</span><span>后视</span><span>前长焦</span></div>
+<video controls playsinline muted loop preload="none" poster="media/ema-2000.jpg"><source src="media/ema-2000-bottom3.webm" type="video/webm"><source src="media/ema-2000-bottom3.mp4" type="video/mp4"></video>
+<p class="rows"><b>上</b> 生成：1 帧 RGB 条件 + 控制权重 1　 <b>中</b> 真实视频 GT　 <b>下</b> HDMap + BBox 控制</p>
+<p class="links"><a href="media/ema-2000-bottom3.mp4" target="_blank" rel="noopener">MP4 单独播放 / 下载</a><a href="media/ema-2000-bottom3.webm" target="_blank" rel="noopener">WebM 单独播放 / 下载</a><a href="media/ema-2000-frames.jpg" target="_blank" rel="noopener">首 / 中 / 尾帧对照</a></p>
+<details><summary>查看完整六行：包含无首帧与无控制分支</summary><video controls playsinline muted loop preload="none"><source src="media/ema-2000-full.webm" type="video/webm"><source src="media/ema-2000-full.mp4" type="video/mp4"></video>
+<p>从上到下：① 0 帧 / 控制 0；② 0 帧 / 控制 1；③ 1 帧 / 控制 0；④ 1 帧 / 控制 1；⑤ GT；⑥ 控制输入。所有生成分支均为 CFG 7、35 步。</p><a href="media/ema-2000-full.mp4" target="_blank" rel="noopener">下载完整六行 MP4</a></details><p class="status" aria-live="polite"></p></article>
+<article id="reg-2000"><header><h2>2,000 步 · REG</h2><span>29 帧 / 10 FPS / 2.9 秒</span></header>
+<div class="columns"><span>左后</span><span>左前</span><span>前广角</span><span>右前</span><span>右后</span><span>后视</span><span>前长焦</span></div>
+<video controls playsinline muted loop preload="none" poster="media/reg-2000.jpg"><source src="media/reg-2000-bottom3.webm" type="video/webm"><source src="media/reg-2000-bottom3.mp4" type="video/mp4"></video>
+<p class="rows"><b>上</b> 生成：1 帧 RGB 条件 + 控制权重 1　 <b>中</b> 真实视频 GT　 <b>下</b> HDMap + BBox 控制</p>
+<p class="links"><a href="media/reg-2000-bottom3.mp4" target="_blank" rel="noopener">MP4 单独播放 / 下载</a><a href="media/reg-2000-bottom3.webm" target="_blank" rel="noopener">WebM 单独播放 / 下载</a><a href="media/reg-2000-frames.jpg" target="_blank" rel="noopener">首 / 中 / 尾帧对照</a></p>
+<details><summary>查看完整六行：包含无首帧与无控制分支</summary><video controls playsinline muted loop preload="none"><source src="media/reg-2000-full.webm" type="video/webm"><source src="media/reg-2000-full.mp4" type="video/mp4"></video>
+<p>从上到下：① 0 帧 / 控制 0；② 0 帧 / 控制 1；③ 1 帧 / 控制 0；④ 1 帧 / 控制 1；⑤ GT；⑥ 控制输入。所有生成分支均为 CFG 7、35 步。</p><a href="media/reg-2000-full.mp4" target="_blank" rel="noopener">下载完整六行 MP4</a></details><p class="status" aria-live="polite"></p></article>
+<article id="ema-1000"><header><h2>1,000 步 · EMA</h2><span>29 帧 / 10 FPS / 2.9 秒</span></header>
+<div class="columns"><span>左后</span><span>左前</span><span>前广角</span><span>右前</span><span>右后</span><span>后视</span><span>前长焦</span></div>
+<video controls playsinline muted loop preload="none" poster="media/ema-1000.jpg"><source src="media/ema-1000-bottom3.webm" type="video/webm"><source src="media/ema-1000-bottom3.mp4" type="video/mp4"></video>
+<p class="rows"><b>上</b> 生成：1 帧 RGB 条件 + 控制权重 1　 <b>中</b> 真实视频 GT　 <b>下</b> HDMap + BBox 控制</p>
+<p class="links"><a href="media/ema-1000-bottom3.mp4" target="_blank" rel="noopener">MP4 单独播放 / 下载</a><a href="media/ema-1000-bottom3.webm" target="_blank" rel="noopener">WebM 单独播放 / 下载</a><a href="media/ema-1000-frames.jpg" target="_blank" rel="noopener">首 / 中 / 尾帧对照</a></p>
+<details><summary>查看完整六行：包含无首帧与无控制分支</summary><video controls playsinline muted loop preload="none"><source src="media/ema-1000-full.webm" type="video/webm"><source src="media/ema-1000-full.mp4" type="video/mp4"></video>
+<p>从上到下：① 0 帧 / 控制 0；② 0 帧 / 控制 1；③ 1 帧 / 控制 0；④ 1 帧 / 控制 1；⑤ GT；⑥ 控制输入。所有生成分支均为 CFG 7、35 步。</p><a href="media/ema-1000-full.mp4" target="_blank" rel="noopener">下载完整六行 MP4</a></details><p class="status" aria-live="polite"></p></article>
+<article id="reg-1000"><header><h2>1,000 步 · REG</h2><span>29 帧 / 10 FPS / 2.9 秒</span></header>
+<div class="columns"><span>左后</span><span>左前</span><span>前广角</span><span>右前</span><span>右后</span><span>后视</span><span>前长焦</span></div>
+<video controls playsinline muted loop preload="none" poster="media/reg-1000.jpg"><source src="media/reg-1000-bottom3.webm" type="video/webm"><source src="media/reg-1000-bottom3.mp4" type="video/mp4"></video>
+<p class="rows"><b>上</b> 生成：1 帧 RGB 条件 + 控制权重 1　 <b>中</b> 真实视频 GT　 <b>下</b> HDMap + BBox 控制</p>
+<p class="links"><a href="media/reg-1000-bottom3.mp4" target="_blank" rel="noopener">MP4 单独播放 / 下载</a><a href="media/reg-1000-bottom3.webm" target="_blank" rel="noopener">WebM 单独播放 / 下载</a><a href="media/reg-1000-frames.jpg" target="_blank" rel="noopener">首 / 中 / 尾帧对照</a></p>
+<details><summary>查看完整六行：包含无首帧与无控制分支</summary><video controls playsinline muted loop preload="none"><source src="media/reg-1000-full.webm" type="video/webm"><source src="media/reg-1000-full.mp4" type="video/mp4"></video>
+<p>从上到下：① 0 帧 / 控制 0；② 0 帧 / 控制 1；③ 1 帧 / 控制 0；④ 1 帧 / 控制 1；⑤ GT；⑥ 控制输入。所有生成分支均为 CFG 7、35 步。</p><a href="media/reg-1000-full.mp4" target="_blank" rel="noopener">下载完整六行 MP4</a></details><p class="status" aria-live="polite"></p></article><footer>核对与发布：2026-10-20。WebM / MP4 双格式；若视频未播放，可打开帧对照查看内容。REG = 当前训练权重，EMA = 指数移动平均权重。</footer></main><script src="player.js"></script></body></html>
