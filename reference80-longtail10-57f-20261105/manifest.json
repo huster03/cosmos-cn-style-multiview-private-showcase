@@ -1,0 +1,465 @@
+{
+  "status": "complete",
+  "count": 10,
+  "checkpoint": "Reference80 Stage A iter1000 EMA",
+  "steps": 50,
+  "guidance": 3.0,
+  "control_weight": 1.0,
+  "frames": 57,
+  "fps": 10,
+  "continuation_join": "Existing frames 0-28 + generated continuation frames 29-56; continuation anchor index 28 removed once at join.",
+  "comparison_rows": [
+    "generated six-view RGB (2x3)",
+    "corresponding six-view HDMap + BBox (2x3)"
+  ],
+  "camera_grid": [
+    [
+      "CAM_L0",
+      "CAM_F0",
+      "CAM_R0"
+    ],
+    [
+      "CAM_L2",
+      "CAM_B0",
+      "CAM_R2"
+    ]
+  ],
+  "records": [
+    {
+      "sample_id": "dense_pedestrian_crosswalk_002",
+      "title": "密集行人 002",
+      "prompt": "The video shows a realistic front-facing autonomous driving scene on a marked urban road in daylight. A clearly marked zebra crosswalk spans the roadway ahead, with sidewalks, curbs, lane markings, traffic signs, roadside buildings, and normal surrounding vehicles visible in the background. A large but naturally distributed group of pedestrians enters the zebra crossing from both sides and crosses in front of the ego vehicle. The pedestrians are individually spaced rather than standing shoulder to shoulder, and they move at slightly different speeds and depths across the crosswalk, with some already crossing and others just beginning. The ego vehicle approaches the occupied crosswalk and faces a realistic dense pedestrian crossing hazard that requires slowing or stopping.",
+      "seed": 1,
+      "notes": "恢复控制的画面右缘车辆与原 VACE 控制存在局部差异。",
+      "files": {
+        "generated": {
+          "path": "media/generated/dense_pedestrian_crosswalk_002.mp4",
+          "sha256": "e3ca01436dde143c42ec668094dba73f951b4c78d45e012e7dafebad819673b2",
+          "bytes": 3625549,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "hdmap": {
+          "path": "media/hdmap/dense_pedestrian_crosswalk_002.mp4",
+          "sha256": "c4b1789b501ae464b3626b7191962e87f041b765468b8d6001a566084f77397c",
+          "bytes": 896493,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "two_row": {
+          "path": "media/two-row/dense_pedestrian_crosswalk_002.mp4",
+          "sha256": "35b89dd77831720f19b7849ecce72dbd7f01bd20d51c8faaecf079efccd52f9e",
+          "bytes": 3626621,
+          "width": 2496,
+          "height": 1920,
+          "frames": 57,
+          "fps": 10
+        },
+        "poster": {
+          "path": "media/posters/dense_pedestrian_crosswalk_002.jpg",
+          "sha256": "d1832e12aeb0c191148b4acc766ae2e896706310506ada1cb515ba3ca06eb987",
+          "bytes": 620338,
+          "width": 2496,
+          "height": 1920
+        }
+      }
+    },
+    {
+      "sample_id": "dense_pedestrian_crosswalk_003",
+      "title": "密集行人 003",
+      "prompt": "The video shows a realistic front-facing autonomous driving scene on a marked urban road in daylight. A clearly marked zebra crosswalk spans the roadway ahead, with sidewalks, curbs, lane markings, traffic signs, roadside buildings, and normal surrounding vehicles visible in the background. A large but naturally distributed group of pedestrians enters the zebra crossing from both sides and crosses in front of the ego vehicle. The pedestrians are individually spaced rather than standing shoulder to shoulder, and they move at slightly different speeds and depths across the crosswalk, with some already crossing and others just beginning. The ego vehicle approaches the occupied crosswalk and faces a realistic dense pedestrian crossing hazard that requires slowing or stopping.",
+      "seed": 2,
+      "notes": "",
+      "files": {
+        "generated": {
+          "path": "media/generated/dense_pedestrian_crosswalk_003.mp4",
+          "sha256": "71c98eb75c732d5edbf6328207f8971e5437952eb9017588a65f8ab45850618a",
+          "bytes": 5659190,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "hdmap": {
+          "path": "media/hdmap/dense_pedestrian_crosswalk_003.mp4",
+          "sha256": "4f5b7072c5947ba387b8308c31102dc1d81ecaacbed33e64d2a7a105c1159917",
+          "bytes": 1828883,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "two_row": {
+          "path": "media/two-row/dense_pedestrian_crosswalk_003.mp4",
+          "sha256": "1cc9fbb8595dcca5f3ca4a26a6b12586490948217f1bd89ffa20c28b0e4abf95",
+          "bytes": 6205174,
+          "width": 2496,
+          "height": 1920,
+          "frames": 57,
+          "fps": 10
+        },
+        "poster": {
+          "path": "media/posters/dense_pedestrian_crosswalk_003.jpg",
+          "sha256": "78cfff94e52b6bd71304ec393355da11acc07076f5931afad9880743577289a6",
+          "bytes": 545913,
+          "width": 2496,
+          "height": 1920
+        }
+      }
+    },
+    {
+      "sample_id": "ghost_probe_turn_ego_stop_001",
+      "title": "转弯鬼探头 · 自车停车",
+      "prompt": "The video shows a front-facing autonomous driving view on an urban roadway during daylight. The ego vehicle approaches and completes a left turn. After the turn, a stationary vehicle is parked along the right side of the road and initially hides a pedestrian behind its rear corner. Only after the ego vehicle has completed the turn, the pedestrian suddenly steps out from behind the parked vehicle into the ego vehicle's path at a normal walking speed. The pedestrian then slows and stops while the ego vehicle detects the close-range hazard, brakes progressively, and comes to a controlled stop. The road markings, buildings, roadside infrastructure, and surrounding traffic remain consistent with the original scene.",
+      "seed": 4,
+      "notes": "原前 29 帧控制窗口内尚未出现编辑的行人事件。",
+      "files": {
+        "generated": {
+          "path": "media/generated/ghost_probe_turn_ego_stop_001.mp4",
+          "sha256": "6f28b13af5bc5076d3dd75d6966ba0a03c5ec3b5926e20a6979683669b91679e",
+          "bytes": 7319792,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "hdmap": {
+          "path": "media/hdmap/ghost_probe_turn_ego_stop_001.mp4",
+          "sha256": "bf41cfbf2e64ab4e1d4b792d30d95255a7c8f0f67bd8015d3245e7c6cf9613b7",
+          "bytes": 1035801,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "two_row": {
+          "path": "media/two-row/ghost_probe_turn_ego_stop_001.mp4",
+          "sha256": "c58cf0b5ad1d0fce7e04675ade45f54fa3273a638479b5f49744f920dcbd09bb",
+          "bytes": 6951825,
+          "width": 2496,
+          "height": 1920,
+          "frames": 57,
+          "fps": 10
+        },
+        "poster": {
+          "path": "media/posters/ghost_probe_turn_ego_stop_001.jpg",
+          "sha256": "95de665b2ce92f981b34474ecd7dba32162563cadae6871fb59f024251c7cd67",
+          "bytes": 345967,
+          "width": 2496,
+          "height": 1920
+        }
+      }
+    },
+    {
+      "sample_id": "ghost_probe_turn_pedestrian_retreat_001",
+      "title": "转弯鬼探头 · 行人后退",
+      "prompt": "The video shows a front-facing autonomous driving view on an urban roadway during daylight. The ego vehicle approaches and completes a left turn. After the turn, a stationary vehicle is parked along the right side of the road and initially hides a pedestrian behind its rear corner. Only after the ego vehicle has completed the turn, the pedestrian suddenly steps out from behind the parked vehicle into the ego vehicle's path at a normal walking speed. When the approaching ego vehicle gets close, the pedestrian reacts by slowing and retreating toward the rear of the parked vehicle instead of continuing into the lane. The road markings, buildings, roadside infrastructure, and surrounding traffic remain consistent with the original scene.",
+      "seed": 5,
+      "notes": "原前 29 帧控制窗口内尚未出现编辑的行人事件。",
+      "files": {
+        "generated": {
+          "path": "media/generated/ghost_probe_turn_pedestrian_retreat_001.mp4",
+          "sha256": "6f6ddc553b37010c526930fc98574cc6687b42cc0807567b0d2ed08b79ead805",
+          "bytes": 8524025,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "hdmap": {
+          "path": "media/hdmap/ghost_probe_turn_pedestrian_retreat_001.mp4",
+          "sha256": "6566eddcf61516765ea084a0f65e71b1d246679454a76725be6e3a4613c7b6e9",
+          "bytes": 1064669,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "two_row": {
+          "path": "media/two-row/ghost_probe_turn_pedestrian_retreat_001.mp4",
+          "sha256": "064e2fc0e8e18cd630cbb1fbb7ab5513fdab7535ca124259ddad5a5a85fa5d29",
+          "bytes": 8196393,
+          "width": 2496,
+          "height": 1920,
+          "frames": 57,
+          "fps": 10
+        },
+        "poster": {
+          "path": "media/posters/ghost_probe_turn_pedestrian_retreat_001.jpg",
+          "sha256": "21ed2ee79fd096a27f568e7ddafeee2fdcd788f65290677331a04d9f35a15efd",
+          "bytes": 374182,
+          "width": 2496,
+          "height": 1920
+        }
+      }
+    },
+    {
+      "sample_id": "ghost_probe_moving_001",
+      "title": "移动自车鬼探头",
+      "prompt": "The video shows a realistic front-facing autonomous driving scene on an urban roadway in daylight. The ego vehicle is moving forward while a stationary vehicle on the right side blocks the view of a pedestrian behind its rear corner. The pedestrian remains hidden until the ego vehicle is close, then steps out from behind the vehicle into the lane and continues toward the middle of the road. As the moving ego vehicle approaches, the pedestrian reacts, slows, and retreats toward the occluding vehicle while the ego vehicle continues along the roadway.",
+      "seed": 6,
+      "notes": "",
+      "files": {
+        "generated": {
+          "path": "media/generated/ghost_probe_moving_001.mp4",
+          "sha256": "fc4d09b2cca53327d29cebade10e9fff59679cd06dc4e5f09aeab22cee12708b",
+          "bytes": 5399933,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "hdmap": {
+          "path": "media/hdmap/ghost_probe_moving_001.mp4",
+          "sha256": "514f69c755a9ebb2977b6dddeaae2f0cc48ae3135a88d255c4f1b6018bce09ea",
+          "bytes": 1698887,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "two_row": {
+          "path": "media/two-row/ghost_probe_moving_001.mp4",
+          "sha256": "4fe6b36166d4e8ae7001ead7ee2b0884a2fe143132aa39f1516581198afb3356",
+          "bytes": 5783809,
+          "width": 2496,
+          "height": 1920,
+          "frames": 57,
+          "fps": 10
+        },
+        "poster": {
+          "path": "media/posters/ghost_probe_moving_001.jpg",
+          "sha256": "37078a3612582a2169b40f163e6df58c50cacc23c0f03313be4c4926f14c3495",
+          "bytes": 470849,
+          "width": 2496,
+          "height": 1920
+        }
+      }
+    },
+    {
+      "sample_id": "ghost_probe_static_001",
+      "title": "静止自车鬼探头",
+      "prompt": "The video shows a realistic front-facing autonomous driving scene on an urban roadway in daylight. The ego vehicle is stationary or moving only slightly. A vehicle stopped on the right side initially hides a pedestrian behind its rear corner. The pedestrian suddenly becomes visible only after stepping out from behind the vehicle, then continues walking forward across the lane toward the middle of the roadway at a normal walking speed without retreating.",
+      "seed": 7,
+      "notes": "",
+      "files": {
+        "generated": {
+          "path": "media/generated/ghost_probe_static_001.mp4",
+          "sha256": "3cd324cbdc5b99c658cc6b63620cf772357d222988c84f8973af54cfc55a1360",
+          "bytes": 2106025,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "hdmap": {
+          "path": "media/hdmap/ghost_probe_static_001.mp4",
+          "sha256": "9efe51c1a765df8f221ed9083b945295ce66a043f56c67b7777c36f36a07c5bc",
+          "bytes": 457964,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "two_row": {
+          "path": "media/two-row/ghost_probe_static_001.mp4",
+          "sha256": "eea8198e11091e396cbefbae9d93b3f1e3a56d1a34043908c063d614764a9bef",
+          "bytes": 2025686,
+          "width": 2496,
+          "height": 1920,
+          "frames": 57,
+          "fps": 10
+        },
+        "poster": {
+          "path": "media/posters/ghost_probe_static_001.jpg",
+          "sha256": "b58cc38b86002edfe53a7e35870a51a8174e1c2777939e9467dddda60fd1f3f8",
+          "bytes": 503091,
+          "width": 2496,
+          "height": 1920
+        }
+      }
+    },
+    {
+      "sample_id": "animal_dog_crossing_001",
+      "title": "犬只横穿",
+      "prompt": "The video shows a realistic front-facing autonomous driving scene on an urban roadway in daylight. The ego vehicle is moving along a marked road with lane boundaries, roadside infrastructure, and normal surrounding traffic visible in the distance. A medium-sized dog suddenly enters from the right side at a safe distance ahead and runs across the roadway from right to left. The dog follows a natural diagonal crossing path at a brisk but plausible speed, clears the ego vehicle's lane, and creates a realistic animal-crossing hazard without colliding with the ego vehicle.",
+      "seed": 8,
+      "notes": "恢复控制第 7–9 帧左缘车辆的可见范围与原控制不同。",
+      "files": {
+        "generated": {
+          "path": "media/generated/animal_dog_crossing_001.mp4",
+          "sha256": "d97f69297e7c0166285ed23978f44d59942969c8fca6a691db0fccfd70400d2c",
+          "bytes": 7835516,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "hdmap": {
+          "path": "media/hdmap/animal_dog_crossing_001.mp4",
+          "sha256": "bfd70342341ef3e5dda151a78f4dbc6ccc83a9285626111692010416714c96fb",
+          "bytes": 1432223,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "two_row": {
+          "path": "media/two-row/animal_dog_crossing_001.mp4",
+          "sha256": "4716edccd04a2044a7b82693b5a8e5b8202255945b03fad895f8757f4046283f",
+          "bytes": 7612236,
+          "width": 2496,
+          "height": 1920,
+          "frames": 57,
+          "fps": 10
+        },
+        "poster": {
+          "path": "media/posters/animal_dog_crossing_001.jpg",
+          "sha256": "4b662a699a38c4b305f6ca0e0208be76d9d3e5758f02b09c7d6297baa33b2484",
+          "bytes": 484574,
+          "width": 2496,
+          "height": 1920
+        }
+      }
+    },
+    {
+      "sample_id": "animal_elephant_crossing_001",
+      "title": "大象横穿",
+      "prompt": "The video shows a realistic front-facing autonomous driving scene on a quiet urban roadway in daylight. The ego vehicle is stationary or moving only slightly, with visible lane markings, road boundaries, and sparse normal traffic in the surrounding environment. A large elephant enters the road from the right side at a controlled distance and walks steadily across toward the left side. Its slow, heavy movement forms an unusual but physically plausible animal-crossing hazard while the roadway and camera viewpoint remain stable.",
+      "seed": 9,
+      "notes": "",
+      "files": {
+        "generated": {
+          "path": "media/generated/animal_elephant_crossing_001.mp4",
+          "sha256": "c9330b4681102ad820418cfd4bb4c8e33de0012f0c27c49b652e16535cfa9ea7",
+          "bytes": 3421836,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "hdmap": {
+          "path": "media/hdmap/animal_elephant_crossing_001.mp4",
+          "sha256": "832485515d5f261d798794564571b222a7f4a702f4683c1d2621761518852c32",
+          "bytes": 246615,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "two_row": {
+          "path": "media/two-row/animal_elephant_crossing_001.mp4",
+          "sha256": "306e972828adb589914aed0306345e5c131e5678614a77a3fb3cdd3214108871",
+          "bytes": 2858735,
+          "width": 2496,
+          "height": 1920,
+          "frames": 57,
+          "fps": 10
+        },
+        "poster": {
+          "path": "media/posters/animal_elephant_crossing_001.jpg",
+          "sha256": "df3063375b736ebae8047f2a9318e82979e9835ed2678bb249785b94fa125072",
+          "bytes": 568366,
+          "width": 2496,
+          "height": 1920
+        }
+      }
+    },
+    {
+      "sample_id": "animal_giraffe_crossing_001",
+      "title": "长颈鹿横穿",
+      "prompt": "The video shows a realistic front-facing autonomous driving scene on a broad urban road in daylight. The ego vehicle proceeds forward through a lightly populated road environment with marked lanes, curbs, and normal traffic visible around the roadway. A tall giraffe appears from the right side at a distant position and walks across the road toward the left. The giraffe moves more slowly than a running animal, remains upright with a tall irregular silhouette, and crosses in world-consistent motion without being carried sideways by the ego vehicle.",
+      "seed": 10,
+      "notes": "",
+      "files": {
+        "generated": {
+          "path": "media/generated/animal_giraffe_crossing_001.mp4",
+          "sha256": "50f8e79b1dc8a8e4d4be9acca8e924812347cff6ac42c679ea79bf5ed7b111ba",
+          "bytes": 6112296,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "hdmap": {
+          "path": "media/hdmap/animal_giraffe_crossing_001.mp4",
+          "sha256": "ccafe535174a3d56c4abe90ba4a2aaa573fcafc1580b8146c06732292224d30b",
+          "bytes": 1298376,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "two_row": {
+          "path": "media/two-row/animal_giraffe_crossing_001.mp4",
+          "sha256": "6d1c36b70dd03aeb0951e4ee662f2bdc10f74eb9470b9581a08c123b592b66fe",
+          "bytes": 5959671,
+          "width": 2496,
+          "height": 1920,
+          "frames": 57,
+          "fps": 10
+        },
+        "poster": {
+          "path": "media/posters/animal_giraffe_crossing_001.jpg",
+          "sha256": "f19902b2508d60279bb116a6770f44cd83ce9ba235f51fafb75ddbbf626f6f87",
+          "bytes": 440986,
+          "width": 2496,
+          "height": 1920
+        }
+      }
+    },
+    {
+      "sample_id": "animal_dinosaur_crossing_001",
+      "title": "恐龙横穿",
+      "prompt": "The video shows a front-facing autonomous driving scene on an open urban roadway in daylight. The ego vehicle is moving forward on a marked road with lanes, roadside boundaries, and sparse traffic visible in the distance. An exceptionally large dinosaur-like animal enters from the right side far ahead and crosses toward the left side of the road. The animal moves at a faster but still coherent running pace, has a large irregular non-vehicle silhouette, and creates an extreme long-tail road hazard while remaining on a world-consistent trajectory ahead of the approaching ego vehicle.",
+      "seed": 11,
+      "notes": "",
+      "files": {
+        "generated": {
+          "path": "media/generated/animal_dinosaur_crossing_001.mp4",
+          "sha256": "b835b8579d04a53e999f7906450e8b3bfad8062af228fb436a7b7c30427ccea8",
+          "bytes": 6814634,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "hdmap": {
+          "path": "media/hdmap/animal_dinosaur_crossing_001.mp4",
+          "sha256": "c6b9d8b6c1ecb4754ec8656badd5214ea3e9597fd97e4803d9a153339ae8dda8",
+          "bytes": 2066035,
+          "width": 2496,
+          "height": 960,
+          "frames": 57,
+          "fps": 10
+        },
+        "two_row": {
+          "path": "media/two-row/animal_dinosaur_crossing_001.mp4",
+          "sha256": "cc109f1b988ff3c2dc696ea20be83ff7cc1e2b62c5570086bb8abf4fd27d8fb8",
+          "bytes": 7711455,
+          "width": 2496,
+          "height": 1920,
+          "frames": 57,
+          "fps": 10
+        },
+        "poster": {
+          "path": "media/posters/animal_dinosaur_crossing_001.jpg",
+          "sha256": "e7d5303ad64818847f0574bb73f0fc49bbb7e6b9479f393a06aedcb7c9af43ce",
+          "bytes": 381930,
+          "width": 2496,
+          "height": 1920
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "HDMap/BBox controls are recovered nuPlan renderings and can differ locally from the edited RGB source.",
+    "A single PPU generated the second 29-frame segment; the overlapping anchor frame was dropped when joining, yielding 57 frames.",
+    "The two-row video places the six-view RGB grid above the matching six-view control grid."
+  ],
+  "conditioning": "Six-view overlapping first frame, complete 29-frame front-view reference, six-view HDMap/BBox controls, and text."
+}
