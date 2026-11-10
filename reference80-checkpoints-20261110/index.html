@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>前视生成六视角 · 检查点对比</title><link rel="stylesheet" href="style.css"><script defer src="app.js"></script></head>
+<body><main>
+<nav><a href="../index.html">← 实验展示首页</a><span>REFERENCE80 · EMA</span></nav>
+<header><div class="eyebrow">EXISTING INFERENCE / 2026.11.10</div><h1>前视生成六视角<span>逐检查点对比</span></h1><p class="lead">选择同一个场景，并排查看不同训练步数的生成结果。</p><div class="chips"><span>75 条生成视频</span><span>1000–5000 步</span><span>50 步采样 · CFG 3 · 10 FPS</span></div></header>
+<section class="availability" aria-label="已有结果范围"><h2>已有结果</h2><div class="table-scroll"><table><thead><tr><th>样例组</th><th>1000 步</th><th>2000 步</th><th>3000 步</th><th>4000 步</th><th>5000 步</th></tr></thead><tbody><tr><th>长尾十例</th><td>29 / 57 帧</td><td>29 / 57 帧</td><td class="missing">暂无</td><td class="missing">暂无</td><td>29 / 57 帧</td></tr><tr><th>固定验证五例</th><td class="missing">暂无</td><td class="missing">暂无</td><td>29 帧</td><td>29 帧</td><td>29 帧</td></tr></tbody></table></div><p class="small">仅整理已完成的推理。两组场景不同，请在各组内部比较；“暂无”表示未找到对应的已完成视频。</p></section>
+<section class="workspace" aria-label="视频对比">
+<div class="toolbar"><div class="tabs" role="group" aria-label="样例组"><button type="button" data-group="longtail" aria-pressed="true">长尾十例</button><button type="button" data-group="fixed" aria-pressed="false">固定验证五例</button></div><label class="frame-picker">视频长度<select id="frames"><option value="29">29 帧 · 首段</option><option value="57" selected>57 帧 · 完整续推</option></select></label></div>
+<div class="case-picker"><button id="previous" type="button" aria-label="上一个样例">←</button><label>场景<select id="case"></select></label><button id="next" type="button" aria-label="下一个样例">→</button><span id="case-count"></span></div>
+<h2 id="case-title">正在加载视频目录…</h2><p id="sample-id" class="mono"></p><p id="group-note" class="small"></p>
+<div class="syncbar"><button id="play" type="button" class="primary">同步播放</button><button id="pause" type="button">暂停</button><button id="restart" type="button">回到开头</button><label>速度<select id="speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option></select></label><button id="tail" type="button">查看后半段</button><span id="status" role="status" aria-live="polite"></span></div>
+<div class="timeline"><input id="seek" type="range" min="0" max="56" step="1" value="0" aria-label="同步定位帧"><output id="frame-label" for="seek">第 1 / 57 帧</output></div>
+<div id="players" class="players"></div>
+<p class="camera-order">六视角排列：上排 <b>左前 · 前视 · 右前</b>　下排 <b>左后 · 后视 · 右后</b></p>
+<details id="control-panel"><summary>查看六视角 HDMap / 3D BBox 控制</summary><p class="small">与生成视频使用相同的视角排列；展开后加入同步播放与定位。长尾控制保存完整 57 帧，首段只使用前 29 帧。</p><video id="control" controls muted playsinline preload="none"></video><a id="control-link" target="_blank" rel="noopener">单独打开控制视频 ↗</a></details>
+<details id="prompt-panel"><summary>查看原始文本提示与样例备注</summary><p id="prompt"></p><p id="case-notes" class="small"></p></details>
+</section>
+<section class="notes"><h2>如何看这组结果</h2><p>首段 29 帧使用完整前视视频、六视角 HDMap / 3D BBox 控制和文本，不提供其余视角首帧。57 帧由两段 29 帧去掉一帧重叠拼接；后段使用该检查点自己生成的六视角尾帧作为起始条件。因此，续推对比也包含首段误差的影响。</p><p>长尾视频保留原 MP4 文件；固定验证视频来自训练时保存的低分辨率预览，仅提取生成行并重排六视角。固定验证与长尾的预览清晰度不同。以上均为旧 Reference80 模型已有输出，新的 70/30 配置尚不在此页。</p><p><a href="manifest.json" target="_blank" rel="noopener">查看视频清单与 SHA256</a></p></section>
+<footer>Cosmos Multiview · 2026-11-10 · 已有推理结果归档</footer>
+<noscript>本页需要 JavaScript 切换视频。可从<a href="manifest.json">视频清单</a>查找 MP4 相对链接。</noscript>
+</main></body></html>
