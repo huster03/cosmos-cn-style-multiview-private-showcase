@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "fixed_cases": 5,
+  "split": "val",
+  "train_count": 8370,
+  "val_count": 537,
+  "all_count": 8907,
+  "checks_passed": [
+    "train/val clip disjoint",
+    "train/val sample disjoint",
+    "fixed source samples absent from train",
+    "fixed clips absent from train",
+    "RGB roots disjoint",
+    "geometry sidecars disjoint",
+    "fixed windows absent from train selection/captions"
+  ],
+  "limitation": "This checks dataset/sample/clip isolation; it cannot prove absence of memorization from external pretraining."
+}

@@ -1,0 +1,70 @@
+{
+  "status": "PASS",
+  "title": "固定五例 · iter5000 EMA · 57帧六视角 rollout",
+  "checkpoint": "Reference80 Stage A iter5000 EMA",
+  "sampling_steps": 50,
+  "guidance": 3.0,
+  "conditioning": "前视完整29帧 + 其余视角上一段末帧 + 六视角HDMap控制 + 文本",
+  "cases": [
+    {
+      "index": 0,
+      "source_id": "00000_nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029",
+      "video": "media/case_00.mp4",
+      "poster": "posters/case_00.jpg",
+      "frames": 342,
+      "fps": 10.0,
+      "width": 832,
+      "height": 480,
+      "bytes": 23333536,
+      "sha256": "cae121e968d4eefb95799fab5bc509644f78fe8d7a880d58b8e52cfd0197ea4e"
+    },
+    {
+      "index": 1,
+      "source_id": "00001_nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029",
+      "video": "media/case_01.mp4",
+      "poster": "posters/case_01.jpg",
+      "frames": 342,
+      "fps": 10.0,
+      "width": 832,
+      "height": 480,
+      "bytes": 28637490,
+      "sha256": "48bdabe63526773d77298014b842506fbbbbb7376b494b10c8395f6766bd7579"
+    },
+    {
+      "index": 2,
+      "source_id": "00002_nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029",
+      "video": "media/case_02.mp4",
+      "poster": "posters/case_02.jpg",
+      "frames": 342,
+      "fps": 10.0,
+      "width": 832,
+      "height": 480,
+      "bytes": 26759589,
+      "sha256": "9901acfaad297eb6bd72e2a474cae2a9a0026b84af38a0beecd8127dc9eec63e"
+    },
+    {
+      "index": 3,
+      "source_id": "00003_nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029",
+      "video": "media/case_03.mp4",
+      "poster": "posters/case_03.jpg",
+      "frames": 342,
+      "fps": 10.0,
+      "width": 832,
+      "height": 480,
+      "bytes": 26087755,
+      "sha256": "1766df6eb471e9ca1acd22def89313970068e41adb8233a2db920cbf11ef49c1"
+    },
+    {
+      "index": 4,
+      "source_id": "00004_nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029",
+      "video": "media/case_04.mp4",
+      "poster": "posters/case_04.jpg",
+      "frames": 342,
+      "fps": 10.0,
+      "width": 832,
+      "height": 480,
+      "bytes": 16458640,
+      "sha256": "f7d7962bbfeb45f62205e5a03ada334e3afbeeda54c61ab14233484c0df9d274"
+    }
+  ]
+}

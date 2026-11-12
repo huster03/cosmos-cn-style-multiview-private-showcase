@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>固定五例 · iter5000 · 57帧六视角</title>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#f3f6fb;color:#17283d;font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}main{max-width:1260px;margin:0 auto;padding:34px 22px 70px}h1{margin:5px 0 10px;font-size:clamp(28px,4vw,46px);line-height:1.15}.eyebrow{color:#287c76;letter-spacing:2px;font-weight:700;font-size:12px}header p{color:#53667a;max-width:930px}.meta{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0 30px}.pill{background:#fff;border:1px solid #d8e2ee;border-radius:999px;padding:6px 12px;font-size:13px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(440px,1fr));gap:22px}.card{background:#fff;border:1px solid #d7e1ed;border-radius:18px;padding:14px;box-shadow:0 8px 24px #203b5710}.card h2{font-size:15px;margin:2px 4px 10px;word-break:break-all}.card video{display:block;width:100%;height:auto;background:#0f1720;border-radius:11px}.links{margin:28px 0 0;color:#53667a;font-size:14px}.links a{color:#16736d}.note{background:#eaf5f3;border-left:4px solid #287c76;padding:12px 15px;border-radius:8px;margin:20px 0}.sha{font:11px/1.4 ui-monospace,monospace;color:#718195;word-break:break-all;margin:8px 3px 0}footer{margin-top:34px;color:#748398;font-size:13px}
+</style>
+</head>
+<body><main>
+<header><div class="eyebrow">COSMOS MULTIVIEW / FIXED VALIDATION</div><h1>固定五例 · iter5000 EMA · 57帧六视角</h1><p>五个固定验证样例的完整 57 帧 rollout。每个播放器展示六视角拼接结果，便于观察前视生成、侧视一致性和 29→57 帧衔接。</p></header>
+<div class="meta"><span class="pill">5 cases</span><span class="pill">57 frames</span><span class="pill">50 sampling steps</span><span class="pill">CFG 3</span><span class="pill">leakage audit PASS</span></div>
+<div class="note">本次使用现有 Reference80 Stage A iter5000 EMA 权重。新结构化 BiCross 训练尚未产生可用 checkpoint。</div>
+<section class="grid">
+<article class="card"><h2>样例 01 · 00000_nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029</h2><video controls preload="metadata" playsinline poster="posters/case_00.jpg" src="media/case_00.mp4"></video><div class="sha">342 frames · 832×480 · SHA256 cae121e968d4eefb95799fab5bc509644f78fe8d7a880d58b8e52cfd0197ea4e</div></article>
+<article class="card"><h2>样例 02 · 00001_nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029</h2><video controls preload="metadata" playsinline poster="posters/case_01.jpg" src="media/case_01.mp4"></video><div class="sha">342 frames · 832×480 · SHA256 48bdabe63526773d77298014b842506fbbbbb7376b494b10c8395f6766bd7579</div></article>
+<article class="card"><h2>样例 03 · 00002_nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029</h2><video controls preload="metadata" playsinline poster="posters/case_02.jpg" src="media/case_02.mp4"></video><div class="sha">342 frames · 832×480 · SHA256 9901acfaad297eb6bd72e2a474cae2a9a0026b84af38a0beecd8127dc9eec63e</div></article>
+<article class="card"><h2>样例 04 · 00003_nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029</h2><video controls preload="metadata" playsinline poster="posters/case_03.jpg" src="media/case_03.mp4"></video><div class="sha">342 frames · 832×480 · SHA256 1766df6eb471e9ca1acd22def89313970068e41adb8233a2db920cbf11ef49c1</div></article>
+<article class="card"><h2>样例 05 · 00004_nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029</h2><video controls preload="metadata" playsinline poster="posters/case_04.jpg" src="media/case_04.mp4"></video><div class="sha">342 frames · 832×480 · SHA256 f7d7962bbfeb45f62205e5a03ada334e3afbeeda54c61ab14233484c0df9d274</div></article>
+</section>
+<div class="links"><a href="manifest.json">查看生成清单</a> · <a href="audit-summary.json">查看泄露审计摘要</a> · <a href="README.md">查看说明</a></div>
+<footer>视频由当前 DSW 单 PPU 生成；页面只发布展示资产，不包含训练权重和原始数据。</footer>
+</main></body></html>
