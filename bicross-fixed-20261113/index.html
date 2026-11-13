@@ -1,0 +1,11 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>旧版 BiCross · 固定推理对比</title><link rel="stylesheet" href="style.css"><script defer src="app.js"></script></head>
+<body><main><nav><a href="../index.html">← 展示首页</a><span>STRUCTURED BICROSS / 2026.11.10</span></nav>
+<header><p class="eyebrow">固定验证 · 旧版结构化模型</p><h1>同一个场景，<br>两个训练阶段。</h1><p class="lead">1000步与2000步的固定五例推理，并排查看生成变化。</p><div class="chips"><span>10段已有生成</span><span>EMA · 50步采样 · CFG 3</span><span>29帧 · 10 FPS</span><span>每视角1帧RGB条件</span></div></header>
+<section class="workspace"><div class="case-picker"><button id="previous" aria-label="上一个样例">←</button><label>选择场景 <select id="case"></select></label><button id="next" aria-label="下一个样例">→</button><span id="case-count"></span></div><h2 id="case-title">正在加载…</h2><p id="sample-id" class="mono"></p>
+<div class="toolbar"><button id="play" class="primary">同步播放</button><button id="pause">暂停</button><button id="restart">回到开头</button><label>速度 <select id="speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option></select></label><span id="status" role="status" aria-live="polite"></span></div>
+<div class="timeline"><input id="seek" type="range" min="0" max="28" step="1" value="0" aria-label="同步定位帧"><output id="frame-label">第 1 / 29 帧</output></div><div id="players"></div>
+<p class="small">六视角排列：上排 <b>左前 · 前视 · 右前</b>，下排 <b>左后 · 后视 · 右后</b>。</p>
+<details id="control-panel"><summary>查看纯HDMap控制预览</summary><p class="small">展开后加入同步播放。这里仅显示推理预览中的纯地图；模型同时接收的结构化3D框和ego信息未画入此视频。</p><video id="control" controls muted playsinline preload="none"></video><a id="control-link" target="_blank" rel="noopener">单独打开控制视频 ↗</a></details>
+<details><summary>查看原始文本提示</summary><p id="prompt"></p></details></section>
+<section class="notes"><h2>这组结果来自哪里</h2><p>来自2026年11月10日启动的旧版结构化BiCross训练。以纯RGB Neighbor-v2 480p的37000步权重初始化，冻结RGB主干，学习纯HDMap与结构化3D框／ego控制；这里展示新阶段1000、2000步的固定五例。</p><p>推理使用六视角各自的首帧RGB、原始文本与控制输入。原推理分辨率为每视角480×832，本页从训练已保存的缩小预览提取生成画面并重排为六宫格，未重新执行模型推理。</p><p>当前仅有1000、2000步结果。训练最后完成2982步，尚无3000步固定推理。</p><a href="manifest.json">下载视频清单与SHA256</a></section>
+<footer>Cosmos Multiview · 发布于2026-11-13</footer><noscript>请启用JavaScript，或从<a href="manifest.json">视频清单</a>打开视频。</noscript></main></body></html>
