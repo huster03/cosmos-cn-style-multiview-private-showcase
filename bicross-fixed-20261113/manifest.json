@@ -37,147 +37,147 @@
       "prompt": "This multi-camera perspective captures a forward-moving vehicle traveling along a straight, multi-laned road under partly cloudy skies. The road is divided into three lanes in each direction, separated by median strips. Train tracks run alongside the roadway on the right side, bordered by gravel and fencing. Sparse vegetation and utility poles line the median strips. Buildings and palm trees appear intermittently on the left side of the road. Traffic is minimal, with a few vehicles visible ahead in the distance. The environment suggests an urban or suburban setting with clear visibility and moderate-speed driving conditions."
     }
   ],
-  "control": "Pure HDMap preview; structured 3D box and ego inputs are not visualized in this video.",
+  "control": "Previously rendered 2D HDMap + projected 3D BBox, aligned by sample, frame and camera. Display reference; this BiCross run used clean HDMap plus structured box/ego inputs.",
   "media": [
     {
       "group": "fixed",
       "kind": "comparison",
       "step": 1000,
       "sample_id": "nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029",
-      "path": "media/two-row/1000/nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029.mp4",
-      "poster": "media/two-row/1000/nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029.jpg",
+      "path": "media/two-row-2d/1000/nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/1000/nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029.jpg",
       "width": 2040,
       "height": 392,
       "frames": 29,
       "fps": 10,
-      "sha256": "04c56898a463567066b3e996f991124e05f529546b0141ec0f29856addab4aef",
-      "bytes": 824170
+      "sha256": "1f1b438ca7a9804905f44ceebdee4d54d821336d2bb7188601fbd5f8f745a031",
+      "bytes": 928710
     },
     {
       "group": "fixed",
       "kind": "comparison",
       "step": 1000,
       "sample_id": "nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029",
-      "path": "media/two-row/1000/nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029.mp4",
-      "poster": "media/two-row/1000/nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029.jpg",
+      "path": "media/two-row-2d/1000/nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/1000/nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029.jpg",
       "width": 2040,
       "height": 392,
       "frames": 29,
       "fps": 10,
-      "sha256": "5ad2cc7f08d20715943063a5645089e0ef1f3cb8a4ac71a3bc7b5d6623fafc96",
-      "bytes": 2483906
+      "sha256": "8b82e6ecebdaee13916e4932198b09cff90f7e7e4f59e545dcfea5bbd8a9224c",
+      "bytes": 2512571
     },
     {
       "group": "fixed",
       "kind": "comparison",
       "step": 1000,
       "sample_id": "nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029",
-      "path": "media/two-row/1000/nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029.mp4",
-      "poster": "media/two-row/1000/nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029.jpg",
+      "path": "media/two-row-2d/1000/nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/1000/nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029.jpg",
       "width": 2040,
       "height": 392,
       "frames": 29,
       "fps": 10,
-      "sha256": "6625e3b989096ab78a23e154cffa4bd0fb665c2d3b3e897895c03e59ee11f3b3",
-      "bytes": 556264
+      "sha256": "b501103aa13ae21f468ade974c28747a1a7228c31dc31842884c95db2967235d",
+      "bytes": 625918
     },
     {
       "group": "fixed",
       "kind": "comparison",
       "step": 1000,
       "sample_id": "nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029",
-      "path": "media/two-row/1000/nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029.mp4",
-      "poster": "media/two-row/1000/nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029.jpg",
+      "path": "media/two-row-2d/1000/nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/1000/nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029.jpg",
       "width": 2040,
       "height": 392,
       "frames": 29,
       "fps": 10,
-      "sha256": "1ffe5531c1e707b38e40076d98bd5a8e64996c12747cc24a6ba23b8b49d2aaf4",
-      "bytes": 1294630
+      "sha256": "cb759cf18c38cbd82615d2a458285ec86f28da4fdd5c035c700e3b9568d880b1",
+      "bytes": 1415104
     },
     {
       "group": "fixed",
       "kind": "comparison",
       "step": 1000,
       "sample_id": "nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029",
-      "path": "media/two-row/1000/nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029.mp4",
-      "poster": "media/two-row/1000/nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029.jpg",
+      "path": "media/two-row-2d/1000/nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/1000/nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029.jpg",
       "width": 2040,
       "height": 392,
       "frames": 29,
       "fps": 10,
-      "sha256": "da1bd31ff658e40125e2aaf1c1ce0af2deb5ad08e42a6200b9d3ebf688237b47",
-      "bytes": 1549956
+      "sha256": "5d699123be1c67dcabd6474006ff85d468bdaa90058a5b2810194d4492398389",
+      "bytes": 1533682
     },
     {
       "group": "fixed",
       "kind": "comparison",
       "step": 2000,
       "sample_id": "nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029",
-      "path": "media/two-row/2000/nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029.mp4",
-      "poster": "media/two-row/2000/nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029.jpg",
+      "path": "media/two-row-2d/2000/nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/2000/nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029.jpg",
       "width": 2040,
       "height": 392,
       "frames": 29,
       "fps": 10,
-      "sha256": "a006cf30407f42a5d32142effe0718d9dac870cb6c41d74bde7ecc4ae0a4524b",
-      "bytes": 805145
+      "sha256": "381c89a5de7dab280619d4581ac4dfb9eb84d7425c58738e97c73efc9e3fb036",
+      "bytes": 910586
     },
     {
       "group": "fixed",
       "kind": "comparison",
       "step": 2000,
       "sample_id": "nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029",
-      "path": "media/two-row/2000/nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029.mp4",
-      "poster": "media/two-row/2000/nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029.jpg",
+      "path": "media/two-row-2d/2000/nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/2000/nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029.jpg",
       "width": 2040,
       "height": 392,
       "frames": 29,
       "fps": 10,
-      "sha256": "e7e26b33b383305478004e665d047f53b9fb7ef71fb853e686f14c292504eb32",
-      "bytes": 2493560
+      "sha256": "10903205f96c6c2b6df3d94b7d06bdaf392eea872973bec2b4f9204469b72b42",
+      "bytes": 2519609
     },
     {
       "group": "fixed",
       "kind": "comparison",
       "step": 2000,
       "sample_id": "nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029",
-      "path": "media/two-row/2000/nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029.mp4",
-      "poster": "media/two-row/2000/nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029.jpg",
+      "path": "media/two-row-2d/2000/nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/2000/nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029.jpg",
       "width": 2040,
       "height": 392,
       "frames": 29,
       "fps": 10,
-      "sha256": "153e76310c04317a5313a29c75b0451519f0d98d311d9914fada3595a1dc18c9",
-      "bytes": 769275
+      "sha256": "ae350e9408a838c7513a8c7e6c3f79b84383ab02d91a542f79147f7ffb41251a",
+      "bytes": 832092
     },
     {
       "group": "fixed",
       "kind": "comparison",
       "step": 2000,
       "sample_id": "nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029",
-      "path": "media/two-row/2000/nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029.mp4",
-      "poster": "media/two-row/2000/nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029.jpg",
+      "path": "media/two-row-2d/2000/nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/2000/nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029.jpg",
       "width": 2040,
       "height": 392,
       "frames": 29,
       "fps": 10,
-      "sha256": "70086c896f268c3720d1a5561960a0422068566ae2d0716feaaffc831d3a464c",
-      "bytes": 1253924
+      "sha256": "c3ad93a8a6f5d6e2c77678154a546a4e508e0e5f551d37bcc444acc62f862c27",
+      "bytes": 1374227
     },
     {
       "group": "fixed",
       "kind": "comparison",
       "step": 2000,
       "sample_id": "nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029",
-      "path": "media/two-row/2000/nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029.mp4",
-      "poster": "media/two-row/2000/nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029.jpg",
+      "path": "media/two-row-2d/2000/nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/2000/nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029.jpg",
       "width": 2040,
       "height": 392,
       "frames": 29,
       "fps": 10,
-      "sha256": "917db2176990c88da3dde4aab24a9d2e4a22cc84560db9294feaaae1704cea19",
-      "bytes": 1501748
+      "sha256": "b0ab24cfbfc33f9c13c235d1904181daabc448f69694c06c85729eac655a17d0",
+      "bytes": 1485902
     }
   ],
   "camera_order": [
@@ -190,8 +190,9 @@
   ],
   "rows": [
     "generated",
-    "pure_hdmap"
+    "historical_2d_hdmap_projected_bbox"
   ],
   "initialization": "New HDMap/structured geometry/BiCross controls initialized from scratch; RGB backbone from Neighbor-v2 37000 and frozen.",
-  "frames_note": "29 frames total, including the first-frame RGB condition in each view."
+  "frames_note": "29 frames total, including the first-frame RGB condition in each view.",
+  "control_display_only": true
 }
