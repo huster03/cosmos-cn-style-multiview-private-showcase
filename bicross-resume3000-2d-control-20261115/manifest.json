@@ -1,0 +1,202 @@
+{
+  "model": "Structured BiCross (2026-11-10)",
+  "weights": "EMA",
+  "checkpoint_steps": [
+    2000,
+    3000
+  ],
+  "sampling_steps": 50,
+  "guidance": 3,
+  "conditional_rgb_frames_per_view": 1,
+  "frames": 29,
+  "fps": 10,
+  "cases": [
+    {
+      "sample_id": "nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029",
+      "title": "固定验证 01",
+      "prompt": "This multi-camera perspective captures a bustling urban intersection dominated by a wide, multi-laned road under clear skies. Vehicles populate the scene, including taxis, sedans, SUVs, vans, and buses, navigating through the intersection. Traffic flows steadily, with cars queued at a signalized junction and others moving through the crossroads. Buildings flank both sides of the road, featuring modern architecture with prominent signage and advertisements. Pedestrian crossings and traffic lights regulate the flow, while palm trees line parts of the roadway, adding a touch of greenery to the metropolitan setting. The overall atmosphere reflects a busy city environment with coordinated vehicular movement and structured infrastructure."
+    },
+    {
+      "sample_id": "nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029",
+      "title": "固定验证 02",
+      "prompt": "This multi-camera perspective captures a forward-moving vehicle traveling along a straight, two-lane road bordered by palm trees and upscale buildings under clear skies. Vehicles ahead—including sedans and SUVs—are visible, maintaining a steady pace. Traffic flows smoothly, with no congestion evident. Palm trees line both sides of the road, interspersed with manicured shrubbery and gravel beds. Buildings flank the roadway, featuring ornate facades and signage, indicative of a commercial or entertainment district. Pedestrian pathways run alongside the road, where a few pedestrians can be seen walking leisurely. Overhead, a pedestrian bridge spans the street, connecting adjacent areas. The scene is bathed in bright sunlight, casting sharp shadows and highlighting the vibrant urban environment."
+    },
+    {
+      "sample_id": "nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029",
+      "title": "固定验证 03",
+      "prompt": "This multi-camera perspective captures a bustling urban intersection dominated by tall hotels and casinos, with palm trees lining the streets under clear skies. Vehicles populate the scene, including sedans, SUVs, and taxis, navigating through the busy junction. Traffic flows steadily, with cars positioned at various distances from the ego vehicle, which remains stationary amid the congestion. Prominent signage advertises hotels and casinos, adding to the vibrant cityscape. The environment reflects a typical Las Vegas street, characterized by its iconic architecture and lively atmosphere."
+    },
+    {
+      "sample_id": "nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029",
+      "title": "固定验证 04",
+      "prompt": "This multi-camera perspective captures a bustling urban street scene under clear skies, with abundant sunlight casting sharp shadows. Vehicles populate the roadway, including sedans, SUVs, and taxis, navigating through moderate traffic. Multiple lanes converge at an intersection, where cars are queued ahead, awaiting clearance. Pedestrian activity is visible near sidewalks lined with palm trees and upscale buildings, including hotels and casinos. Escalators and storefronts adorn the right side of the road, while tall skyscrapers dominate the skyline. Cars move steadily forward, maintaining safe distances, while occasional pedestrians cross the street. Traffic flows smoothly, with no abrupt stops or congestion evident."
+    },
+    {
+      "sample_id": "nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029",
+      "title": "固定验证 05",
+      "prompt": "This multi-camera perspective captures a forward-moving vehicle traveling along a straight, multi-laned road under partly cloudy skies. The road is divided into three lanes in each direction, separated by median strips. Train tracks run alongside the roadway on the right side, bordered by gravel and fencing. Sparse vegetation and utility poles line the median strips. Buildings and palm trees appear intermittently on the left side of the road. Traffic is minimal, with a few vehicles visible ahead in the distance. The environment suggests an urban or suburban setting with clear visibility and moderate-speed driving conditions."
+    }
+  ],
+  "control": "Previously rendered 2D HDMap + projected 3D BBox, aligned by sample, frame and camera. Display reference; this BiCross run used clean HDMap plus structured box/ego inputs.",
+  "media": [
+    {
+      "group": "fixed",
+      "kind": "comparison",
+      "step": 2000,
+      "sample_id": "nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029",
+      "path": "media/two-row-2d/2000/nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/2000/nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029.jpg",
+      "width": 2040,
+      "height": 392,
+      "frames": 29,
+      "fps": 10,
+      "sha256": "381c89a5de7dab280619d4581ac4dfb9eb84d7425c58738e97c73efc9e3fb036",
+      "bytes": 910586
+    },
+    {
+      "group": "fixed",
+      "kind": "comparison",
+      "step": 3000,
+      "sample_id": "nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029",
+      "path": "media/two-row-2d/3000/nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/3000/nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029.jpg",
+      "width": 2040,
+      "height": 392,
+      "frames": 29,
+      "fps": 10,
+      "sha256": "53abe4cd0b019cba3d343eef436337e9fc6d08b531ece2d283e89a601a4651bb",
+      "bytes": 960286
+    },
+    {
+      "group": "fixed",
+      "kind": "comparison",
+      "step": 2000,
+      "sample_id": "nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029",
+      "path": "media/two-row-2d/2000/nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/2000/nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029.jpg",
+      "width": 2040,
+      "height": 392,
+      "frames": 29,
+      "fps": 10,
+      "sha256": "10903205f96c6c2b6df3d94b7d06bdaf392eea872973bec2b4f9204469b72b42",
+      "bytes": 2519609
+    },
+    {
+      "group": "fixed",
+      "kind": "comparison",
+      "step": 3000,
+      "sample_id": "nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029",
+      "path": "media/two-row-2d/3000/nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/3000/nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029.jpg",
+      "width": 2040,
+      "height": 392,
+      "frames": 29,
+      "fps": 10,
+      "sha256": "2bc6851f342db6c287793e31d1c9a496522ea9bfb1d07ddf796bc87733e6f867",
+      "bytes": 2511402
+    },
+    {
+      "group": "fixed",
+      "kind": "comparison",
+      "step": 2000,
+      "sample_id": "nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029",
+      "path": "media/two-row-2d/2000/nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/2000/nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029.jpg",
+      "width": 2040,
+      "height": 392,
+      "frames": 29,
+      "fps": 10,
+      "sha256": "ae350e9408a838c7513a8c7e6c3f79b84383ab02d91a542f79147f7ffb41251a",
+      "bytes": 832092
+    },
+    {
+      "group": "fixed",
+      "kind": "comparison",
+      "step": 3000,
+      "sample_id": "nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029",
+      "path": "media/two-row-2d/3000/nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/3000/nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029.jpg",
+      "width": 2040,
+      "height": 392,
+      "frames": 29,
+      "fps": 10,
+      "sha256": "e2661da74c103aca93734e579c1a1ac5fa8ccee690e086bd2961e71678eefe77",
+      "bytes": 898448
+    },
+    {
+      "group": "fixed",
+      "kind": "comparison",
+      "step": 2000,
+      "sample_id": "nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029",
+      "path": "media/two-row-2d/2000/nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/2000/nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029.jpg",
+      "width": 2040,
+      "height": 392,
+      "frames": 29,
+      "fps": 10,
+      "sha256": "c3ad93a8a6f5d6e2c77678154a546a4e508e0e5f551d37bcc444acc62f862c27",
+      "bytes": 1374227
+    },
+    {
+      "group": "fixed",
+      "kind": "comparison",
+      "step": 3000,
+      "sample_id": "nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029",
+      "path": "media/two-row-2d/3000/nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/3000/nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029.jpg",
+      "width": 2040,
+      "height": 392,
+      "frames": 29,
+      "fps": 10,
+      "sha256": "353b5ede1301904684f6010d51e84a599823d05d29b3e3d7ebbc61989a0d3c91",
+      "bytes": 1405864
+    },
+    {
+      "group": "fixed",
+      "kind": "comparison",
+      "step": 2000,
+      "sample_id": "nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029",
+      "path": "media/two-row-2d/2000/nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/2000/nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029.jpg",
+      "width": 2040,
+      "height": 392,
+      "frames": 29,
+      "fps": 10,
+      "sha256": "b0ab24cfbfc33f9c13c235d1904181daabc448f69694c06c85729eac655a17d0",
+      "bytes": 1485902
+    },
+    {
+      "group": "fixed",
+      "kind": "comparison",
+      "step": 3000,
+      "sample_id": "nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029",
+      "path": "media/two-row-2d/3000/nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029.mp4",
+      "poster": "media/two-row-2d/3000/nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029.jpg",
+      "width": 2040,
+      "height": 392,
+      "frames": 29,
+      "fps": 10,
+      "sha256": "641d7cbaf23cb64e064d028b9c43cbe6c740d8fe6f5e9ae5b4741feb69852a0e",
+      "bytes": 1484485
+    }
+  ],
+  "camera_order": [
+    "CAM_L2",
+    "CAM_L0",
+    "CAM_F0",
+    "CAM_R0",
+    "CAM_R2",
+    "CAM_B0"
+  ],
+  "rows": [
+    "generated",
+    "historical_2d_hdmap_projected_bbox"
+  ],
+  "initialization": "New HDMap/structured geometry/BiCross controls initialized from scratch; RGB backbone from Neighbor-v2 37000 and frozen.",
+  "frames_note": "29 frames total, including the first-frame RGB condition in each view.",
+  "control_display_only": true,
+  "source_job": "dlc1j8uscra05wd0",
+  "resume_from": 2000,
+  "result_note": "3000-step results from the resumed old BiCross task; 2000 is the source checkpoint baseline.",
+  "control_reuse_note": "Lower row reused from the previously verified and encoded historical 2D control comparison; no rerendering."
+}
