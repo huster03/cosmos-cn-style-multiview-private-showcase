@@ -1,0 +1,16 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>前视与3D控制 · 训练与推理汇总</title><link rel="stylesheet" href="style.css"></head><body><main>
+<header><a href="../index.html">← 展示首页</a><div class="eyebrow">COSMOS / TRAINING & INFERENCE</div><h1>前视与3D控制</h1><p>训练进度快照与已有推理，按相同场景比较不同检查点。</p><p id="timestamp" class="muted"></p></header>
+<section class="stats" id="stats" aria-label="训练进度"></section>
+<p class="notice">当前两个任务继续使用原训练配方。新“完整前视恒定、80%无侧后首帧／20%有五路首帧”配方留待下次启动。本页是检查时的快照，不自动实时刷新。</p>
+<section><div class="section-head"><h2>固定五例 · 生成 / 控制对照</h2><span>40段 · 29帧 · 10FPS · EMA</span></div>
+<div class="tabs" role="group" aria-label="选择模型"><button data-model="reference80" aria-pressed="true">前视生成多视角</button><button data-model="bicross" aria-pressed="false">3D控制 BiCross</button></div>
+<p id="model-note"></p><div class="toolbar"><label>场景 <select id="case"></select></label><button id="previous">上一例</button><button id="next">下一例</button><span id="case-count"></span></div>
+<div class="stepbar"><span>比较步数</span><div id="steps"></div><button id="all-steps">全部步数</button><button id="latest-steps">最近两次</button></div>
+<div class="transport"><button id="play">同步播放</button><button id="pause">暂停</button><button id="restart">从头播放</button><label>速度 <select id="speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option></select></label><input id="seek" aria-label="视频帧" type="range" min="0" max="28" value="0"><span id="frame-label">第1 / 29帧</span></div>
+<p id="status" role="status"></p><div class="camera-labels"><span>左后 L2</span><span>左侧 L0</span><span>前视 F0</span><span>右侧 R0</span><span>右后 R2</span><span>后视 B0</span></div><div id="players"></div>
+<details><summary>场景文本与样本编号</summary><p id="sample-id" class="mono"></p><p id="prompt"></p></details>
+<p class="muted">视频上排为生成，下排为地图与投影框对照，六列按上方相机顺序排列。展示版统一为2040×392，来自原推理预览，不能视为模型原始分辨率。3D模型下排是历史2D展示素材，实际输入为纯地图与结构化框。</p></section>
+<section><h2>前视长尾推理</h2><div class="links" id="history"></div></section>
+<section><h2>检查说明</h2><p>检查点核验覆盖四部分存储范围与采样游标，不等于完整权重重新加载。梯度与更新检查包含抽样证据。loss为训练rank0记录，验证分母与训练不同，不用跨模型绝对值判断优劣。</p><p>57帧长尾结果由两段29帧去掉重叠帧拼接，续段额外使用生成首帧；各场景控制局部差异等备注保留在原页面。</p><a href="manifest.json">查看本页快照与媒体清单</a></section>
+<footer>推理结果归档 · 未重新运行模型推理 · <a href="../index.html">返回总入口</a></footer>
+</main><script src="app.js"></script></body></html>
