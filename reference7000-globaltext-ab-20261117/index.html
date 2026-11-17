@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark"><title>7000 步 · 全局文本 A/B 对照</title><link rel="stylesheet" href="style.css"><script src="app.js" defer></script></head>
+<body><main>
+<header><div><p class="eyebrow">REFERENCE80 / EMA 7000</p><h1>全局文本，能让侧后视更一致吗？</h1><p class="intro">同一前视、同一控制、同一种子。十个长尾场景，比较原文本与全局环境扩写。</p></div><div class="scope">10 场景 × 2 组文本<br>每组 29 帧与续段 57 帧<br>50 步采样 · CFG 3 · 10 fps</div></header>
+<p id="fixture-banner" class="fixture" hidden>这是使用历史视频的界面测试夹具，不能作为本次7000步结果。</p>
+<nav id="case-list" class="case-list" aria-label="十个场景"></nav>
+<section class="workspace" aria-label="同步比较">
+<div class="section-title"><div><p id="case-number" class="eyebrow">正在读取数据</p><h2 id="case-title">—</h2><p id="case-meta" class="subtle"></p></div><div class="case-nav"><button id="previous-case">← 上一例</button><button id="next-case">下一例 →</button></div></div>
+<div class="controls"><div class="segmented" aria-label="片段长度"><button id="duration29" class="active" aria-pressed="true">29 帧 · 首段</button><button id="duration57" aria-pressed="false">57 帧 · 续段拼接</button></div><label>观察视角<select id="view"><option value="grid">六视角网格</option><option value="rear">侧后视三路</option><option value="CAM_B0">正后方 · CAM_B0</option><option value="CAM_L2">左后方 · CAM_L2</option><option value="CAM_R2">右后方 · CAM_R2</option><option value="CAM_F0">前方 · CAM_F0</option><option value="CAM_L0">左前方 · CAM_L0</option><option value="CAM_R0">右前方 · CAM_R0</option></select></label><button id="rear-focus">重点看后方</button></div>
+<div class="timeline"><button id="play" class="primary" aria-label="同步播放">▶ 同步播放</button><button id="previous-frame" aria-label="上一帧">‹</button><input id="frame" type="range" min="0" max="28" step="1" value="0" aria-label="同步视频帧"><button id="next-frame" aria-label="下一帧">›</button><output id="frame-label">01 / 29</output><label class="loop"><input id="loop" type="checkbox" checked>循环</label></div>
+<div class="status-line"><span id="time-label">0.0 s</span><span id="status" role="status">正在加载…</span></div>
+<div class="pair">
+<article><div class="arm-label"><h3><span class="arm-badge a">A</span> 原文本</h3><a id="download-baseline" href="#" download>下载原始 MP4 ↗</a></div><button id="open-baseline" class="canvas-button" aria-label="放大原文本画面"><canvas id="canvas-baseline" width="2496" height="960"></canvas></button></article>
+<article><div class="arm-label"><h3><span class="arm-badge b">B</span> 全局环境扩写</h3><a id="download-global" href="#" download>下载原始 MP4 ↗</a></div><button id="open-global" class="canvas-button" aria-label="放大全局文本画面"><canvas id="canvas-global" width="2496" height="960"></canvas></button></article>
+</div>
+<p class="hint">网格上排：左前 / 前 / 右前；下排：左后 / 后 / 右后。点击画面中的相机，可同时放大两组对应视角。空格播放，← → 逐帧。</p>
+<p id="boundary-note" class="boundary" hidden>57帧在第29帧后接入续段。侧后视各用本组生成尾帧作锚点，后段差异也包含首段影响的传播。</p><p id="error" role="alert" hidden></p>
+</section>
+<section class="text-section"><div class="section-title"><div><p class="eyebrow">TEXT CONDITION</p><h2>这例改变了什么？</h2></div></div><p id="change-summary"></p><details id="prompt-details" open><summary>并排查看完整文本</summary><div class="pair prompts"><article><h3>A · 原文本</h3><p id="prompt-original"></p></article><article><h3>B · 全局环境扩写</h3><p id="prompt-global"></p></article></div></details></section>
+<section class="notes"><div><h2>观察重点</h2><p>先看后视道路材质、建筑与植被类型，再看天气、色调和光照是否与前视属于同一场景。不同方向可以有不同物体与明暗，不应只追求画面颜色相同。</p><p>再切换57帧，观察第29帧附近的衔接，以及扩写对侧后视风格的影响是否延续。</p></div><div><h2>输入与比较边界</h2><p>两组两段均提供相同的完整外部前视、六路控制和同一种子；外部前视本身来自历史生成视频。原事件段逐字保留，B追加周围环境和后视连续性约束。</p><p>新增后视描述不是后视真值标注。扩写同时改变文本长度、环境信息及一致性约束；本对照评估它们的整体影响。历史控制包含近似重建及已记录局部差异。</p></div></section>
+<details class="provenance"><summary>来源与技术验收记录</summary><pre id="case-source"></pre><p>原始生成网格MP4逐字节复制。单路放大使用浏览器裁剪，不额外重编码生成视频。完整解码证明产物可用，不代表风格改善已经通过评价。</p><div class="links"><a href="manifest.json" download>场景与文本清单</a><a href="validation-summary.json" download>技术验收摘要</a><a href="source-binding.json" download>模型与输入绑定</a><a href="assets.html">全部资源与下载</a></div></details>
+<footer>Reference80 EMA7000 · 十例全局文本对照 · GitHub 展示</footer>
+</main>
+<video id="video-baseline" class="decoder" muted playsinline preload="metadata"></video><video id="video-global" class="decoder" muted playsinline preload="metadata"></video>
+<dialog id="zoom-dialog"><div class="zoom-header"><h2 id="zoom-title">对应视角放大</h2><button id="close-zoom">关闭 ×</button></div><div class="pair"><article><h3>A · 原文本</h3><canvas id="zoom-baseline" width="832" height="480"></canvas></article><article><h3>B · 全局环境扩写</h3><canvas id="zoom-global" width="832" height="480"></canvas></article></div><div class="zoom-controls"><button id="zoom-previous">← 上一帧</button><span id="zoom-frame"></span><button id="zoom-next">下一帧 →</button></div></dialog>
+</body></html>

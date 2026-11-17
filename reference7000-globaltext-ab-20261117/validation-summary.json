@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "checked_utc": "2026-11-17T10:45:16.250656+00:00",
+  "unique_original_mp4": 440,
+  "comparison_grid_count": 40,
+  "complete_decode": true,
+  "grid_copy_sha256_equal": true,
+  "checkpoint_iteration": 7000,
+  "weights": "EMA",
+  "source_binding": "source-binding.json"
+}
