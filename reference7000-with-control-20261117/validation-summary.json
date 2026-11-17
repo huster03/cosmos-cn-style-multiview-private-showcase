@@ -1,0 +1,22 @@
+{
+  "ok": true,
+  "combined_videos": 40,
+  "frames": [
+    29,
+    57
+  ],
+  "fps": 10,
+  "size": [
+    2496,
+    1920
+  ],
+  "all_outputs_fully_decoded": true,
+  "input_png_sha_verified": 3480,
+  "same_controls_for_both_arms": true,
+  "overlap_removed_consistently": true,
+  "lossless_control_intermediates_pixel_exact": true,
+  "reencoded_for_stacking": true,
+  "checkpoint_iteration": 7000,
+  "weights": "EMA",
+  "checked_utc": "2026-11-17T11:23:06.494048+00:00"
+}

@@ -1,0 +1,512 @@
+{
+  "checkpoint": "iter_000007000",
+  "checkpoint_weights": "EMA",
+  "checkpoint_iteration": 7000,
+  "settings_sha256": "3b78631eb9315f355d0a38df638bb789e5dc5efb667fa80eace142cab85ad7f1",
+  "prompt_pairs_sha256": "4391e9e220972f668271aa82087b659e1f220803f7e594381291df4fd3fe52b3",
+  "first_plan_sha256": "554bce8ad9353b62045490cb2dd7a0555ece66f708a165a1d8a100be361a64c1",
+  "continuation_template_sha256": "5b93d0adab33e48a1c12e51adbe3118ee00b67d7ce50e69b508347a22b0480d4",
+  "generation_complete_sha256": "b9b3f391eaaba2858fc8038b53fa1507b16a4623a138ab7072fdee8283ea5f5d",
+  "worker_ema_proofs": [
+    {
+      "worker": 0,
+      "stage": "first29",
+      "path": "worker-00/first29/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 0,
+      "stage": "result",
+      "path": "worker-00/result/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 1,
+      "stage": "first29",
+      "path": "worker-01/first29/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 1,
+      "stage": "result",
+      "path": "worker-01/result/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 2,
+      "stage": "first29",
+      "path": "worker-02/first29/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 2,
+      "stage": "result",
+      "path": "worker-02/result/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 3,
+      "stage": "first29",
+      "path": "worker-03/first29/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 3,
+      "stage": "result",
+      "path": "worker-03/result/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 4,
+      "stage": "first29",
+      "path": "worker-04/first29/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 4,
+      "stage": "result",
+      "path": "worker-04/result/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 5,
+      "stage": "first29",
+      "path": "worker-05/first29/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 5,
+      "stage": "result",
+      "path": "worker-05/result/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 6,
+      "stage": "first29",
+      "path": "worker-06/first29/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 6,
+      "stage": "result",
+      "path": "worker-06/result/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 7,
+      "stage": "first29",
+      "path": "worker-07/first29/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 7,
+      "stage": "result",
+      "path": "worker-07/result/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 8,
+      "stage": "first29",
+      "path": "worker-08/first29/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 8,
+      "stage": "result",
+      "path": "worker-08/result/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 9,
+      "stage": "first29",
+      "path": "worker-09/first29/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 9,
+      "stage": "result",
+      "path": "worker-09/result/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 10,
+      "stage": "first29",
+      "path": "worker-10/first29/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 10,
+      "stage": "result",
+      "path": "worker-10/result/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 11,
+      "stage": "first29",
+      "path": "worker-11/first29/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 11,
+      "stage": "result",
+      "path": "worker-11/result/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 12,
+      "stage": "first29",
+      "path": "worker-12/first29/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 12,
+      "stage": "result",
+      "path": "worker-12/result/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 13,
+      "stage": "first29",
+      "path": "worker-13/first29/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 13,
+      "stage": "result",
+      "path": "worker-13/result/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 14,
+      "stage": "first29",
+      "path": "worker-14/first29/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 14,
+      "stage": "result",
+      "path": "worker-14/result/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 15,
+      "stage": "first29",
+      "path": "worker-15/first29/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    },
+    {
+      "worker": 15,
+      "stage": "result",
+      "path": "worker-15/result/ema-payload-proof.json",
+      "sha256": "d1f8b20abefbf96a4481d1963f9c5eec2a9215e9b0f00465cbb1ebeb53977df5",
+      "checked_state_tensors": 766
+    }
+  ],
+  "paired_condition_traces": [
+    {
+      "case": "dense_pedestrian_crosswalk_002",
+      "stage": "first29",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": true,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    },
+    {
+      "case": "dense_pedestrian_crosswalk_002",
+      "stage": "result",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": false,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    },
+    {
+      "case": "dense_pedestrian_crosswalk_003",
+      "stage": "first29",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": true,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    },
+    {
+      "case": "dense_pedestrian_crosswalk_003",
+      "stage": "result",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": false,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    },
+    {
+      "case": "ghost_probe_turn_ego_stop_001",
+      "stage": "first29",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": true,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    },
+    {
+      "case": "ghost_probe_turn_ego_stop_001",
+      "stage": "result",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": false,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    },
+    {
+      "case": "ghost_probe_turn_pedestrian_retreat_001",
+      "stage": "first29",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": true,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    },
+    {
+      "case": "ghost_probe_turn_pedestrian_retreat_001",
+      "stage": "result",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": false,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    },
+    {
+      "case": "ghost_probe_moving_001",
+      "stage": "first29",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": true,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    },
+    {
+      "case": "ghost_probe_moving_001",
+      "stage": "result",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": false,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    },
+    {
+      "case": "ghost_probe_static_001",
+      "stage": "first29",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": true,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    },
+    {
+      "case": "ghost_probe_static_001",
+      "stage": "result",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": false,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    },
+    {
+      "case": "animal_dog_crossing_001",
+      "stage": "first29",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": true,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    },
+    {
+      "case": "animal_dog_crossing_001",
+      "stage": "result",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": false,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    },
+    {
+      "case": "animal_elephant_crossing_001",
+      "stage": "first29",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": true,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    },
+    {
+      "case": "animal_elephant_crossing_001",
+      "stage": "result",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": false,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    },
+    {
+      "case": "animal_giraffe_crossing_001",
+      "stage": "first29",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": true,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    },
+    {
+      "case": "animal_giraffe_crossing_001",
+      "stage": "result",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": false,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    },
+    {
+      "case": "animal_dinosaur_crossing_001",
+      "stage": "first29",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": true,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    },
+    {
+      "case": "animal_dinosaur_crossing_001",
+      "stage": "result",
+      "sampled_reference_mask_control_match": true,
+      "sampled_first_denoise_state_equal": true,
+      "first_denoise_state_equality_required": false,
+      "first_denoise_state_scope": "initial_noise records the first denoise input; continuation may already include arm-specific generated anchors.",
+      "sampled_conditional_text_differs": true,
+      "sampled_negative_text_matches": true
+    }
+  ],
+  "stacking": {
+    "ok": true,
+    "combined_videos": 40,
+    "frames": [
+      29,
+      57
+    ],
+    "fps": 10,
+    "size": [
+      2496,
+      1920
+    ],
+    "all_outputs_fully_decoded": true,
+    "input_png_sha_verified": 3480,
+    "same_controls_for_both_arms": true,
+    "overlap_removed_consistently": true,
+    "lossless_control_intermediates_pixel_exact": true,
+    "reencoded_for_stacking": true,
+    "checkpoint_iteration": 7000,
+    "weights": "EMA",
+    "checked_utc": "2026-11-17T11:23:06.494048+00:00"
+  },
+  "control_inputs": [
+    {
+      "case": "dense_pedestrian_crosswalk_002",
+      "ordered_inputs_sha256": "d2c175c6999579c0f1ffb0686a7ef7ed55881b312149a9fb1b3dd7294ca95eda",
+      "overlap_exact": true
+    },
+    {
+      "case": "dense_pedestrian_crosswalk_003",
+      "ordered_inputs_sha256": "3aaf62dd8cf7d20fe783f6ccc04208872b11d6941db3e9a5276601be95adaabb",
+      "overlap_exact": true
+    },
+    {
+      "case": "ghost_probe_turn_ego_stop_001",
+      "ordered_inputs_sha256": "4776240e58e09b8a1c51ae6734fec2e97f29938cb597235ed386bfa1cb3bd047",
+      "overlap_exact": true
+    },
+    {
+      "case": "ghost_probe_turn_pedestrian_retreat_001",
+      "ordered_inputs_sha256": "f39b611167818a54eebe17070267c3a0b3ce72e1fe03c367c0561c30632ea04c",
+      "overlap_exact": true
+    },
+    {
+      "case": "ghost_probe_moving_001",
+      "ordered_inputs_sha256": "adc8ed6fba285b2c818283c9705e3fefeb1c7d27a2c631c13c0f2f8c9d3ca885",
+      "overlap_exact": true
+    },
+    {
+      "case": "ghost_probe_static_001",
+      "ordered_inputs_sha256": "eaada8290772977d1ef8a00f3840e5003cadb31cd96ce8118c22c530f1ca8fea",
+      "overlap_exact": true
+    },
+    {
+      "case": "animal_dog_crossing_001",
+      "ordered_inputs_sha256": "d8fe0c7240b237dc5d271429a6e110dd6f709d6e8347c9fc8104b89234262199",
+      "overlap_exact": true
+    },
+    {
+      "case": "animal_elephant_crossing_001",
+      "ordered_inputs_sha256": "05edfd31c154f1b37c0501f253dd12a4b26e1c718a4a84110e2a0737bd3f9a18",
+      "overlap_exact": true
+    },
+    {
+      "case": "animal_giraffe_crossing_001",
+      "ordered_inputs_sha256": "d192940209f71a3726adb7b34a4b68b5a85fe881f59728d5c445533d28129cb5",
+      "overlap_exact": true
+    },
+    {
+      "case": "animal_dinosaur_crossing_001",
+      "ordered_inputs_sha256": "37a9a6aa8aea4be0147a9ef8b1aff536f41a608937460ec16892af9ca39232e8",
+      "overlap_exact": true
+    }
+  ]
+}
