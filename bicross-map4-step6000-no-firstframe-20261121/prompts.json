@@ -1,0 +1,25 @@
+{
+  "negative_prompt": "The video captures a series of frames showing ugly scenes, static with no motion, motion blur, over-saturation, shaky footage, low resolution, grainy texture, pixelated images, poorly lit areas, underexposed and overexposed scenes, poor color balance, washed out colors, choppy sequences, jerky movements, low frame rate, artifacting, color banding, unnatural transitions, outdated special effects, fake elements, unconvincing visuals, poorly edited content, jump cuts, visual noise, and flickering. Overall, the video is of poor quality.",
+  "cases": [
+    {
+      "sample_id": "nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029",
+      "prompt": "This multi-camera perspective captures a bustling urban intersection dominated by a wide, multi-laned road under clear skies. Vehicles populate the scene, including taxis, sedans, SUVs, vans, and buses, navigating through the intersection. Traffic flows steadily, with cars queued at a signalized junction and others moving through the crossroads. Buildings flank both sides of the road, featuring modern architecture with prominent signage and advertisements. Pedestrian crossings and traffic lights regulate the flow, while palm trees line parts of the roadway, adding a touch of greenery to the metropolitan setting. The overall atmosphere reflects a busy city environment with coordinated vehicular movement and structured infrastructure."
+    },
+    {
+      "sample_id": "nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029",
+      "prompt": "This multi-camera perspective captures a forward-moving vehicle traveling along a straight, two-lane road bordered by palm trees and upscale buildings under clear skies. Vehicles ahead—including sedans and SUVs—are visible, maintaining a steady pace. Traffic flows smoothly, with no congestion evident. Palm trees line both sides of the road, interspersed with manicured shrubbery and gravel beds. Buildings flank the roadway, featuring ornate facades and signage, indicative of a commercial or entertainment district. Pedestrian pathways run alongside the road, where a few pedestrians can be seen walking leisurely. Overhead, a pedestrian bridge spans the street, connecting adjacent areas. The scene is bathed in bright sunlight, casting sharp shadows and highlighting the vibrant urban environment."
+    },
+    {
+      "sample_id": "nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029",
+      "prompt": "This multi-camera perspective captures a bustling urban intersection dominated by tall hotels and casinos, with palm trees lining the streets under clear skies. Vehicles populate the scene, including sedans, SUVs, and taxis, navigating through the busy junction. Traffic flows steadily, with cars positioned at various distances from the ego vehicle, which remains stationary amid the congestion. Prominent signage advertises hotels and casinos, adding to the vibrant cityscape. The environment reflects a typical Las Vegas street, characterized by its iconic architecture and lively atmosphere."
+    },
+    {
+      "sample_id": "nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029",
+      "prompt": "This multi-camera perspective captures a bustling urban street scene under clear skies, with abundant sunlight casting sharp shadows. Vehicles populate the roadway, including sedans, SUVs, and taxis, navigating through moderate traffic. Multiple lanes converge at an intersection, where cars are queued ahead, awaiting clearance. Pedestrian activity is visible near sidewalks lined with palm trees and upscale buildings, including hotels and casinos. Escalators and storefronts adorn the right side of the road, while tall skyscrapers dominate the skyline. Cars move steadily forward, maintaining safe distances, while occasional pedestrians cross the street. Traffic flows smoothly, with no abrupt stops or congestion evident."
+    },
+    {
+      "sample_id": "nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029",
+      "prompt": "This multi-camera perspective captures a forward-moving vehicle traveling along a straight, multi-laned road under partly cloudy skies. The road is divided into three lanes in each direction, separated by median strips. Train tracks run alongside the roadway on the right side, bordered by gravel and fencing. Sparse vegetation and utility poles line the median strips. Buildings and palm trees appear intermittently on the left side of the road. Traffic is minimal, with a few vehicles visible ahead in the distance. The environment suggests an urban or suburban setting with clear visibility and moderate-speed driving conditions."
+    }
+  ]
+}
