@@ -1,0 +1,360 @@
+{
+  "cases": [
+    {
+      "case": 1,
+      "sample": "nuplan_2021.05.12.19.36.12_veh-35_00416_00557_f000000__s000000_n000029",
+      "active": 3232,
+      "drawn": 3232,
+      "checked_corners": 23256,
+      "ego_inverse_max": 2.8738654123117158e-08,
+      "xyz_max_m": 2.078476500616801e-06,
+      "chain_max_px": 1.6528658182428262e-05,
+      "ego_travel_m": 0.0006001276934149675,
+      "camera_encoder_exact": true,
+      "outside": []
+    },
+    {
+      "case": 2,
+      "sample": "nuplan_2021.05.12.19.36.12_veh-35_01305_01389_f000000__s000000_n000029",
+      "active": 2766,
+      "drawn": 2765,
+      "checked_corners": 21420,
+      "ego_inverse_max": 1.3097239897064128e-06,
+      "xyz_max_m": 4.235867521559828e-06,
+      "chain_max_px": 5.0610188094564255e-05,
+      "ego_travel_m": 16.07118218519361,
+      "camera_encoder_exact": true,
+      "outside": [
+        {
+          "camera": 4,
+          "frame": 16,
+          "slot": 16,
+          "z_min_m": 28.003457563379605,
+          "bounds": [
+            834.3250320848117,
+            261.3358226255557,
+            862.3332016695122,
+            304.1047175521635
+          ]
+        }
+      ]
+    },
+    {
+      "case": 3,
+      "sample": "nuplan_2021.05.12.23.36.44_veh-35_00785_01041_f000000__s000000_n000029",
+      "active": 5597,
+      "drawn": 5597,
+      "checked_corners": 41559,
+      "ego_inverse_max": 4.657620089609793e-08,
+      "xyz_max_m": 3.304816270272466e-06,
+      "chain_max_px": 2.407928825567887e-05,
+      "ego_travel_m": 0.0010124244756606641,
+      "camera_encoder_exact": true,
+      "outside": []
+    },
+    {
+      "case": 4,
+      "sample": "nuplan_2021.05.12.23.36.44_veh-35_01585_01724_f000000__s000000_n000029",
+      "active": 3759,
+      "drawn": 3759,
+      "checked_corners": 27791,
+      "ego_inverse_max": 5.9035818344987945e-08,
+      "xyz_max_m": 3.831551364654084e-06,
+      "chain_max_px": 3.766662550493853e-05,
+      "ego_travel_m": 0.015570527216592783,
+      "camera_encoder_exact": true,
+      "outside": []
+    },
+    {
+      "case": 5,
+      "sample": "nuplan_2021.06.09.11.54.15_veh-12_00270_00339_f000000__s000000_n000029",
+      "active": 141,
+      "drawn": 141,
+      "checked_corners": 1097,
+      "ego_inverse_max": 4.162763332260511e-06,
+      "xyz_max_m": 4.718191610173264e-06,
+      "chain_max_px": 0.00010914280114310149,
+      "ego_travel_m": 47.30166293071235,
+      "camera_encoder_exact": true,
+      "outside": []
+    }
+  ],
+  "references": [
+    {
+      "case": 1,
+      "camera": 2,
+      "frame": 14,
+      "target": "近处银色普锐斯",
+      "rgb": [
+        553,
+        249,
+        754,
+        384
+      ],
+      "slot": 85,
+      "projected": [
+        545,
+        242,
+        806,
+        413
+      ],
+      "iou": 0.608,
+      "dx": 22.0,
+      "dy": 11.0,
+      "center_distance_px": 24.6
+    },
+    {
+      "case": 2,
+      "camera": 0,
+      "frame": 14,
+      "target": "正前方白车",
+      "rgb": [
+        371,
+        233,
+        455,
+        305
+      ],
+      "slot": 2,
+      "projected": [
+        366,
+        229,
+        456,
+        313
+      ],
+      "iou": 0.8,
+      "dx": -2.0,
+      "dy": 2.0,
+      "center_distance_px": 2.8
+    },
+    {
+      "case": 2,
+      "camera": 0,
+      "frame": 14,
+      "target": "相邻车道深灰车",
+      "rgb": [
+        203,
+        234,
+        328,
+        322
+      ],
+      "slot": 96,
+      "projected": [
+        177,
+        229,
+        333,
+        341
+      ],
+      "iou": 0.63,
+      "dx": -10.5,
+      "dy": 7.0,
+      "center_distance_px": 12.6
+    },
+    {
+      "case": 3,
+      "camera": 3,
+      "frame": 14,
+      "target": "居中近处灰色福特",
+      "rgb": [
+        323,
+        255,
+        550,
+        456
+      ],
+      "slot": 54,
+      "projected": [
+        299,
+        239,
+        582,
+        479
+      ],
+      "iou": 0.672,
+      "dx": 4.0,
+      "dy": 3.5,
+      "center_distance_px": 5.3
+    },
+    {
+      "case": 3,
+      "camera": 3,
+      "frame": 14,
+      "target": "右侧白色 SUV",
+      "rgb": [
+        559,
+        261,
+        714,
+        366
+      ],
+      "slot": 36,
+      "projected": [
+        552,
+        247,
+        748,
+        375
+      ],
+      "iou": 0.649,
+      "dx": 13.5,
+      "dy": -2.5,
+      "center_distance_px": 13.7
+    },
+    {
+      "case": 4,
+      "camera": 3,
+      "frame": 14,
+      "target": "居中黑色轿车",
+      "rgb": [
+        318,
+        256,
+        485,
+        407
+      ],
+      "slot": 54,
+      "projected": [
+        301,
+        253,
+        496,
+        431
+      ],
+      "iou": 0.727,
+      "dx": -3.0,
+      "dy": 10.5,
+      "center_distance_px": 10.9
+    },
+    {
+      "case": 1,
+      "camera": 1,
+      "frame": 0,
+      "target": "路口远处银色轿车",
+      "rgb": [
+        64,
+        260,
+        148,
+        288
+      ],
+      "slot": 91,
+      "projected": [
+        35,
+        258,
+        148,
+        298
+      ],
+      "iou": 0.52,
+      "dx": -14.5,
+      "dy": 4.0,
+      "center_distance_px": 15.0
+    },
+    {
+      "case": 1,
+      "camera": 4,
+      "frame": 14,
+      "target": "画面右侧银色 SUV",
+      "rgb": [
+        598,
+        252,
+        824,
+        348
+      ],
+      "slot": 44,
+      "projected": [
+        593,
+        245,
+        831,
+        366
+      ],
+      "iou": 0.753,
+      "dx": 1.0,
+      "dy": 5.5,
+      "center_distance_px": 5.6
+    },
+    {
+      "case": 2,
+      "camera": 5,
+      "frame": 14,
+      "target": "右侧黄色出租车（含顶牌）",
+      "rgb": [
+        612,
+        244,
+        799,
+        368
+      ],
+      "slot": 80,
+      "projected": [
+        578,
+        227,
+        831,
+        400
+      ],
+      "iou": 0.53,
+      "dx": -1.0,
+      "dy": 7.5,
+      "center_distance_px": 7.6
+    },
+    {
+      "case": 3,
+      "camera": 0,
+      "frame": 0,
+      "target": "左侧黑色本田",
+      "rgb": [
+        17,
+        271,
+        278,
+        430
+      ],
+      "slot": 91,
+      "projected": [
+        0,
+        253,
+        284,
+        474
+      ],
+      "iou": 0.661,
+      "dx": -5.5,
+      "dy": 13.0,
+      "center_distance_px": 14.1
+    },
+    {
+      "case": 3,
+      "camera": 0,
+      "frame": 0,
+      "target": "正前方白色出租车（含顶牌）",
+      "rgb": [
+        332,
+        204,
+        499,
+        384
+      ],
+      "slot": 144,
+      "projected": [
+        319,
+        207,
+        510,
+        405
+      ],
+      "iou": 0.771,
+      "dx": -1.0,
+      "dy": 12.0,
+      "center_distance_px": 12.0
+    },
+    {
+      "case": 5,
+      "camera": 3,
+      "frame": 28,
+      "target": "后方居中白车",
+      "rgb": [
+        396,
+        247,
+        435,
+        280
+      ],
+      "slot": 9,
+      "projected": [
+        394,
+        245,
+        434,
+        284
+      ],
+      "iou": 0.787,
+      "dx": -1.5,
+      "dy": 1.0,
+      "center_distance_px": 1.8
+    }
+  ]
+}

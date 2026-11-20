@@ -1,0 +1,82 @@
+[
+  {
+    "case": 1,
+    "kind": "projection",
+    "path": "videos/case-01-projection.mp4",
+    "frames": 29,
+    "sha256": "897433cbb90b671c8f736c031c7e0fc29f7e3ca396a34e6fa6f273ffa5f161d8",
+    "bytes": 5000080
+  },
+  {
+    "case": 1,
+    "kind": "rgb",
+    "path": "videos/case-01-rgb.mp4",
+    "frames": 29,
+    "sha256": "d4a1ff1a125861987a1a868b9e7e504a3a9c78b882f0b9cbc10d45b247c44a5f",
+    "bytes": 3797139
+  },
+  {
+    "case": 2,
+    "kind": "projection",
+    "path": "videos/case-02-projection.mp4",
+    "frames": 29,
+    "sha256": "8057cb8a51c7797b9066e793f5c7cc29ec8e2be88a6af65864124bfcc3d1dc57",
+    "bytes": 11944410
+  },
+  {
+    "case": 2,
+    "kind": "rgb",
+    "path": "videos/case-02-rgb.mp4",
+    "frames": 29,
+    "sha256": "5013382153d94fe726f80114e345edd604c391ee61c58ee98e12f43b7390e771",
+    "bytes": 11633292
+  },
+  {
+    "case": 3,
+    "kind": "projection",
+    "path": "videos/case-03-projection.mp4",
+    "frames": 29,
+    "sha256": "3443d4f4464ad11fb862dac9f3adaa7207bdcb9045e121a35f468fc241b34837",
+    "bytes": 4601782
+  },
+  {
+    "case": 3,
+    "kind": "rgb",
+    "path": "videos/case-03-rgb.mp4",
+    "frames": 29,
+    "sha256": "92dafd99947673ea94a54dcfd6598995d17e34d58226b9db80daa064607ccf76",
+    "bytes": 3569384
+  },
+  {
+    "case": 4,
+    "kind": "projection",
+    "path": "videos/case-04-projection.mp4",
+    "frames": 29,
+    "sha256": "6a9579b126632fbab0f194c2c70ebb784554c009271169f10e7e6e0633eea226",
+    "bytes": 5397923
+  },
+  {
+    "case": 4,
+    "kind": "rgb",
+    "path": "videos/case-04-rgb.mp4",
+    "frames": 29,
+    "sha256": "719c13f4440393c82011d4ec233edae8d1020f86d65e882e844430731aecf9ad",
+    "bytes": 4122111
+  },
+  {
+    "case": 5,
+    "kind": "projection",
+    "path": "videos/case-05-projection.mp4",
+    "frames": 29,
+    "sha256": "f5c133bbaaf363ea3ceb8b63b17580ffaf5ab89c27e4a62fc37faca08f864775",
+    "bytes": 8496125
+  },
+  {
+    "case": 5,
+    "kind": "rgb",
+    "path": "videos/case-05-rgb.mp4",
+    "frames": 29,
+    "sha256": "ca365cd727060eac8dd959fba4bb863c06378fc6ac96090103680b7adfb6dabd",
+    "bytes": 8440586
+  }
+]
