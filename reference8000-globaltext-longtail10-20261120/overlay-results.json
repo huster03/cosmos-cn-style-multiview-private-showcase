@@ -1,0 +1,335 @@
+{
+  "step": 8000,
+  "weight": "EMA",
+  "fps": 10,
+  "scenes": [
+    {
+      "id": "dense_pedestrian_crosswalk_002",
+      "title": "密集行人过街 · 路口",
+      "seed": 10001,
+      "prompt": "The video shows a realistic front-facing autonomous driving scene on a marked urban road in daylight. A clearly marked zebra crosswalk spans the roadway ahead, with sidewalks, curbs, lane markings, traffic signs, roadside buildings, and normal surrounding vehicles visible in the background. A large but naturally distributed group of pedestrians enters the zebra crossing from both sides and crosses in front of the ego vehicle. The pedestrians are individually spaced rather than standing shoulder to shoulder, and they move at slightly different speeds and depths across the crosswalk, with some already crossing and others just beginning. The ego vehicle approaches the occupied crosswalk and faces a realistic dense pedestrian crossing hazard that requires slowing or stopping.\n\nThe six camera views surround the same vehicle at this broad city intersection. The surrounding district has large pale hotel buildings, landscaped green trees and palms, concrete sidewalks, short dark bollards, and wide dry gray asphalt lanes. Bright daylight produces distinct shadows and a lightly hazy blue sky. The rear view looks back along the approach road, with lane markings receding into the distance and the same curb, sidewalk, landscaping, and building materials continuing beside it. The rear-left and rear-right views connect these roadside surfaces to the side views with consistent scale, daylight, contrast, and color. Each pedestrian and vehicle keeps one location and trajectory in the shared scene; the occupied crossing ahead is not repeated as a separate crossing event behind the vehicle.",
+      "media": {
+        "29": {
+          "src": "media/dense_pedestrian_crosswalk_002__global-29.mp4",
+          "frames": 29,
+          "sha256": "834661a6d4d53cbca3b0215201351ddf1a6c3d6f6c9665dd704339486e1ae86c"
+        },
+        "57": {
+          "src": "media/dense_pedestrian_crosswalk_002__global-57.mp4",
+          "frames": 57,
+          "sha256": "1403eebcb4e99b82693150a7e6e9df2d679646467ed15357a1fcc13f7c6fbb4e"
+        }
+      },
+      "overlay": {
+        "29": {
+          "src": "overlay/dense_pedestrian_crosswalk_002-29.mp4",
+          "frames": 29,
+          "sha256": "bcf185388742dcc9e17f272df462a472b6bcce776315b597a14ee335c53b9598"
+        },
+        "57": {
+          "src": "overlay/dense_pedestrian_crosswalk_002-57.mp4",
+          "frames": 57,
+          "sha256": "6476a845b42b0a4a2ee7563fdf57c49186679b0b6b2f4f429ef0285acb09322c"
+        }
+      },
+      "overlay_poster": "overlay/dense_pedestrian_crosswalk_002.jpg"
+    },
+    {
+      "id": "dense_pedestrian_crosswalk_003",
+      "title": "密集行人过街 · 大道",
+      "seed": 10002,
+      "prompt": "The video shows a realistic front-facing autonomous driving scene on a marked urban road in daylight. A clearly marked zebra crosswalk spans the roadway ahead, with sidewalks, curbs, lane markings, traffic signs, roadside buildings, and normal surrounding vehicles visible in the background. A large but naturally distributed group of pedestrians enters the zebra crossing from both sides and crosses in front of the ego vehicle. The pedestrians are individually spaced rather than standing shoulder to shoulder, and they move at slightly different speeds and depths across the crosswalk, with some already crossing and others just beginning. The ego vehicle approaches the occupied crosswalk and faces a realistic dense pedestrian crossing hazard that requires slowing or stopping.\n\nAll six cameras show the same sunny palm-lined city boulevard. Wide dry asphalt lanes, white crossing stripes, pale concrete sidewalks, rows of short dark roadside bollards, planted edges, and large light-colored hotel facades establish one continuous streetscape. The rear camera looks back along the boulevard already traveled, retaining the same road width, pavement texture, lane-marking style, palms, and urban building materials. The rear-side views continue the neighboring sidewalks and facades around the vehicle instead of changing to a different neighborhood. Keep the blue sky, sun direction, hard daytime shadows, and natural colors coherent in every direction while allowing normal exposure differences between sunlit and shaded surfaces. The pedestrians crossing ahead remain at their controlled world positions and do not become an additional crowd behind the car.",
+      "media": {
+        "29": {
+          "src": "media/dense_pedestrian_crosswalk_003__global-29.mp4",
+          "frames": 29,
+          "sha256": "5d4d1965b71d4360776fb57bbec1f9b070bc12cd292e041955815b33caa46804"
+        },
+        "57": {
+          "src": "media/dense_pedestrian_crosswalk_003__global-57.mp4",
+          "frames": 57,
+          "sha256": "b9a1833cdbfb35b7f6962fb2b4663bbf0ed5dd5425a01bfb9e272595f528cd6d"
+        }
+      },
+      "overlay": {
+        "29": {
+          "src": "overlay/dense_pedestrian_crosswalk_003-29.mp4",
+          "frames": 29,
+          "sha256": "8e08fa1b09d6cd51fd8d0ad67b620efa5de387e3f07f189c3a739607a5a752dd"
+        },
+        "57": {
+          "src": "overlay/dense_pedestrian_crosswalk_003-57.mp4",
+          "frames": 57,
+          "sha256": "efe7e7b725e5ba02f01b4997642359d18e3eda17d60ab3123ecc35d33f0d4255"
+        }
+      },
+      "overlay_poster": "overlay/dense_pedestrian_crosswalk_003.jpg"
+    },
+    {
+      "id": "ghost_probe_turn_ego_stop_001",
+      "title": "转弯后行人探出 · 自车停车",
+      "seed": 10004,
+      "prompt": "The video shows a front-facing autonomous driving view on an urban roadway during daylight. The ego vehicle approaches and completes a left turn. After the turn, a stationary vehicle is parked along the right side of the road and initially hides a pedestrian behind its rear corner. Only after the ego vehicle has completed the turn, the pedestrian suddenly steps out from behind the parked vehicle into the ego vehicle's path at a normal walking speed. The pedestrian then slows and stops while the ego vehicle detects the close-range hazard, brakes progressively, and comes to a controlled stop. The road markings, buildings, roadside infrastructure, and surrounding traffic remain consistent with the original scene.\n\nThis is one continuous office-district street seen by six surrounding cameras. Warm brick and tan building facades with dark windows, pale concrete sidewalks, red-painted curb sections, and regularly spaced leafy street trees line the dry gray road. White lane arrows and boundaries and yellow center markings belong to the same connected road layout. During the left turn, the rear and rear-side cameras reveal the junction being left behind and the adjoining office street, with the same building materials, tree cover, and sunlit and shaded pavement. Passing facades remain fixed in the world as their positions change naturally between camera views. Preserve the clear daytime atmosphere and neutral photographic colors; the parked vehicle and emerging pedestrian stay in their original roadside locations rather than being duplicated behind the ego vehicle.",
+      "media": {
+        "29": {
+          "src": "media/ghost_probe_turn_ego_stop_001__global-29.mp4",
+          "frames": 29,
+          "sha256": "da187e9c7ebb6e5c824bac02bfd882e0ff54df5960faeb9c08cf79ab10d69007"
+        },
+        "57": {
+          "src": "media/ghost_probe_turn_ego_stop_001__global-57.mp4",
+          "frames": 57,
+          "sha256": "532b4d9d1fdf27da4bb679ed977ba5842f571178d7931ecb1cfaab6e78c6d160"
+        }
+      },
+      "overlay": {
+        "29": {
+          "src": "overlay/ghost_probe_turn_ego_stop_001-29.mp4",
+          "frames": 29,
+          "sha256": "38c6c82c85dbc9762b0bb658cf1416d9a787dcc71bfb1884457d19c4ee1388b3"
+        },
+        "57": {
+          "src": "overlay/ghost_probe_turn_ego_stop_001-57.mp4",
+          "frames": 57,
+          "sha256": "3c6a477f1103398264514a832008e5cb5152454d757f5322874e41910627fa5c"
+        }
+      },
+      "overlay_poster": "overlay/ghost_probe_turn_ego_stop_001.jpg"
+    },
+    {
+      "id": "ghost_probe_turn_pedestrian_retreat_001",
+      "title": "转弯后行人探出 · 行人后退",
+      "seed": 10005,
+      "prompt": "The video shows a front-facing autonomous driving view on an urban roadway during daylight. The ego vehicle approaches and completes a left turn. After the turn, a stationary vehicle is parked along the right side of the road and initially hides a pedestrian behind its rear corner. Only after the ego vehicle has completed the turn, the pedestrian suddenly steps out from behind the parked vehicle into the ego vehicle's path at a normal walking speed. When the approaching ego vehicle gets close, the pedestrian reacts by slowing and retreating toward the rear of the parked vehicle instead of continuing into the lane. The road markings, buildings, roadside infrastructure, and surrounding traffic remain consistent with the original scene.\n\nThe surrounding six-view scene is the same tree-lined office district throughout the turn. Brick and dark-glass buildings border pale concrete sidewalks, red curb edges, and a dry gray road with white arrows, white lane boundaries, and yellow hatched markings. Blue sky with scattered white clouds and alternating sunlight and building shade give the streets a consistent daytime appearance. The rear view looks toward the intersection just passed, while the rear-left and rear-right views continue the nearby sidewalks, trees, and office facades around the vehicle. Building scale, brick color, window reflections, pavement texture, and the world direction of sunlight remain consistent across the views. The pedestrian retreat and the parked vehicle remain one local event at their controlled positions, without an extra copy in the rear view.",
+      "media": {
+        "29": {
+          "src": "media/ghost_probe_turn_pedestrian_retreat_001__global-29.mp4",
+          "frames": 29,
+          "sha256": "b1a2a6a494a6b43941f14a19d9e2f61a54a333c18798661b8271e9062122b247"
+        },
+        "57": {
+          "src": "media/ghost_probe_turn_pedestrian_retreat_001__global-57.mp4",
+          "frames": 57,
+          "sha256": "9080aa70922404096001a494de30cf62f747cb9792a0c9378e57c3b1dcc69476"
+        }
+      },
+      "overlay": {
+        "29": {
+          "src": "overlay/ghost_probe_turn_pedestrian_retreat_001-29.mp4",
+          "frames": 29,
+          "sha256": "986534eba6f2e68db64ec83d02e1be82499cc0f927c5b8d28811245a420fe4e0"
+        },
+        "57": {
+          "src": "overlay/ghost_probe_turn_pedestrian_retreat_001-57.mp4",
+          "frames": 57,
+          "sha256": "487dfa23e23e451ebf669c1a4835fbbbd8e7ae7c4f0ef5e36cb55ecbbc3f0f00"
+        }
+      },
+      "overlay_poster": "overlay/ghost_probe_turn_pedestrian_retreat_001.jpg"
+    },
+    {
+      "id": "ghost_probe_moving_001",
+      "title": "行驶中遮挡行人探出",
+      "seed": 10006,
+      "prompt": "The video shows a realistic front-facing autonomous driving scene on an urban roadway in daylight. The ego vehicle is moving forward while a stationary vehicle on the right side blocks the view of a pedestrian behind its rear corner. The pedestrian remains hidden until the ego vehicle is close, then steps out from behind the vehicle into the lane and continues toward the middle of the road. As the moving ego vehicle approaches, the pedestrian reacts, slows, and retreats toward the occluding vehicle while the ego vehicle continues along the roadway.\n\nThe six views belong to one green urban road corridor. Gray asphalt with white lane boundaries and yellow center markings runs between concrete curbs, leafy trees, grassy banks, and low roadside infrastructure. A dark underpass is ahead in the front reference, and roadside fencing and trees define the adjacent street edges. The rear camera looks back along the road already traveled, keeping the same pavement, lane-marking style, curbs, and green roadside setting. Rear-side views continue those tree-lined edges with coherent perspective rather than introducing an unrelated dense building district. Maintain the same cloudy daytime sky, subdued natural colors, and soft lighting in every direction. The occluding vehicle and pedestrian remain at their existing world positions, with surrounding traffic following the supplied controls.",
+      "media": {
+        "29": {
+          "src": "media/ghost_probe_moving_001__global-29.mp4",
+          "frames": 29,
+          "sha256": "0c37fbfefe823cd89f89a658320c763c48a3e3c3954d6439df00bde5ecae92e7"
+        },
+        "57": {
+          "src": "media/ghost_probe_moving_001__global-57.mp4",
+          "frames": 57,
+          "sha256": "3070ffac2001d22b15eb8b5f1c942f59bae6f01bf622dfeea169c44f793af1de"
+        }
+      },
+      "overlay": {
+        "29": {
+          "src": "overlay/ghost_probe_moving_001-29.mp4",
+          "frames": 29,
+          "sha256": "b1b11d96605cfc9a06573596497c63b1de443b69ab0bb7210f84ba1b3895f441"
+        },
+        "57": {
+          "src": "overlay/ghost_probe_moving_001-57.mp4",
+          "frames": 57,
+          "sha256": "d886d48b886495036a5ffdd1e42b0b1c7e4cc27fcb142e5a8ef814d44993e4f9"
+        }
+      },
+      "overlay_poster": "overlay/ghost_probe_moving_001.jpg"
+    },
+    {
+      "id": "ghost_probe_static_001",
+      "title": "低速时遮挡行人探出",
+      "seed": 10007,
+      "prompt": "The video shows a realistic front-facing autonomous driving scene on an urban roadway in daylight. The ego vehicle is stationary or moving only slightly. A vehicle stopped on the right side initially hides a pedestrian behind its rear corner. The pedestrian suddenly becomes visible only after stepping out from behind the vehicle, then continues walking forward across the lane toward the middle of the roadway at a normal walking speed without retreating.\n\nAll six cameras are located on the same quiet office street. Modern brick and dark-windowed buildings, orderly rows of leafy trees, narrow planted strips, pale sidewalks, and concrete curbs border the dry gray asphalt. White lane markings and building and tree shadows give the road a consistent daytime texture. Behind the ego vehicle, the same street extends away with its lane boundaries, paired sidewalks, planted edges, and office-building materials continuing into the distance. The rear-left and rear-right views connect to the near side facades and trees without changing architectural style or weather. Keep the partly cloudy daylight, natural contrast, and neutral colors coherent around the vehicle. The stopped vehicle and crossing pedestrian are one roadside event, visible only where their world positions and occlusion permit.",
+      "media": {
+        "29": {
+          "src": "media/ghost_probe_static_001__global-29.mp4",
+          "frames": 29,
+          "sha256": "65b2f1f68be7c2b900a79d0f500e22937459796fdfed9cd22b1e256c43f70255"
+        },
+        "57": {
+          "src": "media/ghost_probe_static_001__global-57.mp4",
+          "frames": 57,
+          "sha256": "684b3eb715ba7431b02c071f00c846d44048338fce25f70b8c9779ed385ce2e7"
+        }
+      },
+      "overlay": {
+        "29": {
+          "src": "overlay/ghost_probe_static_001-29.mp4",
+          "frames": 29,
+          "sha256": "84b13d9d816e6868bc2c6c32440df31205c10690665d9b9c8b5fbe2bed30a544"
+        },
+        "57": {
+          "src": "overlay/ghost_probe_static_001-57.mp4",
+          "frames": 57,
+          "sha256": "0980db06db52339a914dc2a8d7681cdfcee88691ecc88b92699b138292d0bb92"
+        }
+      },
+      "overlay_poster": "overlay/ghost_probe_static_001.jpg"
+    },
+    {
+      "id": "animal_dog_crossing_001",
+      "title": "狗横穿道路",
+      "seed": 10008,
+      "prompt": "The video shows a realistic front-facing autonomous driving scene on an urban roadway in daylight. The ego vehicle is moving along a marked road with lane boundaries, roadside infrastructure, and normal surrounding traffic visible in the distance. A medium-sized dog suddenly enters from the right side at a safe distance ahead and runs across the roadway from right to left. The dog follows a natural diagonal crossing path at a brisk but plausible speed, clears the ego vehicle's lane, and creates a realistic animal-crossing hazard without colliding with the ego vehicle.\n\nThis six-camera scene is a single tree-lined urban neighborhood junction. Dry gray asphalt, yellow center markings, white crossing and stop lines, pale concrete sidewalks, roadside walls, leafy trees, and brick-toned building surfaces form the surrounding environment. The traffic signals, streetlights, and existing roadwork elements retain their controlled positions as the ego vehicle advances. The rear view looks back along the same neighborhood road, preserving the pavement texture, road-marking colors, curb construction, tree cover, and nearby architectural materials. The rear-side views form a continuous connection to the sidewalks beside the vehicle. Keep the same softly lit daytime sky, muted natural colors, and realistic contrast across all views. There is one crossing dog following its original trajectory, not an additional animal placed behind the vehicle.",
+      "media": {
+        "29": {
+          "src": "media/animal_dog_crossing_001__global-29.mp4",
+          "frames": 29,
+          "sha256": "0362ace1da0460097553be161a357e5fc4cb34f05de9c51f0784118ed344349e"
+        },
+        "57": {
+          "src": "media/animal_dog_crossing_001__global-57.mp4",
+          "frames": 57,
+          "sha256": "720de14390308e1933670cb29fccc18548e404ab5387308b83e581030fc076bf"
+        }
+      },
+      "overlay": {
+        "29": {
+          "src": "overlay/animal_dog_crossing_001-29.mp4",
+          "frames": 29,
+          "sha256": "0580f8f5127c8cb79ac71651fe1456e25b2048d63439581039161ccd25292f18"
+        },
+        "57": {
+          "src": "overlay/animal_dog_crossing_001-57.mp4",
+          "frames": 57,
+          "sha256": "424a90816c8742180f425573a580f6c3a51ec4aa6fb786603196504db24b8eae"
+        }
+      },
+      "overlay_poster": "overlay/animal_dog_crossing_001.jpg"
+    },
+    {
+      "id": "animal_elephant_crossing_001",
+      "title": "大象横穿道路",
+      "seed": 10009,
+      "prompt": "The video shows a realistic front-facing autonomous driving scene on a quiet urban roadway in daylight. The ego vehicle is stationary or moving only slightly, with visible lane markings, road boundaries, and sparse normal traffic in the surrounding environment. A large elephant enters the road from the right side at a controlled distance and walks steadily across toward the left side. Its slow, heavy movement forms an unusual but physically plausible animal-crossing hazard while the roadway and camera viewpoint remain stable.\n\nThe six cameras surround the same vehicle at a broad urban junction bordered by landscaping and office buildings. Dry gray asphalt carries white arrows and lane boundaries and yellow marked areas, with pale concrete curb and retaining-wall surfaces along the edges. Leafy trees, low planting, and shaded dark building windows define the nearby environment. The rear camera looks back along the connected approach road, with the same road surface, marking style, concrete edges, planted areas, and office-district materials. The rear-side views continue the nearby landscaping and street edges at a coherent scale. Preserve bright daytime illumination, natural green vegetation, neutral gray pavement, and consistent sun and shade around the vehicle. The elephant remains the single animal crossing ahead, rather than appearing as an additional rear-view animal.",
+      "media": {
+        "29": {
+          "src": "media/animal_elephant_crossing_001__global-29.mp4",
+          "frames": 29,
+          "sha256": "48ee053cb469d4b788a7e293577afd336e9f384a8b80efd796260050edf5d3ed"
+        },
+        "57": {
+          "src": "media/animal_elephant_crossing_001__global-57.mp4",
+          "frames": 57,
+          "sha256": "577df35867cf2a27e4817468bd773e872e6b7e9c3b98380f12f28585bf96393c"
+        }
+      },
+      "overlay": {
+        "29": {
+          "src": "overlay/animal_elephant_crossing_001-29.mp4",
+          "frames": 29,
+          "sha256": "ff6c088fc9159384287d9acfdd9097cf8022705514bfec00a0a3bfdc5c2ffb57"
+        },
+        "57": {
+          "src": "overlay/animal_elephant_crossing_001-57.mp4",
+          "frames": 57,
+          "sha256": "3896db6b2ea673b7bd92e7e9e3ad3595fd09b1a36df2cfd9ce142c68b6b0b8e3"
+        }
+      },
+      "overlay_poster": "overlay/animal_elephant_crossing_001.jpg"
+    },
+    {
+      "id": "animal_giraffe_crossing_001",
+      "title": "长颈鹿横穿道路",
+      "seed": 10010,
+      "prompt": "The video shows a realistic front-facing autonomous driving scene on a broad urban road in daylight. The ego vehicle proceeds forward through a lightly populated road environment with marked lanes, curbs, and normal traffic visible around the roadway. A tall giraffe appears from the right side at a distant position and walks across the road toward the left. The giraffe moves more slowly than a running animal, remains upright with a tall irregular silhouette, and crosses in world-consistent motion without being carried sideways by the ego vehicle.\n\nThe surrounding six-view scene is an open, green urban-edge junction. Broad gray asphalt lanes, white road markings, yellow-painted curb edges and signal hardware, grassy embankments, low fencing, and scattered mature trees form the shared setting. The sky is blue with broken white clouds and the landscape is lit by natural daytime sun. Behind the ego vehicle, the same approach road recedes through this open grassy and tree-lined environment, with continuous lane geometry and matching pavement and curb materials. The rear-side views retain the open verges, fencing, and vegetation instead of changing to an enclosed high-rise street. Lighting, grass color, distant tree scale, and cloud appearance remain coherent across directions. The giraffe keeps its original crossing position and motion in the shared scene without a separate copy behind the vehicle.",
+      "media": {
+        "29": {
+          "src": "media/animal_giraffe_crossing_001__global-29.mp4",
+          "frames": 29,
+          "sha256": "0ed8a490be1b1f6fd2a1c9c793b59fc628740d35c52f7b306b15bf9df079db9d"
+        },
+        "57": {
+          "src": "media/animal_giraffe_crossing_001__global-57.mp4",
+          "frames": 57,
+          "sha256": "d600870b8ad615b223df98f93a0c7e82ed86ec1161a39996ae25eebc06fd61ea"
+        }
+      },
+      "overlay": {
+        "29": {
+          "src": "overlay/animal_giraffe_crossing_001-29.mp4",
+          "frames": 29,
+          "sha256": "143169d7823c8997d9fccd7e1539ff0bced16e2330ec661e2d7f1a1632e0331c"
+        },
+        "57": {
+          "src": "overlay/animal_giraffe_crossing_001-57.mp4",
+          "frames": 57,
+          "sha256": "af6539a982d161dc20f17f2ba3981b901931e3744c7bb332a9685dac051ab961"
+        }
+      },
+      "overlay_poster": "overlay/animal_giraffe_crossing_001.jpg"
+    },
+    {
+      "id": "animal_dinosaur_crossing_001",
+      "title": "恐龙形动物横穿道路",
+      "seed": 10011,
+      "prompt": "The video shows a front-facing autonomous driving scene on an open urban roadway in daylight. The ego vehicle is moving forward on a marked road with lanes, roadside boundaries, and sparse traffic visible in the distance. An exceptionally large dinosaur-like animal enters from the right side far ahead and crosses toward the left side of the road. The animal moves at a faster but still coherent running pace, has a large irregular non-vehicle silhouette, and creates an extreme long-tail road hazard while remaining on a world-consistent trajectory ahead of the approaching ego vehicle.\n\nThe six camera views share one broad boulevard in a dry, sunny city district. Dark gray asphalt lanes, pale concrete sidewalks, short roadside bollards, palms, low dry landscaping, and distant light-colored tall buildings establish the environment. The distinctive pyramid-shaped building visible in the front reference stays at that world location rather than being repeated in every direction. The rear camera looks back along the traveled boulevard with matching lane-marking style, pavement texture, roadside planting, bollards, and the same urban building materials. The rear-side views connect the adjacent landscaped edges to the side views with coherent scale. Maintain the clear pale-blue sky, bright sun, dry surfaces, and natural warm daylight across all views. The dinosaur-like animal remains the single hazard ahead on its original trajectory, without an added rear-view animal.",
+      "media": {
+        "29": {
+          "src": "media/animal_dinosaur_crossing_001__global-29.mp4",
+          "frames": 29,
+          "sha256": "6f4db2570dfecb7f149df95861258a6510db0fb118736cc35badca3e97ffab57"
+        },
+        "57": {
+          "src": "media/animal_dinosaur_crossing_001__global-57.mp4",
+          "frames": 57,
+          "sha256": "6b78dfc9ecea4c555a8f6b5dadd44dfc032af3860d5d01f79478e8a1b3779990"
+        }
+      },
+      "overlay": {
+        "29": {
+          "src": "overlay/animal_dinosaur_crossing_001-29.mp4",
+          "frames": 29,
+          "sha256": "0ca172df62b007061794311f5a183a8827865efcc6a7d3a017cc190c6e3c7340"
+        },
+        "57": {
+          "src": "overlay/animal_dinosaur_crossing_001-57.mp4",
+          "frames": 57,
+          "sha256": "0b0657fb26e7aa83ab4f3be9a22dafe9f2c5dd2551cd5ddba0e8a27eee27f1d4"
+        }
+      },
+      "overlay_poster": "overlay/animal_dinosaur_crossing_001.jpg"
+    }
+  ],
+  "overlay_settings": {
+    "source": "control_input_hdmap",
+    "camera_grid": [
+      [
+        "CAM_L0",
+        "CAM_F0",
+        "CAM_R0"
+      ],
+      [
+        "CAM_L2",
+        "CAM_B0",
+        "CAM_R2"
+      ]
+    ],
+    "opacity": 0.55,
+    "transparent_max_channel_at_most": 8,
+    "frame_indices_57": "first[0:29] + continuation[1:29]"
+  }
+}
