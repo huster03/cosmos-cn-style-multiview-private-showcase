@@ -1,0 +1,191 @@
+{
+  "checkpoint": 5000,
+  "weights": "EMA",
+  "fps": 10,
+  "frames": 57,
+  "opacity": 0.5,
+  "grid": [
+    [
+      "CAM_L0",
+      "CAM_F0",
+      "CAM_R0"
+    ],
+    [
+      "CAM_L2",
+      "CAM_B0",
+      "CAM_R2"
+    ]
+  ],
+  "scenes": [
+    {
+      "id": "dense_pedestrian_crosswalk_002",
+      "title": "密集行人 002",
+      "seed": 10001,
+      "media": {
+        "six": {
+          "src": "media/dense_pedestrian_crosswalk_002-six.mp4",
+          "poster": "media/dense_pedestrian_crosswalk_002-six.jpg",
+          "sha256": "4f73e4af9476906407834e8fdc59bf72b8442f390e8e92e099ac5d24afd1067d"
+        },
+        "rear": {
+          "src": "media/dense_pedestrian_crosswalk_002-rear.mp4",
+          "poster": "media/dense_pedestrian_crosswalk_002-rear.jpg",
+          "sha256": "93335ef9599d78b3ce5f0ab197774d89ae8a1115485e1ca7231667fe1e5329fe"
+        }
+      }
+    },
+    {
+      "id": "dense_pedestrian_crosswalk_003",
+      "title": "密集行人 003",
+      "seed": 10002,
+      "media": {
+        "six": {
+          "src": "media/dense_pedestrian_crosswalk_003-six.mp4",
+          "poster": "media/dense_pedestrian_crosswalk_003-six.jpg",
+          "sha256": "a0132cf65628c0777c9f08cb04a46a0bdd928f5679afe1383d5050ff90a14bd1"
+        },
+        "rear": {
+          "src": "media/dense_pedestrian_crosswalk_003-rear.mp4",
+          "poster": "media/dense_pedestrian_crosswalk_003-rear.jpg",
+          "sha256": "2bab038a2c7b8b183ec5c30bb0a9dcb5b5c08a461ad9e458572abf633aedb4dc"
+        }
+      }
+    },
+    {
+      "id": "ghost_probe_turn_ego_stop_001",
+      "title": "转弯鬼探头 · 自车停车",
+      "seed": 10004,
+      "media": {
+        "six": {
+          "src": "media/ghost_probe_turn_ego_stop_001-six.mp4",
+          "poster": "media/ghost_probe_turn_ego_stop_001-six.jpg",
+          "sha256": "70128fb2266eb6e88570b715e0163c08b08282cd6c2f1c58591a4acfb5a4b49a"
+        },
+        "rear": {
+          "src": "media/ghost_probe_turn_ego_stop_001-rear.mp4",
+          "poster": "media/ghost_probe_turn_ego_stop_001-rear.jpg",
+          "sha256": "6a0d7af3c3dc730c248f2ec9fa606441954cbd01b45b9e7a6055e559ece9d1c3"
+        }
+      }
+    },
+    {
+      "id": "ghost_probe_turn_pedestrian_retreat_001",
+      "title": "转弯鬼探头 · 行人后退",
+      "seed": 10005,
+      "media": {
+        "six": {
+          "src": "media/ghost_probe_turn_pedestrian_retreat_001-six.mp4",
+          "poster": "media/ghost_probe_turn_pedestrian_retreat_001-six.jpg",
+          "sha256": "5dbc73e003207bd0ea118c76c6fff4f94c696d5f9e7f1c55805601d5b86ced43"
+        },
+        "rear": {
+          "src": "media/ghost_probe_turn_pedestrian_retreat_001-rear.mp4",
+          "poster": "media/ghost_probe_turn_pedestrian_retreat_001-rear.jpg",
+          "sha256": "25e28eaccff89d8204065ffb7a70dde4c00a88e0cd5aab5cc13da6ea67a9ea06"
+        }
+      }
+    },
+    {
+      "id": "ghost_probe_moving_001",
+      "title": "移动自车鬼探头",
+      "seed": 10006,
+      "media": {
+        "six": {
+          "src": "media/ghost_probe_moving_001-six.mp4",
+          "poster": "media/ghost_probe_moving_001-six.jpg",
+          "sha256": "23e70f0cb2b753832097033841bebcddb3c56c73e6ef39bb245c0cb0828c3dc3"
+        },
+        "rear": {
+          "src": "media/ghost_probe_moving_001-rear.mp4",
+          "poster": "media/ghost_probe_moving_001-rear.jpg",
+          "sha256": "6c2bbbc7783f34767917bdd86f1fff3936218fd7b6c0c8321438163f4dfb9d43"
+        }
+      }
+    },
+    {
+      "id": "ghost_probe_static_001",
+      "title": "静止自车鬼探头",
+      "seed": 10007,
+      "media": {
+        "six": {
+          "src": "media/ghost_probe_static_001-six.mp4",
+          "poster": "media/ghost_probe_static_001-six.jpg",
+          "sha256": "25ff92844079ba0aedf7370732580e2681a9b4f33baa7c8a33c1c4fffd22841a"
+        },
+        "rear": {
+          "src": "media/ghost_probe_static_001-rear.mp4",
+          "poster": "media/ghost_probe_static_001-rear.jpg",
+          "sha256": "c32498e311ab3e0379014773fbb28a0d40ecea06e8b17ce0f6e8fb0acb668110"
+        }
+      }
+    },
+    {
+      "id": "animal_dog_crossing_001",
+      "title": "犬只横穿",
+      "seed": 10008,
+      "media": {
+        "six": {
+          "src": "media/animal_dog_crossing_001-six.mp4",
+          "poster": "media/animal_dog_crossing_001-six.jpg",
+          "sha256": "6c66ecae9e6ce8f09e8aaab404d24b679e837be6de6727bfbd997bf2b4b8cecf"
+        },
+        "rear": {
+          "src": "media/animal_dog_crossing_001-rear.mp4",
+          "poster": "media/animal_dog_crossing_001-rear.jpg",
+          "sha256": "230841b492f2949704340606087e3510738fc579f1a7a15be7a8d100b314e2b2"
+        }
+      }
+    },
+    {
+      "id": "animal_elephant_crossing_001",
+      "title": "大象横穿",
+      "seed": 10009,
+      "media": {
+        "six": {
+          "src": "media/animal_elephant_crossing_001-six.mp4",
+          "poster": "media/animal_elephant_crossing_001-six.jpg",
+          "sha256": "08a29e4ebaa962a14d2ce11011ed76b3e9fa7da9ff54b01b0077ddc1f6f80b4d"
+        },
+        "rear": {
+          "src": "media/animal_elephant_crossing_001-rear.mp4",
+          "poster": "media/animal_elephant_crossing_001-rear.jpg",
+          "sha256": "b0c3f083dab307755b9ab99d5e174d8fe07b26649a5f3214b737b62446d673d0"
+        }
+      }
+    },
+    {
+      "id": "animal_giraffe_crossing_001",
+      "title": "长颈鹿横穿",
+      "seed": 10010,
+      "media": {
+        "six": {
+          "src": "media/animal_giraffe_crossing_001-six.mp4",
+          "poster": "media/animal_giraffe_crossing_001-six.jpg",
+          "sha256": "83eae254ad2462cf138f2caff8bdc77c97b92bc071fb64de340085efb4c09bd6"
+        },
+        "rear": {
+          "src": "media/animal_giraffe_crossing_001-rear.mp4",
+          "poster": "media/animal_giraffe_crossing_001-rear.jpg",
+          "sha256": "909d44f533107576196b28084ffed4a0952d1e99915803f783c54056e1ff9abe"
+        }
+      }
+    },
+    {
+      "id": "animal_dinosaur_crossing_001",
+      "title": "恐龙横穿",
+      "seed": 10011,
+      "media": {
+        "six": {
+          "src": "media/animal_dinosaur_crossing_001-six.mp4",
+          "poster": "media/animal_dinosaur_crossing_001-six.jpg",
+          "sha256": "bf07a1dd7b6e4052337fe89145729a32dc51fbadb7a45ebd9d611ca5df274880"
+        },
+        "rear": {
+          "src": "media/animal_dinosaur_crossing_001-rear.mp4",
+          "poster": "media/animal_dinosaur_crossing_001-rear.jpg",
+          "sha256": "21b9e3290299b9f55bb18fe5b14cd1e4c10c39041dda8ccedad3ff70c29a0352"
+        }
+      }
+    }
+  ]
+}
