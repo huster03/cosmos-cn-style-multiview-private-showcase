@@ -1,9 +1,9 @@
 {
   "fps": 10,
   "frames": 57,
-  "as_of_beijing": "2026-11-21 11:17",
+  "as_of_beijing": "2026-11-21 11:22",
   "total_planned": 70,
-  "published": 29,
+  "published": 30,
   "cases": [
     {
       "arm": "transfer",
@@ -381,6 +381,19 @@
       "poster": "media/transfer-val19.jpg",
       "sha256": "367cab2a2b7d82853a174655d3eace17c26fa212266e27317ac6e3ef3bb9d274",
       "title": "Transfer 2.5 · 验证例 19"
+    },
+    {
+      "arm": "transfer",
+      "id": "val20",
+      "sample": "nuplan_2021.06.14.18.33.41_veh-35_01647_01714_f000000__s000203_n000029",
+      "cohort": "val",
+      "prompt": "This multi-camera perspective captures a forward-moving vehicle traveling along a multi-laned urban road under clear skies. The road is divided into four lanes in each direction, with a median separating opposing traffic. Tall palm trees line both sides of the road, and modern buildings with large billboards flank the roadway. Vehicles are present in adjacent lanes, including a yellow taxi on the left and a white SUV on the right. Pedestrian bridges span across the median, connecting different parts of the cityscape. Traffic flows steadily in both directions, with no apparent congestion. The scene is well-lit by natural daylight, suggesting a sunny day with favorable visibility for driving.",
+      "seed": 119,
+      "frames": 57,
+      "src": "media/transfer-val20.mp4",
+      "poster": "media/transfer-val20.jpg",
+      "sha256": "22b29cac200ed3b2f8b4697a938bb5f38c96b192317b2a3c7683fc4186a76394",
+      "title": "Transfer 2.5 · 验证例 20"
     }
   ]
 }
